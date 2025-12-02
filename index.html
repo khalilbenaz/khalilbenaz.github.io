@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khalil Benazzouz - Senior Backend Architect</title>
+    <title>Khalil Benazzouz - Team Leader & Senior Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #0077b5; /* LinkedIn Blue */
             --accent: #00d2ff;
             --bg-dark: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-bg: rgba(30, 41, 59, 0.8);
             --text-light: #f8fafc;
             --text-gray: #94a3b8;
         }
@@ -22,6 +22,7 @@
             background-color: var(--bg-dark);
             color: var(--text-light);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         /* Arrière-plan Animé Sexy */
@@ -35,16 +36,16 @@
         .orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
+            filter: blur(90px);
             z-index: -1;
             animation: float 20s infinite ease-in-out;
         }
-        .orb-1 { width: 300px; height: 300px; background: #7000df; top: -50px; left: -50px; animation-delay: 0s; opacity: 0.4; }
-        .orb-2 { width: 400px; height: 400px; background: #00d2ff; bottom: -100px; right: -100px; animation-delay: -5s; opacity: 0.3; }
+        .orb-1 { width: 400px; height: 400px; background: #7000df; top: -100px; left: -100px; animation-delay: 0s; opacity: 0.25; }
+        .orb-2 { width: 500px; height: 500px; background: #00d2ff; bottom: -150px; right: -150px; animation-delay: -5s; opacity: 0.2; }
 
         @keyframes float {
             0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, 50px); }
+            50% { transform: translate(40px, 60px); }
         }
 
         /* Container Principal */
@@ -57,89 +58,107 @@
         /* Header Profil */
         header {
             text-align: center;
-            padding: 60px 0;
+            padding: 80px 0 60px;
             animation: fadeInDown 1s ease-out;
         }
 
         .profile-pic {
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             border: 4px solid var(--accent);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
-            object-fit: cover;
-            margin-bottom: 20px;
-            /* Placeholder image - à remplacer par votre photo LinkedIn */
-            background: url('https://ui-avatars.com/api/?name=Khalil+Benazzouz&background=0D8ABC&color=fff&size=256') no-repeat center/cover;
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.2);
+            margin-bottom: 25px;
+            /* Avatar généré avec vos initiales */
+            background: linear-gradient(135deg, #0077b5, #00d2ff);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3.5rem; font-weight: bold; color: white;
+            margin-left: auto; margin-right: auto;
         }
 
-        h1 { font-size: 2.5rem; margin-bottom: 10px; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .role { color: var(--accent); font-size: 1.2rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
-        .location { color: var(--text-gray); margin-top: 5px; font-size: 0.9rem; }
+        h1 { font-size: 3rem; margin-bottom: 10px; background: linear-gradient(to right, #fff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .role { color: var(--accent); font-size: 1.2rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+        .tagline { font-style: italic; color: var(--text-gray); font-size: 1.1rem; margin-bottom: 20px; }
+        .location { color: var(--text-gray); font-size: 0.9rem; }
 
         /* Sections Cards */
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 30px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 35px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-            border-color: rgba(0, 210, 255, 0.3);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            border-color: rgba(0, 210, 255, 0.2);
         }
 
-        h2 { color: var(--text-light); border-bottom: 2px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5rem; }
-        h2 i { color: var(--accent); margin-right: 10px; }
+        h2 { color: var(--text-light); border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px; margin-bottom: 25px; font-size: 1.6rem; }
+        h2 i { color: var(--accent); margin-right: 12px; }
 
         /* Liste Expériences */
-        .job-item { margin-bottom: 25px; padding-left: 20px; border-left: 3px solid var(--accent); }
-        .job-title { font-size: 1.2rem; font-weight: bold; color: #fff; }
-        .job-company { color: var(--accent); font-size: 0.95rem; margin-bottom: 5px; }
-        .job-date { color: var(--text-gray); font-size: 0.85rem; font-style: italic; margin-bottom: 10px; display: block; }
-        .job-desc { color: #cbd5e1; line-height: 1.6; font-size: 0.95rem; }
+        .job-item { 
+            margin-bottom: 30px; 
+            padding-left: 25px; 
+            border-left: 3px solid rgba(0, 210, 255, 0.3);
+            position: relative;
+        }
+        .job-item::before {
+            content: ''; position: absolute; left: -9px; top: 0; width: 15px; height: 15px;
+            background: var(--bg-dark); border: 3px solid var(--accent); border-radius: 50%;
+        }
+        
+        .job-title { font-size: 1.3rem; font-weight: bold; color: #fff; margin-bottom: 5px;}
+        .job-company { color: var(--accent); font-size: 1rem; font-weight: 600; display: inline-block; margin-right: 10px;}
+        .job-date { color: var(--text-gray); font-size: 0.9rem; font-style: italic; display: inline-block; }
+        .job-desc { color: #cbd5e1; margin-top: 10px; font-size: 1rem; }
+        .job-tech { margin-top: 10px; font-size: 0.85rem; color: #94a3b8; font-family: monospace; }
 
         /* Grid Compétences */
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
         .skill-tag {
             background: rgba(255, 255, 255, 0.05);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--accent);
-            border: 1px solid rgba(0, 210, 255, 0.2);
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s;
         }
-        .skill-tag:hover { background: var(--accent); color: #000; cursor: default; }
+        .skill-tag:hover { background: var(--accent); color: #0f172a; transform: scale(1.05); border-color: var(--accent); }
 
         /* Boutons Contact */
-        .social-links { display: flex; justify-content: center; gap: 20px; margin-top: 10px; }
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-top: 30px; }
         .btn {
-            display: flex; align-items: center; gap: 8px;
-            padding: 12px 24px;
+            display: flex; align-items: center; gap: 10px;
+            padding: 14px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s;
+            font-size: 1.1rem;
         }
         .btn-linkedin { background: #0077b5; color: white; }
-        .btn-github { background: #333; color: white; }
-        .btn:hover { transform: scale(1.05); filter: brightness(1.1); }
+        .btn-email { background: #333; color: white; border: 1px solid #555; }
+        .btn:hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* Mobile */
         @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .container { padding: 20px; }
+            h1 { font-size: 2.2rem; }
+            .container { padding: 15px; }
+            .btn { width: 100%; justify-content: center; }
+            .social-links { flex-direction: column; gap: 10px; }
+            .profile-pic { width: 140px; height: 140px; font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -153,43 +172,35 @@
 
     <div class="container">
         <header>
-            <!-- Placeholder Photo (Changez l'URL par votre photo LinkedIn si vous l'avez en fichier) -->
-            <div class="profile-pic"></div> 
+            <div class="profile-pic">KB</div>
             <h1>Khalil Benazzouz</h1>
-            <div class="role">Senior Backend & Full-Stack Developer</div>
-            <div class="location"><i class="fas fa-map-marker-alt"></i> Rabat, Maroc</div>
+            <div class="role">Senior Software Engineer | Team Leader</div>
+            <div class="tagline">"C'est votre attitude, bien plus que votre aptitude, qui détermine votre altitude"</div>
+            <div class="location"><i class="fas fa-map-marker-alt"></i> Rabat-Salé-Kénitra, Maroc</div>
             
-            <div class="social-links" style="margin-top: 30px;">
+            <div class="social-links">
                 <a href="https://www.linkedin.com/in/khalilbenazzouz/" class="btn btn-linkedin" target="_blank">
                     <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
-                <!-- Ajoutez votre lien GitHub ici -->
-                <a href="https://github.com/votre-user" class="btn btn-github" target="_blank">
-                    <i class="fab fa-github"></i> GitHub
+                <a href="mailto:khalil.benazzouz@outlook.com" class="btn btn-email">
+                    <i class="fas fa-envelope"></i> Email
                 </a>
             </div>
         </header>
 
         <div class="card">
-            <h2><i class="fas fa-user"></i> À propos</h2>
-            <p style="line-height: 1.7; color: #cbd5e1;">
-                Professionnel bilingue avec une expertise avancée en développement backend et systèmes financiers. 
-                Spécialisé dans l'architecture microservices, l'optimisation SQL Server et les solutions .NET (C#) pour le secteur bancaire et les paiements. 
-                Passionné par la conception de systèmes robustes, la sécurité des transactions et l'automatisation des processus critiques.
-            </p>
-        </div>
-
-        <div class="card">
-            <h2><i class="fas fa-code"></i> Stack Technique</h2>
+            <h2><i class="fas fa-rocket"></i> Compétences Clés</h2>
             <div class="skills-grid">
-                <span class="skill-tag"><i class="fab fa-microsoft"></i> C# / .NET Core</span>
-                <span class="skill-tag"><i class="fas fa-database"></i> SQL Server (T-SQL)</span>
-                <span class="skill-tag"><i class="fas fa-network-wired"></i> Microservices</span>
-                <span class="skill-tag"><i class="fab fa-docker"></i> Docker</span>
-                <span class="skill-tag"><i class="fas fa-cogs"></i> Entity Framework</span>
-                <span class="skill-tag"><i class="fab fa-github"></i> GitHub Actions</span>
-                <span class="skill-tag"><i class="fas fa-terminal"></i> PowerShell</span>
-                <span class="skill-tag"><i class="fas fa-wallet"></i> Payment Systems</span>
+                <span class="skill-tag">Leadership & Gestion d'équipe</span>
+                <span class="skill-tag">.NET / C#</span>
+                <span class="skill-tag">ASP.NET Framework</span>
+                <span class="skill-tag">SQL Server</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Digital Payments</span>
+                <span class="skill-tag">Wallet Solutions</span>
+                <span class="skill-tag">Microservices</span>
+                <span class="skill-tag">Razor / CSS / HTML</span>
+                <span class="skill-tag">Laravel / PHP (Historique)</span>
             </div>
         </div>
 
@@ -197,40 +208,89 @@
             <h2><i class="fas fa-briefcase"></i> Expérience Professionnelle</h2>
             
             <div class="job-item">
-                <div class="job-title">Senior Backend Developer</div>
-                <div class="job-company">B3G (Fawry Financial Services)</div>
-                <span class="job-date">Présent | Rabat, Maroc</span>
+                <div class="job-title">Team Leader</div>
+                <div class="job-company">B3G</div>
+                <span class="job-date">Oct 2024 - Présent</span>
                 <div class="job-desc">
-                    • Développement et maintenance des systèmes critiques de facturation et de traitement des transactions.<br>
-                    • Optimisation des procédures stockées SQL pour le reporting financier trimestriel.<br>
-                    • Gestion des portefeuilles numériques (Wallet Systems) et réconciliation financière.<br>
-                    • Migration vers une architecture microservices pour améliorer la scalabilité.
+                    Leadership technique et gestion d'équipe pour les solutions de paiement numérique.
                 </div>
             </div>
 
-            <!-- Placeholder pour une expérience précédente (à modifier si besoin) -->
             <div class="job-item">
-                <div class="job-title">Full Stack Developer</div>
-                <div class="job-company">Expérience Précédente</div>
-                <span class="job-date">2018 - 2021</span>
+                <div class="job-title">Full Stack Engineer .NET</div>
+                <div class="job-company">B3G</div>
+                <span class="job-date">Mai 2021 - Oct 2024</span>
                 <div class="job-desc">
-                    • Conception d'APIs RESTful et intégration de services tiers.<br>
-                    • Participation au cycle complet de développement (SDLC) en méthode Agile.
+                    Développement full stack sur les plateformes critiques de l'entreprise.
                 </div>
+            </div>
+
+            <div class="job-item">
+                <div class="job-title">Software Engineer .NET</div>
+                <div class="job-company">B3G</div>
+                <span class="job-date">Mai 2019 - Présent</span>
+                <div class="job-desc">
+                    Évolution et maintenance des systèmes financiers et portefeuilles électroniques.
+                </div>
+            </div>
+
+            <div class="job-item">
+                <div class="job-title">Ingénieur études et développement .NET</div>
+                <div class="job-company">ISIC Rabat</div>
+                <span class="job-date">Jan 2019 (1 mois)</span>
+                <div class="job-desc">
+                    Développement d'un site intranet de bibliothèque.
+                </div>
+                <div class="job-tech">Stack: ASP.NET Framework, SQL Server, C#, Razor, CSS, HTML</div>
+            </div>
+
+            <div class="job-item">
+                <div class="job-title">Ingénieur études et développement</div>
+                <div class="job-company">Rabat Fluid</div>
+                <span class="job-date">Jan 2018 - Juin 2018 (6 mois)</span>
+                <div class="job-desc">
+                    Développement d'un site web e-commerce.
+                </div>
+                <div class="job-tech">Stack: WordPress, MYSQL, PhpMyAdmin</div>
+            </div>
+
+            <div class="job-item">
+                <div class="job-title">Ingénieur Stagiaire (PFE Master)</div>
+                <div class="job-company">SNTL Group</div>
+                <span class="job-date">Mai 2017 - Déc 2017 (8 mois)</span>
+                <div class="job-desc">
+                    Développement d'une application mobile de géo-localisation et déclaration de sinistre. Mise en place d'une API.
+                </div>
+                <div class="job-tech">Stack: Laravel, PHP, MySQL, Ionic, SCSS, JSON</div>
             </div>
         </div>
 
         <div class="card">
-            <h2><i class="fas fa-graduation-cap"></i> Formation</h2>
-            <div class="job-item" style="border:none; padding:0;">
-                <div class="job-title">Master en Ingénierie Informatique</div>
-                <div class="job-company">Université / École Supérieure</div>
-                <span class="job-date">Diplômé</span>
+            <h2><i class="fas fa-graduation-cap"></i> Formation & Certifications</h2>
+            
+            <div class="job-item" style="border:none; padding-left: 0;">
+                <div class="job-title">Master 2 (M2), Systèmes d'Informations Distribués</div>
+                <div class="job-company">Université de Lorraine</div>
+                <span class="job-date">2016 - 2017</span>
+            </div>
+
+            <div class="job-item" style="border:none; padding-left: 0;">
+                <div class="job-title">Master 2 (M2), Ingénierie logicielle et développement web</div>
+                <div class="job-company">Groupe ISGA</div>
+                <span class="job-date">2016 - 2017</span>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <h3 style="color:var(--accent); font-size:1rem; margin-bottom:10px;">Certifications</h3>
+                <ul style="list-style: none; color: #cbd5e1; font-size: 0.95rem;">
+                    <li><i class="fas fa-certificate" style="margin-right:8px; color:var(--text-gray);"></i> Big Data Developer - Explorer Award (2016)</li>
+                    <li><i class="fas fa-certificate" style="margin-right:8px; color:var(--text-gray);"></i> Démarrez votre projet avec Python</li>
+                </ul>
             </div>
         </div>
         
-        <footer style="text-align: center; color: #64748b; font-size: 0.8rem; margin-top: 40px;">
-            <p>&copy; 2025 Khalil Benazzouz. Hébergé sur GitHub Pages.</p>
+        <footer style="text-align: center; color: #64748b; font-size: 0.8rem; margin-top: 50px; padding-bottom: 20px;">
+            <p>&copy; 2025 Khalil Benazzouz. Généré automatiquement via GitHub Pages.</p>
         </footer>
     </div>
 
