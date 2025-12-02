@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Élégante et Animée</title>
+    <style>
+        /* Style de base pour le corps de la page */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Empêche les barres de défilement */
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh; /* Prend toute la hauteur de la vue */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Helvetica Neue', sans-serif;
+            color: white;
+        }
+
+        /* Animation pour le dégradé de l'arrière-plan */
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Style pour le contenu textuel au centre */
+        .content {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem; /* Taille de police responsive */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Ombre pour la lisibilité */
+        }
+
+        /* Média query pour ajuster la taille de la police sur les petits écrans */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>La beauté du mouvement</h1>
+    </div>
+</body>
+</html>
