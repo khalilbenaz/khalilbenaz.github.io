@@ -3,58 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Élégante et Animée</title>
+    <title>Khalil Benazzouz - Senior Backend Architect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Style de base pour le corps de la page */
+        :root {
+            --primary: #0077b5; /* LinkedIn Blue */
+            --accent: #00d2ff;
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* Empêche les barres de défilement */
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            height: 100vh; /* Prend toute la hauteur de la vue */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Helvetica Neue', sans-serif;
-            color: white;
+            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
         }
 
-        /* Animation pour le dégradé de l'arrière-plan */
-        @keyframes gradientBG {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+        /* Arrière-plan Animé Sexy */
+        .background-animation {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+            z-index: -2;
+        }
+        
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+        }
+        .orb-1 { width: 300px; height: 300px; background: #7000df; top: -50px; left: -50px; animation-delay: 0s; opacity: 0.4; }
+        .orb-2 { width: 400px; height: 400px; background: #00d2ff; bottom: -100px; right: -100px; animation-delay: -5s; opacity: 0.3; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 50px); }
         }
 
-        /* Style pour le contenu textuel au centre */
-        .content {
+        /* Container Principal */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header Profil */
+        header {
             text-align: center;
+            padding: 60px 0;
+            animation: fadeInDown 1s ease-out;
         }
 
-        h1 {
-            font-size: 3rem; /* Taille de police responsive */
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Ombre pour la lisibilité */
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+            object-fit: cover;
+            margin-bottom: 20px;
+            /* Placeholder image - à remplacer par votre photo LinkedIn */
+            background: url('https://ui-avatars.com/api/?name=Khalil+Benazzouz&background=0D8ABC&color=fff&size=256') no-repeat center/cover;
         }
 
-        /* Média query pour ajuster la taille de la police sur les petits écrans */
+        h1 { font-size: 2.5rem; margin-bottom: 10px; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .role { color: var(--accent); font-size: 1.2rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+        .location { color: var(--text-gray); margin-top: 5px; font-size: 0.9rem; }
+
+        /* Sections Cards */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(0, 210, 255, 0.3);
+        }
+
+        h2 { color: var(--text-light); border-bottom: 2px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5rem; }
+        h2 i { color: var(--accent); margin-right: 10px; }
+
+        /* Liste Expériences */
+        .job-item { margin-bottom: 25px; padding-left: 20px; border-left: 3px solid var(--accent); }
+        .job-title { font-size: 1.2rem; font-weight: bold; color: #fff; }
+        .job-company { color: var(--accent); font-size: 0.95rem; margin-bottom: 5px; }
+        .job-date { color: var(--text-gray); font-size: 0.85rem; font-style: italic; margin-bottom: 10px; display: block; }
+        .job-desc { color: #cbd5e1; line-height: 1.6; font-size: 0.95rem; }
+
+        /* Grid Compétences */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            transition: all 0.3s;
+        }
+        .skill-tag:hover { background: var(--accent); color: #000; cursor: default; }
+
+        /* Boutons Contact */
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-top: 10px; }
+        .btn {
+            display: flex; align-items: center; gap: 8px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn-linkedin { background: #0077b5; color: white; }
+        .btn-github { background: #333; color: white; }
+        .btn:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile */
         @media (max-width: 600px) {
-            h1 {
-                font-size: 2rem;
-            }
+            h1 { font-size: 2rem; }
+            .container { padding: 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <h1>La beauté du mouvement</h1>
+
+    <!-- Background Animé -->
+    <div class="background-animation">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
     </div>
+
+    <div class="container">
+        <header>
+            <!-- Placeholder Photo (Changez l'URL par votre photo LinkedIn si vous l'avez en fichier) -->
+            <div class="profile-pic"></div> 
+            <h1>Khalil Benazzouz</h1>
+            <div class="role">Senior Backend & Full-Stack Developer</div>
+            <div class="location"><i class="fas fa-map-marker-alt"></i> Rabat, Maroc</div>
+            
+            <div class="social-links" style="margin-top: 30px;">
+                <a href="https://www.linkedin.com/in/khalilbenazzouz/" class="btn btn-linkedin" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <!-- Ajoutez votre lien GitHub ici -->
+                <a href="https://github.com/votre-user" class="btn btn-github" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </header>
+
+        <div class="card">
+            <h2><i class="fas fa-user"></i> À propos</h2>
+            <p style="line-height: 1.7; color: #cbd5e1;">
+                Professionnel bilingue avec une expertise avancée en développement backend et systèmes financiers. 
+                Spécialisé dans l'architecture microservices, l'optimisation SQL Server et les solutions .NET (C#) pour le secteur bancaire et les paiements. 
+                Passionné par la conception de systèmes robustes, la sécurité des transactions et l'automatisation des processus critiques.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-code"></i> Stack Technique</h2>
+            <div class="skills-grid">
+                <span class="skill-tag"><i class="fab fa-microsoft"></i> C# / .NET Core</span>
+                <span class="skill-tag"><i class="fas fa-database"></i> SQL Server (T-SQL)</span>
+                <span class="skill-tag"><i class="fas fa-network-wired"></i> Microservices</span>
+                <span class="skill-tag"><i class="fab fa-docker"></i> Docker</span>
+                <span class="skill-tag"><i class="fas fa-cogs"></i> Entity Framework</span>
+                <span class="skill-tag"><i class="fab fa-github"></i> GitHub Actions</span>
+                <span class="skill-tag"><i class="fas fa-terminal"></i> PowerShell</span>
+                <span class="skill-tag"><i class="fas fa-wallet"></i> Payment Systems</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-briefcase"></i> Expérience Professionnelle</h2>
+            
+            <div class="job-item">
+                <div class="job-title">Senior Backend Developer</div>
+                <div class="job-company">B3G (Fawry Financial Services)</div>
+                <span class="job-date">Présent | Rabat, Maroc</span>
+                <div class="job-desc">
+                    • Développement et maintenance des systèmes critiques de facturation et de traitement des transactions.<br>
+                    • Optimisation des procédures stockées SQL pour le reporting financier trimestriel.<br>
+                    • Gestion des portefeuilles numériques (Wallet Systems) et réconciliation financière.<br>
+                    • Migration vers une architecture microservices pour améliorer la scalabilité.
+                </div>
+            </div>
+
+            <!-- Placeholder pour une expérience précédente (à modifier si besoin) -->
+            <div class="job-item">
+                <div class="job-title">Full Stack Developer</div>
+                <div class="job-company">Expérience Précédente</div>
+                <span class="job-date">2018 - 2021</span>
+                <div class="job-desc">
+                    • Conception d'APIs RESTful et intégration de services tiers.<br>
+                    • Participation au cycle complet de développement (SDLC) en méthode Agile.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-graduation-cap"></i> Formation</h2>
+            <div class="job-item" style="border:none; padding:0;">
+                <div class="job-title">Master en Ingénierie Informatique</div>
+                <div class="job-company">Université / École Supérieure</div>
+                <span class="job-date">Diplômé</span>
+            </div>
+        </div>
+        
+        <footer style="text-align: center; color: #64748b; font-size: 0.8rem; margin-top: 40px;">
+            <p>&copy; 2025 Khalil Benazzouz. Hébergé sur GitHub Pages.</p>
+        </footer>
+    </div>
+
 </body>
 </html>
