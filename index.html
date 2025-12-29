@@ -1,11 +1,723 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Redirection...</title>
-  <meta http-equiv="refresh" content="0; url=https://khalilbenazzouz.my.canva.site/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalil Benazzouz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0f0f23;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animation du code en arrière-plan */
+        .code-matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .code-line {
+            position: absolute;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: rgba(99, 102, 241, 0.4);
+            white-space: nowrap;
+            animation: scrollCode 25s linear infinite;
+            line-height: 1.8;
+        }
+
+        @keyframes scrollCode {
+            0% { transform: translateY(100vh) translateX(-10%); opacity: 0; }
+            5% { opacity: 0.4; }
+            95% { opacity: 0.4; }
+            100% { transform: translateY(-100%) translateX(10%); opacity: 0; }
+        }
+
+        .code-line:nth-child(1) { top: 5%; animation-delay: 0s; }
+        .code-line:nth-child(2) { top: 15%; animation-delay: 3s; }
+        .code-line:nth-child(3) { top: 25%; animation-delay: 6s; }
+        .code-line:nth-child(4) { top: 35%; animation-delay: 9s; }
+        .code-line:nth-child(5) { top: 45%; animation-delay: 12s; }
+        .code-line:nth-child(6) { top: 55%; animation-delay: 15s; }
+        .code-line:nth-child(7) { top: 65%; animation-delay: 18s; }
+        .code-line:nth-child(8) { top: 75%; animation-delay: 21s; }
+        .code-line:nth-child(9) { top: 85%; animation-delay: 24s; }
+
+        /* Container principal */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, rgba(15, 15, 35, 0.95) 0%, rgba(20, 20, 40, 0.98) 100%);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .emoji-icon {
+            font-size: 80px;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .role-badge {
+            display: inline-block;
+            font-size: 14px;
+            letter-spacing: 3px;
+            font-weight: 600;
+            padding: 8px 0;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.95);
+            position: relative;
+            z-index: 2;
+        }
+
+        .name {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 17px;
+            margin: 25px auto;
+            max-width: 700px;
+            opacity: 0.9;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.8);
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-btn:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            padding: 50px 40px;
+            border-right: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .section {
+            margin-bottom: 45px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        /* Compétences */
+        .skill-item {
+            margin-bottom: 22px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .skill-bar-container {
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fillBar 2s ease-out forwards;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+
+        @keyframes fillBar {
+            from { width: 0; opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+        /* Stack Tech */
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-badge {
+            padding: 10px 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Langues */
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 18px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .language-item:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .language-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .language-level {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        /* Certifications */
+        .cert-card {
+            padding: 18px 20px;
+            background: rgba(255,255,255,0.05);
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-left-color: #764ba2;
+            transform: translateX(5px);
+        }
+
+        .cert-title {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .cert-org {
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 50px 60px;
+            background: linear-gradient(180deg, rgba(20, 20, 40, 0.9) 0%, rgba(15, 15, 35, 0.95) 100%);
+        }
+
+        .main-section {
+            margin-bottom: 50px;
+        }
+
+        .main-section-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Expérience */
+        .experience-card {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:last-child {
+            border-bottom: none;
+        }
+
+        .experience-card:hover {
+            transform: translateX(5px);
+        }
+
+        .job-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .company-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .period {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 18px;
+        }
+
+        .job-description {
+            list-style: none;
+            padding: 0;
+        }
+
+        .job-description li {
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .job-description li:before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: #667eea;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Formation */
+        .education-card {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .degree-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .school-name {
+            font-size: 17px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .education-period {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a15;
+            padding: 40px 60px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-text {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        .footer-links a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #764ba2;
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .name {
+                font-size: 48px;
+            }
+            
+            .main-content {
+                padding: 40px 30px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <p>Redirection en cours vers votre site...</p>
+    <!-- Code Matrix Background -->
+    <div class="code-matrix">
+        <div class="code-line">public class PaymentService { private readonly IWalletRepository _wallet; }</div>
+        <div class="code-line">var result = await _context.Transactions.Where(t => t.Status == "Completed").ToListAsync();</div>
+        <div class="code-line">public async Task<PaymentResult> ProcessPayment(PaymentRequest request) { // Business logic }</div>
+        <div class="code-line">[HttpPost] public async Task<IActionResult> CreateTransaction([FromBody] TransactionDto dto)</div>
+        <div class="code-line">private readonly ILogger<PaymentService> _logger;</div>
+        <div class="code-line">services.AddScoped<IWalletService, WalletService>();</div>
+        <div class="code-line">public interface IWalletService { Task<decimal> GetBalance(string userId); }</div>
+        <div class="code-line">throw new InvalidOperationException("Transaction failed: insufficient funds");</div>
+        <div class="code-line">var config = builder.Configuration.GetSection("PaymentGateway").Get<PaymentConfig>();</div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="emoji-icon">👨‍💻</div>
+            <div class="role-badge">▸ DÉVELOPPEUR FULL STACK .NET</div>
+            <h1 class="name">Khalil Benazzouz</h1>
+            <h2 class="title">Senior Software Engineer | Team Leader</h2>
+            <p class="quote">"C'est votre attitude, bien plus que votre aptitude, qui détermine votre altitude"</p>
+            <div class="social-buttons">
+                <a href="https://linkedin.com/in/khalilbenazzouz" class="social-btn" target="_blank">LinkedIn</a>
+                <a href="https://github.com/khalilbenaz" class="social-btn" target="_blank">GitHub</a>
+            </div>
+        </header>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Compétences -->
+                <section class="section">
+                    <h3 class="section-header">⚡ Compétences</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Leadership</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>.NET / C#</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>ASP.NET</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>SQL Server</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Payments</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>JavaScript</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Stack Tech -->
+                <section class="section">
+                    <h3 class="section-header">🛠️ Stack Tech</h3>
+                    <div class="tech-grid">
+                        <span class="tech-badge">Wallet</span>
+                        <span class="tech-badge">Microservices</span>
+                        <span class="tech-badge">Razor</span>
+                        <span class="tech-badge">CSS</span>
+                        <span class="tech-badge">Laravel</span>
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">REST API</span>
+                        <span class="tech-badge">Git</span>
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">Ionic</span>
+                        <span class="tech-badge">WordPress</span>
+                    </div>
+                </section>
+
+                <!-- Langues -->
+                <section class="section">
+                    <h3 class="section-header">🌐 Langues</h3>
+                    <div class="language-item">
+                        <span class="language-name">🇫🇷 Français</span>
+                        <span class="language-level">Natif</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">🇬🇧 Anglais</span>
+                        <span class="language-level">Professionnel</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">🇲🇦 Arabe</span>
+                        <span class="language-level">Courant</span>
+                    </div>
+                </section>
+
+                <!-- Certifications -->
+                <section class="section">
+                    <h3 class="section-header">🏆 Certifications</h3>
+                    <div class="cert-card">
+                        <div class="cert-title">Big Data Developer</div>
+                        <div class="cert-org">Explorer Award • 2016</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-title">Python Developer</div>
+                        <div class="cert-org">OpenClassrooms</div>
+                    </div>
+                </section>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Expérience -->
+                <section class="main-section">
+                    <h2 class="main-section-title">💼 Expérience Professionnelle</h2>
+                    
+                    <article class="experience-card">
+                        <h3 class="job-title">Team Leader</h3>
+                        <div class="company-name">B3G</div>
+                        <div class="period">Oct 2024 - Présent</div>
+                        <ul class="job-description">
+                            <li>Leadership technique et gestion d'équipe pour les solutions de paiement numérique</li>
+                            <li>Coordination de projets critiques et supervision du développement</li>
+                            <li>Amélioration des processus de développement et des standards de qualité</li>
+                        </ul>
+                    </article>
+
+                    <article class="experience-card">
+                        <h3 class="job-title">Full Stack Engineer .NET</h3>
+                        <div class="company-name">B3G</div>
+                        <div class="period">Mai 2021 - Oct 2024</div>
+                        <ul class="job-description">
+                            <li>Développement full stack sur les plateformes critiques de l'entreprise</li>
+                            <li>Conception et implémentation de solutions de paiement digital</li>
+                            <li>Développement de microservices et APIs robustes</li>
+                        </ul>
+                    </article>
+
+                    <article class="experience-card">
+                        <h3 class="job-title">Software Engineer .NET</h3>
+                        <div class="company-name">B3G</div>
+                        <div class="period">Mai 2019 - Mai 2021</div>
+                        <ul class="job-description">
+                            <li>Évolution et maintenance des systèmes financiers et portefeuilles électroniques</li>
+                            <li>Développement de fonctionnalités pour solutions de paiement</li>
+                            <li>Optimisation des performances et sécurité des applications</li>
+                        </ul>
+                    </article>
+
+                    <article class="experience-card">
+                        <h3 class="job-title">Ingénieur études et développement .NET</h3>
+                        <div class="company-name">ISIC Rabat</div>
+                        <div class="period">Jan 2019</div>
+                        <ul class="job-description">
+                            <li>Développement d'un site intranet de bibliothèque</li>
+                            <li>Stack: ASP.NET Framework, SQL Server, C#, Razor</li>
+                        </ul>
+                    </article>
+
+                    <article class="experience-card">
+                        <h3 class="job-title">Ingénieur études et développement</h3>
+                        <div class="company-name">Rabat Fluid</div>
+                        <div class="period">Jan - Juin 2018</div>
+                        <ul class="job-description">
+                            <li>Développement d'un site web e-commerce</li>
+                            <li>Stack: WordPress, MySQL, PhpMyAdmin</li>
+                        </ul>
+                    </article>
+
+                    <article class="experience-card">
+                        <h3 class="job-title">Ingénieur Stagiaire (PFE Master)</h3>
+                        <div class="company-name">SNTL Group</div>
+                        <div class="period">Mai - Déc 2017</div>
+                        <ul class="job-description">
+                            <li>Application mobile de géolocalisation et déclaration de sinistre</li>
+                            <li>API REST backend</li>
+                            <li>Stack: Laravel, PHP, MySQL, Ionic</li>
+                        </ul>
+                    </article>
+                </section>
+
+                <!-- Formation -->
+                <section class="main-section">
+                    <h2 class="main-section-title">🎓 Formation</h2>
+                    
+                    <article class="education-card">
+                        <h3 class="degree-title">Master 2 - Systèmes d'Informations Distribués</h3>
+                        <div class="school-name">Université de Lorraine</div>
+                        <div class="education-period">2016 - 2017</div>
+                    </article>
+
+                    <article class="education-card">
+                        <h3 class="degree-title">Master 2 - Ingénierie logicielle et développement web</h3>
+                        <div class="school-name">Groupe ISGA</div>
+                        <div class="education-period">2016 - 2017</div>
+                    </article>
+                </section>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-text">© 2025 Khalil Benazzouz • Développé avec passion pour l'innovation</p>
+        
+        </footer>
+    </div>
 </body>
 </html>
