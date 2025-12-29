@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khalil Benazzouz</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Khalil Benazzouz - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --dark: #0f0f23;
+            --darker: #0a0a15;
+            --light: rgba(255,255,255,0.9);
+            --card-bg: rgba(255,255,255,0.03);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,15 +23,15 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #0f0f23;
-            color: #fff;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--dark);
+            color: var(--light);
             overflow-x: hidden;
-            position: relative;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Animation du code en arrière-plan */
-        .code-matrix {
+        /* Particules flottantes animées */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
@@ -32,47 +42,83 @@
             pointer-events: none;
         }
 
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat 20s infinite;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        @keyframes particleFloat {
+            0% { 
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { 
+                transform: translateY(-100px) translateX(100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 15s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 18s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 20s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; animation-duration: 16s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 19s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 17s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; animation-duration: 21s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 4.5s; animation-duration: 15s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1.5s; animation-duration: 18s; }
+
+        /* Matrix de code optimisée */
+        .code-matrix {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
         .code-line {
             position: absolute;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            color: rgba(99, 102, 241, 0.4);
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 12px;
+            color: rgba(99, 102, 241, 0.3);
             white-space: nowrap;
-            animation: scrollCode 25s linear infinite;
-            line-height: 1.8;
+            animation: scrollCode 30s linear infinite;
+            filter: blur(0.5px);
         }
 
         @keyframes scrollCode {
-            0% { transform: translateY(100vh) translateX(-10%); opacity: 0; }
-            5% { opacity: 0.4; }
-            95% { opacity: 0.4; }
-            100% { transform: translateY(-100%) translateX(10%); opacity: 0; }
+            0% { transform: translate3d(-5%, 100vh, 0); opacity: 0; }
+            5% { opacity: 0.3; }
+            95% { opacity: 0.3; }
+            100% { transform: translate3d(5%, -100%, 0); opacity: 0; }
         }
 
-        .code-line:nth-child(1) { top: 5%; animation-delay: 0s; }
-        .code-line:nth-child(2) { top: 15%; animation-delay: 3s; }
-        .code-line:nth-child(3) { top: 25%; animation-delay: 6s; }
-        .code-line:nth-child(4) { top: 35%; animation-delay: 9s; }
-        .code-line:nth-child(5) { top: 45%; animation-delay: 12s; }
-        .code-line:nth-child(6) { top: 55%; animation-delay: 15s; }
-        .code-line:nth-child(7) { top: 65%; animation-delay: 18s; }
-        .code-line:nth-child(8) { top: 75%; animation-delay: 21s; }
-        .code-line:nth-child(9) { top: 85%; animation-delay: 24s; }
+        .code-line:nth-child(odd) { animation-direction: reverse; }
 
-        /* Container principal */
+        /* Container avec effet glassmorphism */
         .container {
             position: relative;
             z-index: 1;
             max-width: 1400px;
             margin: 0 auto;
-            background: linear-gradient(180deg, rgba(15, 15, 35, 0.95) 0%, rgba(20, 20, 40, 0.98) 100%);
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+            background: linear-gradient(180deg, rgba(15, 15, 35, 0.8) 0%, rgba(20, 20, 40, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7);
         }
 
-        /* Header */
+        /* Header avec gradient animé */
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            padding: 80px 60px;
+            padding: 100px 60px 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -81,57 +127,87 @@
         .header::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
-            animation: pulse 4s ease-in-out infinite;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(102,126,234,0.2) 0%, transparent 50%);
+            animation: gradientShift 8s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
         }
 
+        /* Emoji avec rotation 3D */
         .emoji-icon {
-            font-size: 80px;
-            margin-bottom: 15px;
-            animation: float 3s ease-in-out infinite;
+            font-size: 90px;
+            margin-bottom: 20px;
+            animation: float3D 4s ease-in-out infinite;
             position: relative;
             z-index: 2;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        .emoji-icon:hover {
+            animation-play-state: paused;
+            transform: scale(1.2) rotate(10deg);
         }
 
+        @keyframes float3D {
+            0%, 100% { transform: translateY(0) rotateY(0deg); }
+            25% { transform: translateY(-15px) rotateY(5deg); }
+            50% { transform: translateY(0) rotateY(0deg); }
+            75% { transform: translateY(-15px) rotateY(-5deg); }
+        }
+
+        /* Badge avec effet néon */
         .role-badge {
             display: inline-block;
-            font-size: 14px;
-            letter-spacing: 3px;
-            font-weight: 600;
-            padding: 8px 0;
-            margin-bottom: 20px;
-            color: rgba(255,255,255,0.95);
+            font-size: 13px;
+            letter-spacing: 4px;
+            font-weight: 700;
+            padding: 10px 24px;
+            margin-bottom: 25px;
+            color: white;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
             position: relative;
             z-index: 2;
+            backdrop-filter: blur(10px);
+            animation: neonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { box-shadow: 0 0 5px rgba(255,255,255,0.5), 0 0 10px rgba(102,126,234,0.3); }
+            50% { box-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(102,126,234,0.6); }
         }
 
         .name {
-            font-size: 64px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: -2px;
             position: relative;
             z-index: 2;
+            background: linear-gradient(to right, #fff, rgba(255,255,255,0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textShine 3s ease-in-out infinite;
+        }
+
+        @keyframes textShine {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
         }
 
         .title {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 500;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             opacity: 0.95;
             position: relative;
             z-index: 2;
@@ -139,180 +215,307 @@
 
         .quote {
             font-style: italic;
-            font-size: 17px;
-            margin: 25px auto;
-            max-width: 700px;
+            font-size: 18px;
+            margin: 30px auto;
+            max-width: 750px;
             opacity: 0.9;
-            line-height: 1.5;
+            line-height: 1.6;
             position: relative;
             z-index: 2;
+            padding: 0 20px;
         }
 
+        .quote::before,
+        .quote::after {
+            content: '"';
+            font-size: 40px;
+            opacity: 0.5;
+            position: relative;
+            top: 10px;
+        }
+
+        /* Boutons sociaux avec effet ripple */
         .social-buttons {
-            margin-top: 30px;
+            margin-top: 35px;
             display: flex;
-            gap: 15px;
+            gap: 18px;
             justify-content: center;
             position: relative;
             z-index: 2;
         }
 
         .social-btn {
-            display: inline-block;
-            padding: 12px 32px;
-            background: rgba(255,255,255,0.15);
-            border: 2px solid rgba(255,255,255,0.8);
+            position: relative;
+            padding: 14px 36px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.6);
             border-radius: 30px;
             color: white;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 15px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .social-btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .social-btn:hover {
-            background: white;
-            color: #667eea;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
-        /* Content Grid */
+        .social-btn span {
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s;
+        }
+
+        .social-btn:hover span {
+            color: var(--primary);
+        }
+
+        /* Grid responsive optimisé */
         .content-grid {
             display: grid;
-            grid-template-columns: 380px 1fr;
+            grid-template-columns: 400px 1fr;
             min-height: 100vh;
         }
 
-        /* Sidebar */
+        /* Sidebar avec effet sticky */
         .sidebar {
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-            padding: 50px 40px;
+            background: linear-gradient(180deg, rgba(26, 26, 46, 0.9) 0%, rgba(22, 33, 62, 0.9) 100%);
+            padding: 60px 45px;
             border-right: 1px solid rgba(99, 102, 241, 0.2);
+            position: sticky;
+            top: 0;
+            height: fit-content;
         }
 
         .section {
-            margin-bottom: 45px;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .section-header {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 25px;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 30px;
             color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Compétences */
+        /* Compétences avec animation au scroll */
         .skill-item {
-            margin-bottom: 22px;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateX(5px);
         }
 
         .skill-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-size: 14px;
             font-weight: 600;
-            color: rgba(255,255,255,0.9);
+            color: var(--light);
+        }
+
+        .skill-percentage {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
         }
 
         .skill-bar-container {
-            height: 10px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
+            height: 12px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
             overflow: hidden;
             position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .skill-bar-fill {
             height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
-            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: fillBar 2s ease-out forwards;
-            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            border-radius: 12px;
+            position: relative;
+            transition: width 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 0 15px rgba(102, 126, 234, 0.6),
+                inset 0 1px 0 rgba(255,255,255,0.3);
         }
 
-        @keyframes fillBar {
-            from { width: 0; opacity: 0.5; }
-            to { opacity: 1; }
+        .skill-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+            border-radius: 12px 12px 0 0;
         }
 
-        /* Stack Tech */
+        /* Badges tech avec effet 3D */
         .tech-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
 
         .tech-badge {
-            padding: 10px 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 12px 22px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             border-radius: 25px;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 700;
             color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 15px rgba(102, 126, 234, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: default;
         }
 
         .tech-badge:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 
+                0 8px 25px rgba(102, 126, 234, 0.6),
+                inset 0 1px 0 rgba(255,255,255,0.3);
         }
 
-        /* Langues */
+        /* Langues avec indicateur visuel */
         .language-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 18px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            margin-bottom: 12px;
+            padding: 18px 22px;
+            background: var(--card-bg);
+            border-radius: 14px;
+            margin-bottom: 14px;
             border: 1px solid rgba(255,255,255,0.08);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .language-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
         }
 
         .language-item:hover {
             background: rgba(255,255,255,0.08);
-            border-color: rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.4);
+            transform: translateX(5px);
+        }
+
+        .language-item:hover::before {
+            transform: scaleY(1);
         }
 
         .language-name {
-            font-weight: 600;
-            font-size: 14px;
+            font-weight: 700;
+            font-size: 15px;
         }
 
         .language-level {
             font-size: 13px;
             opacity: 0.8;
+            padding: 4px 12px;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 12px;
         }
 
-        /* Certifications */
+        /* Certifications avec effet flip */
         .cert-card {
-            padding: 18px 20px;
-            background: rgba(255,255,255,0.05);
-            border-left: 4px solid #667eea;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
+            padding: 20px 24px;
+            background: var(--card-bg);
+            border-left: 5px solid var(--primary);
+            border-radius: 10px;
+            margin-bottom: 18px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::after {
+            content: '🏆';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 32px;
+            opacity: 0.1;
+            transition: all 0.4s ease;
         }
 
         .cert-card:hover {
             background: rgba(255,255,255,0.08);
-            border-left-color: #764ba2;
-            transform: translateX(5px);
+            border-left-color: var(--accent);
+            transform: translateX(8px);
+            box-shadow: -5px 0 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .cert-card:hover::after {
+            opacity: 0.3;
+            transform: translateY(-50%) rotate(15deg) scale(1.2);
         }
 
         .cert-title {
-            font-weight: 700;
-            font-size: 15px;
-            margin-bottom: 5px;
+            font-weight: 800;
+            font-size: 16px;
+            margin-bottom: 6px;
             color: #fff;
         }
 
@@ -321,61 +524,116 @@
             opacity: 0.7;
         }
 
-        /* Main Content */
+        /* Main content */
         .main-content {
-            padding: 50px 60px;
-            background: linear-gradient(180deg, rgba(20, 20, 40, 0.9) 0%, rgba(15, 15, 35, 0.95) 100%);
+            padding: 60px 70px;
+            background: linear-gradient(180deg, rgba(20, 20, 40, 0.8) 0%, rgba(15, 15, 35, 0.9) 100%);
         }
 
         .main-section {
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .main-section-title {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 40px;
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 45px;
             color: #fff;
             display: flex;
             align-items: center;
-            gap: 12px;
-        }
-
-        /* Expérience */
-        .experience-card {
-            margin-bottom: 40px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            gap: 15px;
             position: relative;
-            transition: all 0.3s ease;
+            padding-bottom: 15px;
         }
 
-        .experience-card:last-child {
-            border-bottom: none;
+        .main-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* Expérience avec timeline */
+        .experience-card {
+            margin-bottom: 45px;
+            padding: 35px;
+            padding-bottom: 35px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+            border-radius: 16px 0 0 16px;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.4s ease;
         }
 
         .experience-card:hover {
-            transform: translateX(5px);
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateX(8px);
+            box-shadow: -8px 8px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .experience-card:hover::before {
+            transform: scaleY(1);
         }
 
         .job-title {
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 8px;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
             color: #fff;
         }
 
         .company-name {
             font-size: 20px;
-            font-weight: 600;
-            color: #667eea;
-            margin-bottom: 5px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .company-name::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .experience-card:hover .company-name::after {
+            width: 100%;
         }
 
         .period {
             font-size: 14px;
+            font-family: 'JetBrains Mono', monospace;
             opacity: 0.7;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(102, 126, 234, 0.15);
+            border-radius: 8px;
         }
 
         .job-description {
@@ -384,70 +642,103 @@
         }
 
         .job-description li {
-            padding-left: 30px;
+            padding-left: 35px;
             position: relative;
-            margin-bottom: 10px;
-            line-height: 1.6;
+            margin-bottom: 12px;
+            line-height: 1.7;
             font-size: 15px;
             opacity: 0.9;
         }
 
-        .job-description li:before {
-            content: '•';
+        .job-description li::before {
+            content: '▹';
             position: absolute;
             left: 10px;
-            color: #667eea;
-            font-size: 20px;
+            color: var(--accent);
+            font-size: 24px;
             font-weight: bold;
         }
 
-        /* Formation */
+        /* Formation avec effet carte */
         .education-card {
-            margin-bottom: 30px;
-            padding: 25px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
+            margin-bottom: 35px;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 16px;
             border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '🎓';
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            font-size: 48px;
+            opacity: 0.08;
+            transition: all 0.4s ease;
         }
 
         .education-card:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: rgba(102, 126, 234, 0.3);
-            transform: translateY(-2px);
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(102, 126, 234, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.25);
+        }
+
+        .education-card:hover::before {
+            opacity: 0.15;
+            transform: rotate(15deg) scale(1.1);
         }
 
         .degree-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
+            font-size: 21px;
+            font-weight: 800;
+            margin-bottom: 10px;
             color: #fff;
+            line-height: 1.4;
         }
 
         .school-name {
-            font-size: 17px;
-            font-weight: 600;
-            color: #667eea;
-            margin-bottom: 5px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
         }
 
         .education-period {
             font-size: 14px;
+            font-family: 'JetBrains Mono', monospace;
             opacity: 0.7;
         }
 
-        /* Footer */
+        /* Footer moderne */
         .footer {
-            background: #0a0a15;
-            padding: 40px 60px;
+            background: var(--darker);
+            padding: 45px 60px;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
         }
 
         .footer-text {
-            font-size: 14px;
+            font-size: 15px;
             opacity: 0.8;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
+            font-weight: 500;
         }
 
         .footer-links {
@@ -456,46 +747,115 @@
         }
 
         .footer-links a {
-            color: #667eea;
+            color: var(--primary);
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 12px;
             transition: all 0.3s ease;
+            font-weight: 600;
         }
 
         .footer-links a:hover {
-            color: #764ba2;
+            color: var(--accent);
             opacity: 1;
         }
 
-        /* Responsive */
+        /* Responsive optimisé */
+        @media (max-width: 1200px) {
+            .content-grid {
+                grid-template-columns: 350px 1fr;
+            }
+        }
+
         @media (max-width: 1024px) {
             .content-grid {
                 grid-template-columns: 1fr;
             }
             
+            .sidebar {
+                position: static;
+            }
+            
             .name {
-                font-size: 48px;
+                font-size: 52px;
             }
             
             .main-content {
-                padding: 40px 30px;
+                padding: 40px 35px;
             }
+
+            .header {
+                padding: 70px 40px 60px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .name {
+                font-size: 38px;
+            }
+
+            .social-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            .sidebar {
+                padding: 40px 25px;
+            }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
         }
     </style>
 </head>
 <body>
-    <!-- Code Matrix Background -->
-    <div class="code-matrix">
-        <div class="code-line">public class PaymentService { private readonly IWalletRepository _wallet; }</div>
-        <div class="code-line">var result = await _context.Transactions.Where(t => t.Status == "Completed").ToListAsync();</div>
-        <div class="code-line">public async Task<PaymentResult> ProcessPayment(PaymentRequest request) { // Business logic }</div>
-        <div class="code-line">[HttpPost] public async Task<IActionResult> CreateTransaction([FromBody] TransactionDto dto)</div>
-        <div class="code-line">private readonly ILogger<PaymentService> _logger;</div>
-        <div class="code-line">services.AddScoped<IWalletService, WalletService>();</div>
-        <div class="code-line">public interface IWalletService { Task<decimal> GetBalance(string userId); }</div>
-        <div class="code-line">throw new InvalidOperationException("Transaction failed: insufficient funds");</div>
-        <div class="code-line">var config = builder.Configuration.GetSection("PaymentGateway").Get<PaymentConfig>();</div>
+    <!-- Particules animées -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
+
+    <!-- Matrix de code -->
+    <div class="code-matrix" id="codeMatrix"></div>
 
     <div class="container">
         <!-- Header -->
@@ -504,10 +864,14 @@
             <div class="role-badge">▸ DÉVELOPPEUR FULL STACK .NET</div>
             <h1 class="name">Khalil Benazzouz</h1>
             <h2 class="title">Senior Software Engineer | Team Leader</h2>
-            <p class="quote">"C'est votre attitude, bien plus que votre aptitude, qui détermine votre altitude"</p>
+            <p class="quote">C'est votre attitude, bien plus que votre aptitude, qui détermine votre altitude</p>
             <div class="social-buttons">
-                <a href="https://linkedin.com/in/khalilbenazzouz" class="social-btn" target="_blank">LinkedIn</a>
-                <a href="https://github.com/khalilbenaz" class="social-btn" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/khalilbenazzouz" class="social-btn" target="_blank">
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/khalilbenaz" class="social-btn" target="_blank">
+                    <span>GitHub</span>
+                </a>
             </div>
         </header>
 
@@ -521,55 +885,55 @@
                     <div class="skill-item">
                         <div class="skill-header">
                             <span>Leadership</span>
-                            <span>95%</span>
+                            <span class="skill-percentage">95%</span>
                         </div>
                         <div class="skill-bar-container">
-                            <div class="skill-bar-fill" style="width: 95%"></div>
+                            <div class="skill-bar-fill" data-width="95"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
                             <span>.NET / C#</span>
-                            <span>95%</span>
+                            <span class="skill-percentage">95%</span>
                         </div>
                         <div class="skill-bar-container">
-                            <div class="skill-bar-fill" style="width: 95%"></div>
+                            <div class="skill-bar-fill" data-width="95"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
                             <span>ASP.NET</span>
-                            <span>92%</span>
+                            <span class="skill-percentage">92%</span>
                         </div>
                         <div class="skill-bar-container">
-                            <div class="skill-bar-fill" style="width: 92%"></div>
+                            <div class="skill-bar-fill" data-width="92"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
                             <span>SQL Server</span>
-                            <span>90%</span>
+                            <span class="skill-percentage">90%</span>
                         </div>
                         <div class="skill-bar-container">
-                            <div class="skill-bar-fill" style="width: 90%"></div>
+                            <div class="skill-bar-fill" data-width="90"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
                             <span>Payments</span>
-                            <span>88%</span>
+                            <span class="skill-percentage">88%</span>
                         </div>
                         <div class="skill-bar-container">
-                            <div class="skill-bar-fill" style="width: 88%"></div>
+                            <div class="skill-bar-fill" data-width="88"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
                             <span>JavaScript</span>
-                            <span>85%</span>
+                            <span class="skill-percentage">85%</span>
                         </div>
                         <div class="skill-bar-container">
-                            <div class="skill-bar-fill" style="width: 85%"></div>
+                            <div class="skill-bar-fill" data-width="85"></div>
                         </div>
                     </div>
                 </section>
@@ -716,8 +1080,85 @@
         <!-- Footer -->
         <footer class="footer">
             <p class="footer-text">© 2025 Khalil Benazzouz • Développé avec passion pour l'innovation</p>
-        
         </footer>
     </div>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scrollTop">↑</div>
+
+    <script>
+        // Animation des barres de compétences au chargement
+        window.addEventListener('load', () => {
+            const skillBars = document.querySelectorAll('.skill-bar-fill');
+            skillBars.forEach((bar, index) => {
+                setTimeout(() => {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width + '%';
+                }, index * 100);
+            });
+        });
+
+        // Génération dynamique du code matrix
+        const codeMatrix = document.getElementById('codeMatrix');
+        const codeLines = [
+            'public class PaymentService { private readonly IWalletRepository _wallet; }',
+            'var result = await _context.Transactions.Where(t => t.Status == "Completed").ToListAsync();',
+            'public async Task<PaymentResult> ProcessPayment(PaymentRequest request) { }',
+            '[HttpPost] public async Task<IActionResult> CreateTransaction([FromBody] TransactionDto dto)',
+            'private readonly ILogger<PaymentService> _logger;',
+            'services.AddScoped<IWalletService, WalletService>();',
+            'public interface IWalletService { Task<decimal> GetBalance(string userId); }',
+            'throw new InvalidOperationException("Transaction failed");',
+            'var config = builder.Configuration.GetSection("PaymentGateway");'
+        ];
+
+        codeLines.forEach((line, i) => {
+            const div = document.createElement('div');
+            div.className = 'code-line';
+            div.textContent = line;
+            div.style.top = `${i * 11}%`;
+            div.style.animationDelay = `${i * 3}s`;
+            codeMatrix.appendChild(div);
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll pour les animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.experience-card, .education-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
