@@ -700,9 +700,60 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* ===== Print Button ===== */
+        .print-btn {
+            position: fixed;
+            top: 24px;
+            right: 80px;
+            z-index: 100;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(20px);
+        }
+        .print-btn:hover { border-color: var(--accent); transform: scale(1.05); }
+
+        /* ===== Print Styles ===== */
+        @media print {
+            body { background: white; color: #111; }
+            .theme-toggle, .print-btn, .hero-link, .scroll-top { display: none !important; }
+            .hero-avatar { box-shadow: none; }
+            .fade-in { opacity: 1 !important; transform: none !important; }
+            .hero { padding-top: 20px; }
+            .stat, .exp-card, .skill-card, .edu-card, .lang-item, .cert-item {
+                background: white;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+            .section-title::after { background: #ddd; }
+            .timeline::before { background: #ccc; }
+            .timeline-dot { border-color: #666; background: white; }
+            .timeline-item:first-child .timeline-dot { background: #666; }
+            .exp-tag { background: #f0f0f0; color: #333; }
+            .skill-tag { background: #f0f0f0; color: #333; border-color: #ddd; }
+            .status-badge { border-color: #ccc; color: #333; background: #f5f5f5; }
+            .status-dot { background: #333; }
+            .hero-name .accent { -webkit-text-fill-color: #333; }
+            .footer { display: none; }
+            a { color: inherit; text-decoration: none; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Print Button -->
+    <div class="print-btn" onclick="window.print()" title="Imprimer le CV">
+        <span>&#128438;</span>
+    </div>
 
     <!-- Theme Toggle -->
     <div class="theme-toggle" id="themeToggle">
