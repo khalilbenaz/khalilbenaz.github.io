@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": "mnk4ni8t",
+    "title": "Google dévoile TurboQuant : une avancée majeure contre la crise mondiale de la RAM",
+    "url": "https://www.linkedin.com/posts/activity-7444303437602832384-g0HT?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAQ-S9UBohnaaQ_O-4ibzgXOXz0j37cyv8M",
+    "excerpt": "La hausse explosive des besoins en mémoire vive, portée par l’essor de l’IA, a créé une véritable pression sur les marchés. Mais Google pourrait bien avoir trouvé la parade.\n\n🔍 Avec TurboQuant, Google parvient à diviser par six la consommation de RAM dédiée aux modèles d’IA, grâce à un algorithme de compression du cache KV (Key-Value Cache) — l’espace mémoire où les LLM stockent le contexte pour maintenir la cohérence de leurs réponses.\n\nUn gain spectaculaire qui pourrait :\nréduire drastiquement la consommation de ressources,\nlimiter l’escalade des coûts,\net rendre l’IA bien plus accessible et scalable.\n\nEn bref : un pas de géant vers des IA plus efficaces, plus économiques et plus durables.\n\n🔗 Une innovation à suivre de très près.\n💬 Et vous, pensez-vous que TurboQuant pourrait vraiment transformer le marché de la RAM et des infrastructures IA ?",
+    "tags": [
+      ".IA",
+      "GOOGLE",
+      "RAM"
+    ],
+    "date": "2026-04-04"
+  }
+]
