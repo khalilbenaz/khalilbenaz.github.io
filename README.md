@@ -41,14 +41,26 @@ CV & Blog de **Khalil Benazzouz** — Senior Software Engineer & Team Leader .NE
 Synchronise automatiquement les posts LinkedIn vers le blog :
 
 ```bash
-# Via Claude Code
-/sync:sync-blog-linkedin
+# Via Claude Code (commande projet incluse dans le repo)
+/project:sync-blog
 
 # Ou directement
 python3 scripts/sync-linkedin.py --apply --push
+
+# Preview sans modification
+python3 scripts/sync-linkedin.py
 ```
 
-Seuls les **nouveaux posts** sont ajoutes (deduplication par titre). Necessite [linkedin-scraper-mcp](https://github.com/stickerdaniel/linkedin-mcp-server) avec un profil authentifie dans `~/.linkedin-mcp/`.
+Seuls les **nouveaux posts** sont ajoutes (deduplication par titre).
+
+**Setup pour votre propre profil :**
+
+1. Installer [linkedin-scraper-mcp](https://github.com/stickerdaniel/linkedin-mcp-server) :
+   ```bash
+   uvx linkedin-scraper-mcp@latest --login
+   ```
+2. Modifier `LINKEDIN_USERNAME` dans `scripts/sync-linkedin.py`
+3. Lancer `/project:sync-blog` ou `python3 scripts/sync-linkedin.py --apply --push`
 
 ### Option 2 — Admin web
 
@@ -90,12 +102,13 @@ python3 -m http.server 8000
 ## Structure
 
 ```
-index.html                  # CV
-blog.html                   # Blog pagine (public)
-admin.html                  # Admin blog (prive)
-posts.json                  # Donnees des articles
-photo.jpg                   # Photo de profil
-scripts/sync-linkedin.py    # Sync incremental LinkedIn → blog
+index.html                       # CV
+blog.html                        # Blog pagine (public)
+admin.html                       # Admin blog (prive)
+posts.json                       # Donnees des articles
+photo.jpg                        # Photo de profil
+scripts/sync-linkedin.py         # Sync incremental LinkedIn → blog
+.claude/commands/sync-blog.md    # Commande Claude Code /project:sync-blog
 ```
 
 ---
