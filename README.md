@@ -17,6 +17,7 @@ CV & Blog de **Khalil Benazzouz** — Senior Software Engineer & Team Leader .NE
 |------|-----|-------------|
 | **CV** | [`/`](https://khalilbenaz.github.io) | Parcours, competences, formation |
 | **Blog** | [`/blog.html`](https://khalilbenaz.github.io/blog.html) | Articles et retours d'experience |
+| **Portfolio** | [`/portfolio.html`](https://khalilbenaz.github.io/portfolio.html) | Projets open source et SaaS |
 | **Admin** | [`/admin.html`](https://khalilbenaz.github.io/admin.html) | Interface privee pour publier des articles |
 
 ---
@@ -104,6 +105,7 @@ python3 -m http.server 8000
 ```
 index.html                       # CV
 blog.html                        # Blog pagine (public)
+portfolio.html                   # Portfolio projets (public)
 admin.html                       # Admin blog (prive)
 posts.json                       # Donnees des articles
 photo.jpg                        # Photo de profil

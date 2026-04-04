@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Khalil Benazzouz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #111118;
+            --bg-card-hover: #16161f;
+            --surface: #1a1a24;
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.12);
+            --text: #f0f0f5;
+            --text-secondary: #8888a0;
+            --text-muted: #55556a;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --accent-glow: rgba(99,102,241,0.15);
+        }
+
+        [data-theme="light"] {
+            --bg: #fafafa;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8f8fc;
+            --surface: #f0f0f5;
+            --border: rgba(0,0,0,0.06);
+            --border-hover: rgba(0,0,0,0.12);
+            --text: #111118;
+            --text-secondary: #555568;
+            --text-muted: #9999aa;
+            --accent: #4f46e5;
+            --accent-light: #6366f1;
+            --accent-glow: rgba(79,70,229,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 100;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.2s ease;
+        }
+        .theme-toggle:hover { border-color: var(--accent); transform: scale(1.05); }
+
+        /* Nav */
+        .nav {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 32px 24px 0;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            margin-left: auto;
+        }
+        .nav-link {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .nav-link:hover { color: var(--accent-light); background: var(--accent-glow); }
+
+        /* Header */
+        .page-header {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 24px 16px;
+        }
+
+        .page-title {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        /* Projects grid */
+        .projects {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 32px 24px 80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .project-card:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        }
+
+        .project-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .project-meta {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .project-name {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            margin-bottom: 2px;
+        }
+
+        .project-type {
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .stack-tag {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: var(--accent-glow);
+            color: var(--accent-light);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .project-features {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .feature {
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .feature::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+            padding-top: 4px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-light);
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .project-link:hover {
+            background: var(--accent-glow);
+            border-color: var(--accent);
+        }
+
+        .project-link svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
+        /* Fade in */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 640px) {
+            .projects { grid-template-columns: 1fr; }
+            .project-card { padding: 22px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="theme-toggle" id="themeToggle"><span id="themeIcon">&#9790;</span></div>
+
+    <nav class="nav">
+        <a href="index.html" class="nav-back">&larr; CV</a>
+        <div class="nav-links">
+            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="portfolio.html" class="nav-link" style="color:var(--accent-light)">Portfolio</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-title">Portfolio</h1>
+        <p class="page-subtitle">Projets open source, frameworks et outils que je construis</p>
+    </header>
+
+    <div class="projects" id="projects">
+
+        <!-- RIVORA -->
+        <div class="project-card fade-in" style="transition-delay: 0s">
+            <div class="project-top">
+                <div class="project-icon" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">&#9670;</div>
+                <div class="project-meta">
+                    <div class="project-name">RIVORA</div>
+                    <div class="project-type">Enterprise Framework</div>
+                </div>
+            </div>
+            <p class="project-desc">Framework cloud-native pour .NET 9 base sur Clean Architecture, DDD et Multi-tenancy. Concu pour les applications SaaS professionnelles.</p>
+            <div class="project-stack">
+                <span class="stack-tag">.NET 9</span>
+                <span class="stack-tag">React 19</span>
+                <span class="stack-tag">EF Core</span>
+                <span class="stack-tag">CQRS</span>
+                <span class="stack-tag">SignalR</span>
+                <span class="stack-tag">GraphQL</span>
+                <span class="stack-tag">Docker</span>
+            </div>
+            <div class="project-features">
+                <div class="feature">Multi-tenancy : isolation par colonne, schema ou base separee</div>
+                <div class="feature">Securite : JWT RS256, 2FA/TOTP, AES-256, OAuth2/OIDC, GDPR</div>
+                <div class="feature">IA integree : RAG, NL query builder, code review analyzers</div>
+                <div class="feature">RVR CLI + RVR Studio pour le scaffolding et les migrations</div>
+                <div class="feature">89% Native AOT compatible, 93 tests</div>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/khalilbenaz/RIVORA" target="_blank" class="project-link">
+                    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+
+        <!-- MDAN -->
+        <div class="project-card fade-in" style="transition-delay: 0.08s">
+            <div class="project-top">
+                <div class="project-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">&#9733;</div>
+                <div class="project-meta">
+                    <div class="project-name">MDAN</div>
+                    <div class="project-type">AI Agent Network</div>
+                </div>
+            </div>
+            <p class="project-desc">Multi-Agent Development Agentic Network. Framework d'agents IA specialises avec wizards interactifs, memoire persistante et protocoles de debat structure.</p>
+            <div class="project-stack">
+                <span class="stack-tag">Node.js</span>
+                <span class="stack-tag">MCP</span>
+                <span class="stack-tag">Claude Code</span>
+                <span class="stack-tag">YAML</span>
+            </div>
+            <div class="project-features">
+                <div class="feature">25+ wizards en 5 phases : Discover, Plan, Architect, Build, Ship</div>
+                <div class="feature">19+ agents specialises (Product Manager, Architect, QA, FinTech...)</div>
+                <div class="feature">Context Graph : DAG leger pour suivre les artefacts</div>
+                <div class="feature">Modes : Discussion, Debat (Proponent/Opponent/Arbitrator), Consensus</div>
+                <div class="feature">Compatible Claude Code, Cursor et autres IDEs via MCP</div>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/khalilbenaz/MDAN" target="_blank" class="project-link">
+                    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+
+        <!-- QRLIB -->
+        <div class="project-card fade-in" style="transition-delay: 0.16s">
+            <div class="project-top">
+                <div class="project-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">&#9641;</div>
+                <div class="project-meta">
+                    <div class="project-name">QRLIB</div>
+                    <div class="project-type">NuGet Library</div>
+                </div>
+            </div>
+            <p class="project-desc">Librairie .NET 8 zero-dependance pour generer, parser et valider les QR Codes EMVCo Merchant (MPM). Conforme EMVCo et ISO/IEC 18004.</p>
+            <div class="project-stack">
+                <span class="stack-tag">.NET 8</span>
+                <span class="stack-tag">C#</span>
+                <span class="stack-tag">EMVCo</span>
+                <span class="stack-tag">xUnit</span>
+                <span class="stack-tag">NuGet</span>
+            </div>
+            <div class="project-features">
+                <div class="feature">Fluent Builder API pour la construction de QR codes</div>
+                <div class="feature">Parser + Validateur de conformite EMVCo</div>
+                <div class="feature">CRC16-CCITT automatique (ISO 13239)</div>
+                <div class="feature">Support ISO 18245 (MCC), ISO 3166, ISO 4217</div>
+                <div class="feature">Zero dependance externe</div>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/khalilbenaz/QRLIB" target="_blank" class="project-link">
+                    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+
+        <!-- Mocka -->
+        <div class="project-card fade-in" style="transition-delay: 0.24s">
+            <div class="project-top">
+                <div class="project-icon" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">&#9889;</div>
+                <div class="project-meta">
+                    <div class="project-name">Mocka</div>
+                    <div class="project-type">SaaS / Web App</div>
+                </div>
+            </div>
+            <p class="project-desc">Plateforme pour creer des serveurs mock API instantanement. URLs live, tous les verbes HTTP, CORS integre, simulation de latence et partage d'equipe.</p>
+            <div class="project-stack">
+                <span class="stack-tag">Next.js</span>
+                <span class="stack-tag">React</span>
+                <span class="stack-tag">Tailwind</span>
+                <span class="stack-tag">Clerk</span>
+                <span class="stack-tag">Vercel</span>
+            </div>
+            <div class="project-features">
+                <div class="feature">Creation instantanee de mock servers avec URL live</div>
+                <div class="feature">Support GET, POST, PUT, PATCH, DELETE avec status codes custom</div>
+                <div class="feature">JSON, XML, HTML, plain text en reponse</div>
+                <div class="feature">Simulation de latence reseau configurable</div>
+                <div class="feature">Export/import de configuration JSON</div>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/khalilbenaz/mocka" target="_blank" class="project-link">
+                    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://mock-a.netlify.app/" target="_blank" class="project-link">
+                    <svg viewBox="0 0 16 16"><path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg>
+                    Demo live
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Theme
+        const toggle = document.getElementById('themeToggle');
+        const icon = document.getElementById('themeIcon');
+        let theme = localStorage.getItem('theme') || (new Date().getHours() >= 6 && new Date().getHours() < 18 ? 'light' : 'dark');
+
+        function applyTheme(t) {
+            theme = t;
+            if (t === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                icon.innerHTML = '&#9728;';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                icon.innerHTML = '&#9790;';
+            }
+            localStorage.setItem('theme', t);
+        }
+        applyTheme(theme);
+        toggle.addEventListener('click', () => applyTheme(theme === 'dark' ? 'light' : 'dark'));
+
+        // Animate
+        requestAnimationFrame(() => {
+            document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+        });
+    </script>
+</body>
+</html>
