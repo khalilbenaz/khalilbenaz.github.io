@@ -27,11 +27,30 @@ CV & Blog de **Khalil Benazzouz** — Senior Software Engineer & Team Leader .NE
 - **Design editorial** — Layout single-column, timeline d'experience, skill cards par categorie
 - **Responsive** — Mobile, tablette et desktop
 - **Blog avec admin** — Publie des articles depuis le navigateur via l'API GitHub (zero backend)
+- **Blog pagine** — 10 articles par page, navigation numerotee, URL hash pour liens directs (`#page2`)
+- **Sync LinkedIn automatique** — Recupere les posts LinkedIn via MCP et met a jour `posts.json` en incremental
+- **Auto-tagging** — Tags generes automatiquement (FINTECH, MAROC, IA, DEV, TELECOM, SECURITE...)
 - **Zero dependance** — HTML/CSS/JS pur, pas de framework
 
 ---
 
 ## Blog : comment publier
+
+### Option 1 — Sync LinkedIn (recommande)
+
+Synchronise automatiquement les posts LinkedIn vers le blog :
+
+```bash
+# Via Claude Code
+/sync:sync-blog-linkedin
+
+# Ou directement
+python3 scripts/sync-linkedin.py --apply --push
+```
+
+Seuls les **nouveaux posts** sont ajoutes (deduplication par titre). Necessite [linkedin-scraper-mcp](https://github.com/stickerdaniel/linkedin-mcp-server) avec un profil authentifie dans `~/.linkedin-mcp/`.
+
+### Option 2 — Admin web
 
 1. Aller sur [`/admin.html`](https://khalilbenaz.github.io/admin.html)
 2. Se connecter avec un [GitHub Personal Access Token](https://github.com/settings/tokens/new?scopes=repo&description=Blog+Admin) (permission `repo`)
@@ -52,6 +71,8 @@ Le token est stocke en `sessionStorage` (efface a la fermeture du navigateur).
 | Google Fonts | Inter + JetBrains Mono |
 | GitHub Pages | Hebergement |
 | GitHub API | Backend du blog (commits via Content API) |
+| [linkedin-scraper-mcp](https://github.com/stickerdaniel/linkedin-mcp-server) | Sync posts LinkedIn via MCP |
+| Python 3 | Script de sync incremental |
 
 ---
 
@@ -69,11 +90,12 @@ python3 -m http.server 8000
 ## Structure
 
 ```
-index.html    # CV
-blog.html     # Blog (public)
-admin.html    # Admin blog (prive)
-posts.json    # Donnees des articles
-photo.jpg     # Photo de profil
+index.html                  # CV
+blog.html                   # Blog pagine (public)
+admin.html                  # Admin blog (prive)
+posts.json                  # Donnees des articles
+photo.jpg                   # Photo de profil
+scripts/sync-linkedin.py    # Sync incremental LinkedIn → blog
 ```
 
 ---
