@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Blog</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #111118;
+            --surface: #1a1a24;
+            --border: rgba(255,255,255,0.08);
+            --border-hover: rgba(255,255,255,0.15);
+            --text: #f0f0f5;
+            --text-secondary: #8888a0;
+            --text-muted: #55556a;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --accent-glow: rgba(99,102,241,0.15);
+            --red: #ef4444;
+            --green: #22c55e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        /* Login */
+        .login-box {
+            padding: 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .login-box h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        /* Form elements */
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            margin-top: 16px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        textarea { resize: vertical; min-height: 100px; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn--primary {
+            background: var(--accent);
+            color: white;
+            width: 100%;
+            margin-top: 24px;
+        }
+        .btn--primary:hover { filter: brightness(1.15); }
+        .btn--primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .btn--danger {
+            background: rgba(239,68,68,0.15);
+            color: var(--red);
+            border: 1px solid rgba(239,68,68,0.2);
+            padding: 8px 14px;
+            font-size: 12px;
+        }
+        .btn--danger:hover { background: rgba(239,68,68,0.25); }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); }
+        .toast--success { background: var(--green); color: white; }
+        .toast--error { background: var(--red); color: white; }
+
+        /* Posts list */
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin: 40px 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+        .post-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+
+        .post-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .post-item-title {
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .post-item-date {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .help-text {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .form-card {
+            padding: 28px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .form-card h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .hidden { display: none !important; }
+
+        .logout-btn {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            text-decoration: underline;
+        }
+        .logout-btn:hover { color: var(--text-secondary); }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="loginScreen">
+            <h1>Admin Blog</h1>
+            <p class="subtitle">Connecte-toi pour gerer tes articles</p>
+            <div class="login-box">
+                <h2>Connexion</h2>
+                <label for="ghToken">GitHub Personal Access Token</label>
+                <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx">
+                <p class="help-text">Token avec permission "repo" &mdash; <a href="https://github.com/settings/tokens/new?scopes=repo&description=Blog+Admin" target="_blank" style="color: var(--accent-light)">Creer un token</a></p>
+                <button class="btn btn--primary" id="loginBtn">Se connecter</button>
+            </div>
+        </div>
+
+        <!-- Admin Screen -->
+        <div id="adminScreen" class="hidden">
+            <div class="header-row">
+                <div>
+                    <h1>Admin Blog</h1>
+                    <p class="subtitle">Ajouter et gerer tes articles</p>
+                </div>
+                <button class="logout-btn" id="logoutBtn">Deconnexion</button>
+            </div>
+
+            <!-- New post form -->
+            <div class="form-card">
+                <h2>Nouvel article</h2>
+                <p class="subtitle" style="margin-bottom:0">Colle le lien de ton post LinkedIn</p>
+
+                <label for="postTitle">Titre</label>
+                <input type="text" id="postTitle" placeholder="Mon article sur...">
+
+                <label for="postUrl">Lien LinkedIn</label>
+                <input type="url" id="postUrl" placeholder="https://www.linkedin.com/posts/...">
+
+                <label for="postExcerpt">Extrait (optionnel)</label>
+                <textarea id="postExcerpt" placeholder="Les premieres lignes de ton post..."></textarea>
+
+                <label for="postTags">Tags (separes par des virgules, optionnel)</label>
+                <input type="text" id="postTags" placeholder=".NET, Leadership, Fintech">
+
+                <label for="postDate">Date</label>
+                <input type="date" id="postDate">
+
+                <button class="btn btn--primary" id="publishBtn">Publier</button>
+            </div>
+
+            <!-- Existing posts -->
+            <div class="section-title">Articles existants</div>
+            <div id="postsList"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        const REPO_OWNER = 'khalilbenaz';
+        const REPO_NAME = 'khalilbenaz.github.io';
+        const FILE_PATH = 'posts.json';
+        const BRANCH = 'master';
+
+        let token = '';
+        let posts = [];
+        let fileSha = '';
+
+        // Elements
+        const loginScreen = document.getElementById('loginScreen');
+        const adminScreen = document.getElementById('adminScreen');
+        const ghTokenInput = document.getElementById('ghToken');
+        const loginBtn = document.getElementById('loginBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const publishBtn = document.getElementById('publishBtn');
+        const postsList = document.getElementById('postsList');
+        const toast = document.getElementById('toast');
+
+        // Toast
+        function showToast(msg, type = 'success') {
+            toast.textContent = msg;
+            toast.className = `toast toast--${type} show`;
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // GitHub API helpers
+        async function ghFetch(endpoint, options = {}) {
+            const res = await fetch(`https://api.github.com${endpoint}`, {
+                ...options,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json',
+                    ...options.headers,
+                }
+            });
+            if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+            return res.json();
+        }
+
+        async function loadPosts() {
+            try {
+                const data = await ghFetch(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}?ref=${BRANCH}`);
+                fileSha = data.sha;
+                posts = JSON.parse(atob(data.content));
+                renderPosts();
+            } catch (e) {
+                // File might not exist yet
+                posts = [];
+                fileSha = '';
+                renderPosts();
+            }
+        }
+
+        async function savePosts() {
+            const content = btoa(unescape(encodeURIComponent(JSON.stringify(posts, null, 2) + '\n')));
+            const body = {
+                message: `blog: ${posts.length} articles`,
+                content,
+                branch: BRANCH,
+            };
+            if (fileSha) body.sha = fileSha;
+
+            const data = await ghFetch(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
+                method: 'PUT',
+                body: JSON.stringify(body),
+            });
+            fileSha = data.content.sha;
+        }
+
+        function renderPosts() {
+            if (!posts.length) {
+                postsList.innerHTML = '<p style="color: var(--text-muted); font-size: 14px;">Aucun article pour le moment</p>';
+                return;
+            }
+
+            const sorted = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+            postsList.innerHTML = sorted.map((p, i) => `
+                <div class="post-item">
+                    <div class="post-item-info">
+                        <div class="post-item-title">${escapeHtml(p.title)}</div>
+                        <div class="post-item-date">${p.date}</div>
+                    </div>
+                    <button class="btn btn--danger" onclick="deletePost(${posts.indexOf(p)})">Supprimer</button>
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // Login
+        loginBtn.addEventListener('click', async () => {
+            token = ghTokenInput.value.trim();
+            if (!token) return;
+
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Connexion...';
+
+            try {
+                await ghFetch(`/repos/${REPO_OWNER}/${REPO_NAME}`);
+                sessionStorage.setItem('gh_token', token);
+                loginScreen.classList.add('hidden');
+                adminScreen.classList.remove('hidden');
+                await loadPosts();
+                showToast('Connecte !');
+            } catch (e) {
+                showToast('Token invalide ou pas de permission', 'error');
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Se connecter';
+            }
+        });
+
+        // Logout
+        logoutBtn.addEventListener('click', () => {
+            sessionStorage.removeItem('gh_token');
+            token = '';
+            adminScreen.classList.add('hidden');
+            loginScreen.classList.remove('hidden');
+            ghTokenInput.value = '';
+        });
+
+        // Publish
+        publishBtn.addEventListener('click', async () => {
+            const title = document.getElementById('postTitle').value.trim();
+            const url = document.getElementById('postUrl').value.trim();
+            const excerpt = document.getElementById('postExcerpt').value.trim();
+            const tagsRaw = document.getElementById('postTags').value.trim();
+            const date = document.getElementById('postDate').value;
+
+            if (!title || !url) {
+                showToast('Titre et lien sont obligatoires', 'error');
+                return;
+            }
+
+            publishBtn.disabled = true;
+            publishBtn.textContent = 'Publication...';
+
+            try {
+                const post = {
+                    id: Date.now().toString(36),
+                    title,
+                    url,
+                    excerpt: excerpt || '',
+                    tags: tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : [],
+                    date: date || new Date().toISOString().split('T')[0],
+                };
+
+                posts.push(post);
+                await savePosts();
+                renderPosts();
+
+                // Reset form
+                document.getElementById('postTitle').value = '';
+                document.getElementById('postUrl').value = '';
+                document.getElementById('postExcerpt').value = '';
+                document.getElementById('postTags').value = '';
+                document.getElementById('postDate').value = '';
+
+                showToast('Article publie !');
+            } catch (e) {
+                showToast('Erreur: ' + e.message, 'error');
+            } finally {
+                publishBtn.disabled = false;
+                publishBtn.textContent = 'Publier';
+            }
+        });
+
+        // Delete
+        window.deletePost = async function(index) {
+            if (!confirm('Supprimer cet article ?')) return;
+            posts.splice(index, 1);
+            try {
+                await savePosts();
+                renderPosts();
+                showToast('Article supprime');
+            } catch (e) {
+                showToast('Erreur: ' + e.message, 'error');
+            }
+        };
+
+        // Auto-login from session
+        (async () => {
+            const saved = sessionStorage.getItem('gh_token');
+            if (saved) {
+                token = saved;
+                try {
+                    await ghFetch(`/repos/${REPO_OWNER}/${REPO_NAME}`);
+                    loginScreen.classList.add('hidden');
+                    adminScreen.classList.remove('hidden');
+                    await loadPosts();
+                } catch {
+                    sessionStorage.removeItem('gh_token');
+                }
+            }
+
+            // Set default date to today
+            document.getElementById('postDate').value = new Date().toISOString().split('T')[0];
+        })();
+    </script>
+</body>
+</html>
