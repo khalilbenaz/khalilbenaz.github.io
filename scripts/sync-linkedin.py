@@ -206,6 +206,7 @@ def parse_posts(posts_text):
             "excerpt": excerpt,
             "tags": sorted(list(auto_tags)),
             "date": post_date,
+            "order": idx,  # LinkedIn scrape order: 0 = most recent
         })
 
     return posts
@@ -219,7 +220,8 @@ def content_fingerprint(post):
 
 
 def merge_posts(existing, new_posts):
-    """Merge new posts into existing, skip duplicates. Returns (merged, added_count)."""
+    """Merge new posts into existing, skip duplicates. Returns (merged, added_count).
+    New posts go first (order 0+), existing posts shift after them."""
     seen = {content_fingerprint(p) for p in existing}
     added = []
     for p in new_posts:
@@ -227,8 +229,12 @@ def merge_posts(existing, new_posts):
         if fp not in seen:
             seen.add(fp)
             added.append(p)
-    merged = added + existing
-    merged.sort(key=lambda p: p["date"], reverse=True)
+    # Shift existing orders to make room for new posts
+    offset = len(new_posts)
+    for p in existing:
+        p["order"] = p.get("order", 999) + offset
+    # New posts keep their scrape order (0 = most recent)
+    merged = sorted(added + existing, key=lambda p: p.get("order", 999))
     return merged, len(added)
 
 

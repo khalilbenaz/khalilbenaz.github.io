@@ -347,7 +347,8 @@
                     return;
                 }
 
-                allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                // Sort by order (LinkedIn chronology: 0 = most recent) then by date as fallback
+                allPosts.sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || new Date(b.date) - new Date(a.date));
 
                 // Read page from URL hash
                 const hash = parseInt(location.hash.replace('#page', ''));

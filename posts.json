@@ -1,529 +1,5 @@
 [
   {
-    "id": "719085ec",
-    "title": "Google lance Gemini Embedding 2, un modèle qui comprend texte, image, vidéo et audio en même temps - Korben",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Google lance Gemini Embedding 2, un modèle qui comprend texte, image, vidéo et audio en même temps - Korben\nkorben.info",
-    "tags": [
-      "GOOGLE",
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "fa750ad3",
-    "title": "Elon Musk veut remplacer votre banque : voici X Money, la future néobanque intégrée à X",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Elon Musk veut remplacer votre banque : voici X Money, la future néobanque intégrée à X\nfrandroid.com",
-    "tags": [
-      "FINTECH"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "3b977866",
-    "title": "Gemini CLI : Google déploie Plan Mode, un environnement sécurisé pour planifier le code",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Gemini CLI : Google déploie Plan Mode, un environnement sécurisé pour planifier le code\nblogdumoderateur.com",
-    "tags": [
-      "GOOGLE",
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "6cfdd2f6",
-    "title": "Damane Cash s’allie aux pharmaciens pour accélérer la digitalisation des paiements - Le Desk",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Damane Cash s’allie aux pharmaciens pour accélérer la digitalisation des paiements - Le Desk\nledesk.ma",
-    "tags": [
-      "FINTECH"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "02ecb105",
-    "title": "IA : ce projet open source permet de faire sauter tous les garde-fous en un clic",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "IA : ce projet open source permet de faire sauter tous les garde-fous en un clic\nnumerama.com",
-    "tags": [
-      "IA",
-      "OPENSOURCE",
-      "RAM"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "2b1fbba4",
-    "title": "Chrome : une étude prouve que les adblockers sont plus forts que jamais, malgré le Manifest V3",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Chrome : une étude prouve que les adblockers sont plus forts que jamais, malgré le Manifest V3\nclubic.com",
-    "tags": [],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "807cac4e",
-    "title": "Claude Opus 4.6 : Anthropic dévoile son modèle d'IA le plus intelligent",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Claude Opus 4.6 : Anthropic dévoile son modèle d'IA le plus intelligent\nkulturegeek.fr",
-    "tags": [
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "e164ad4f",
-    "title": "Ce n'est plus un concept, Xiaomi s'apprête à lancer son objectif magnétique pour smartphone — Frandroid",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Ce n'est plus un concept, Xiaomi s'apprête à lancer son objectif magnétique pour smartphone — Frandroid\nfrandroid.com",
-    "tags": [
-      "IA",
-      "TECH"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "48f1f563",
-    "title": "Réduction du cash : Bank Al-Maghrib lance un Fonds pour accélérer les paiements électroniques chez les commerçants",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Réduction du cash : Bank Al-Maghrib lance un Fonds pour accélérer les paiements électroniques chez les commerçants\nlematin.ma",
-    "tags": [
-      "FINTECH"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "1e3510de",
-    "title": "Goose : cet agent IA gratuit fait aussi bien que Claude Code",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Goose : cet agent IA gratuit fait aussi bien que Claude Code\njournaldunet.com",
-    "tags": [
-      "AGENTS",
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "4a92c419",
-    "title": "10 serveurs MCP pour les DevOps - Le Monde Informatique",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "10 serveurs MCP pour les DevOps - Le Monde Informatique\nlemondeinformatique.fr",
-    "tags": [
-      "DEV"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "9fc19fb4",
-    "title": "NAPS déploie une solution de paiement électronique pour les bureaux de change",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "NAPS déploie une solution de paiement électronique pour les bureaux de change\nmedias24.com",
-    "tags": [
-      "FINTECH",
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "39f15630",
-    "title": "Rabat–Salé–Témara : « Blassty », une application pour facilite les déplacements",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Rabat–Salé–Témara : « Blassty », une application pour facilite les déplacements\nlematin.ma",
-    "tags": [
-      "MAROC"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "467589e6",
-    "title": "Google makes Gemini 3 Flash default AI model globally",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Google makes Gemini 3 Flash default AI model globally\nperplexity.ai",
-    "tags": [
-      "GOOGLE",
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "76b0969a",
-    "title": "Google vient de sortir un site gratuit pour apprendre à utiliser l'IA : Skills.",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Google vient de sortir un site gratuit pour apprendre à utiliser l'IA : Skills.\n\nPlein de petites formations, de l'utilisation de prompts Gemini à la création de workflows automatiques.\n\nPas d'excuses pour apprendre les compétences de demain.\nC'est ici : skills.google\n… plus\nGoogle Skills\nskills.google",
-    "tags": [
-      "GOOGLE",
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "77bfa0fa",
-    "title": "Maroc Telecom, Medi Telecom et Wana Corporate obtiennent le feu vert pour la 5G",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Maroc Telecom, Medi Telecom et Wana Corporate obtiennent le feu vert pour la 5G\nmedias24.com",
-    "tags": [
-      "IA",
-      "MAROC",
-      "TELECOM"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "72f1c37d",
-    "title": "Daret\" : quand la tontine marocaine entre dans l’ère du digital",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "\"Daret\" : quand la tontine marocaine entre dans l’ère du digital\nmedias24.com",
-    "tags": [
-      "IA",
-      "MAROC"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "432d8b6d",
-    "title": "Fier de vous présenter KBA.CoreUtilities - Le toolkit .NET le plus complet pour vos applications !",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "🚀 Fier de vous présenter KBA.CoreUtilities - Le toolkit .NET le plus complet pour vos applications !\n\n📦 500+ méthodes utilitaires | 🎯 Multi-targeting (.NET 6/7/8) | ✅ Production-ready\n\nCe que vous obtenez :\n\n💰 FINTECH & PAYMENTS\n- Validation IBAN, cartes bancaires, BIC/SWIFT\n- QR Codes EMV conformes (170+ devises ISO 4217)\n- Support de 200+ pays avec codes ISO\n\n🔐 SÉCURITÉ & CRYPTOGRAPHIE\n- Chiffrement AES-256, RSA-2048\n- Hachage sécurisé (PBKDF2, SHA256/512)\n- Génération de tokens & OTP\n\n⚡ ASYNC & PERFORMANCE\n- TaskExtensions (Retry, Timeout, FireAndForget)\n- Performance monitoring & profiling\n- In-memory caching avec expiration\n- Rate limiting\n\n🔍 REFLECTION & CONFIGURATION\n- Accès dynamique aux propriétés/méthodes\n- Configuration typée avec validation\n- Object mapping automatique\n\n📝 120+ EXTENSIONS\n- String (IsEmail, ToSHA256, Capitalize...)\n- Collections (Chunk, Shuffle, Page...)\n- Object (null handling, JSON, conversions...)\n\n✨ Et bien plus : Serialization, FileUtils, DateTimeUtils, API consumption, Logging...\n\n🔗 Package NuGet : https://lnkd.in/ezjKU2rq\n\n📥 Installation :\ndotnet add package KBA.CoreUtilities\n\n💡 Parfait pour les applications FinTech, les microservices, et tout projet .NET moderne qui nécessite des utilitaires robustes.\n\nLe code est clean, documenté, et prêt à booster votre productivité ! 🚀\n\n\n#dotnet \n#csharp \n#nuget \n#fintech \n#microservices \n#opensource \n#developers \n#programming \n#backend \n#enterprise \n#dotnetcore \n#aspnetcore \n#softwareengineering\n… plus",
-    "tags": [
-      "ASPNETCORE",
-      "BACKEND",
-      "CSHARP",
-      "DEV",
-      "DEVELOPERS",
-      "DOTNET",
-      "DOTNETCORE",
-      "ENTERPRISE",
-      "FINTECH",
-      "MICROSERVICES",
-      "NUGET",
-      "OPENSOURCE",
-      "PROGRAMMING",
-      "SECURITE",
-      "SOFTWAREENGINEERING"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "617c4eaf",
-    "title": "La fintech émiratie Pay10 obtient l'agrément d'établissement de paiement au Maroc",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "La fintech émiratie Pay10 obtient l'agrément d'établissement de paiement au Maroc\nlematin.ma\n3\n1 republication",
-    "tags": [
-      "FINTECH",
-      "MAROC"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "d134254b",
-    "title": "Le projet de feuille de soins électronique déjà confronté à des blocages avant son démarrage",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Le projet de feuille de soins électronique déjà confronté à des blocages avant son démarrage\nmedias24.com",
-    "tags": [
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "facf1ca3",
-    "title": "Attijari Payment, Visa et Woliz unissent leurs forces pour digitaliser le commerce au Maroc",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Attijari Payment, Visa et Woliz unissent leurs forces pour digitaliser le commerce au Maroc\nlematin.ma",
-    "tags": [
-      "FINTECH",
-      "MAROC"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "851f65db",
-    "title": "Pour remplacer Wikipedia et ses biais supposés, Elon Musk veut lancer \"Grokipedia\", une encyclopédie générée par son IA",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Pour remplacer Wikipedia et ses biais supposés, Elon Musk veut lancer \"Grokipedia\", une encyclopédie générée par son IA\nbfmtv.com",
-    "tags": [
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "79f6a2cf",
-    "title": "Spotify va supprimer des milliers de titres : la plateforme va bannir les musiques IA",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Spotify va supprimer des milliers de titres : la plateforme va bannir les musiques IA\npresse-citron.net",
-    "tags": [
-      "DEV",
-      "IA",
-      "TECH"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "e69fea59",
-    "title": "Perplexity launches AI email assistant that can manage your Outlook or Gmail inbox for you — but it will cost $200 a ...",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Perplexity launches AI email assistant that can manage your Outlook or Gmail inbox for you — but it will cost $200 a month\nwindowscentral.com",
-    "tags": [
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "07e9ec89",
-    "title": "ExpressVPN lance un VPN gratuit, rapide, RAM-only pour Mac et iPhone, mais...",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "ExpressVPN lance un VPN gratuit, rapide, RAM-only pour Mac et iPhone, mais...\nclubic.com",
-    "tags": [
-      "RAM"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "feff52d7",
-    "title": "Face à Perplexity et OpenAI, Microsoft Edge devient un navigateur IA",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Face à Perplexity et OpenAI, Microsoft Edge devient un navigateur IA\nblogdumoderateur.com",
-    "tags": [
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "0bf2a8ae",
-    "title": "Revolut désigne Amine Berrada pour diriger ses futures opérations au Maroc - Le Desk",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Revolut désigne Amine Berrada pour diriger ses futures opérations au Maroc - Le Desk\nmobile.ledesk.ma",
-    "tags": [
-      "MAROC"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "1df53793",
-    "title": "Vibe coding : Google dévoile Opal, un outil IA pour créer des apps sans coder",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Vibe coding : Google dévoile Opal, un outil IA pour créer des apps sans coder\nblogdumoderateur.com",
-    "tags": [
-      "DEV",
-      "GOOGLE",
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "158dd913",
-    "title": "Saham Bank lance sa filiale Saham Paiements pour moderniser l’encaissement au Maroc",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Saham Bank lance sa filiale Saham Paiements pour moderniser l’encaissement au Maroc\nmedias24.com",
-    "tags": [
-      "FINTECH",
-      "IA",
-      "MAROC"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "f9040f22",
-    "title": "Avec PayPal World, une petite révolution s'annonce pour les systèmes de paiements",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Avec PayPal World, une petite révolution s'annonce pour les systèmes de paiements\nlecho.be",
-    "tags": [
-      "FINTECH"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "a479758f",
-    "title": "GitHub launches Spark AI tool that builds apps from natural language prompts",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "GitHub launches Spark AI tool that builds apps from natural language prompts\nperplexity.ai",
-    "tags": [
-      "DEV",
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "6aad9cef",
-    "title": "Google joins prompt-based AI app builder market with Opal",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Google joins prompt-based AI app builder market with Opal\nperplexity.ai",
-    "tags": [
-      "GOOGLE",
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "8ab2c43d",
-    "title": "Starlink : l'Internet haut débit par satellite enfin accessible partout en France",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Starlink : l'Internet haut débit par satellite enfin accessible partout en France\nlesnumeriques.com",
-    "tags": [
-      "TELECOM"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "48e40208",
-    "title": "Monnaie digitale: BAM annonce un premier paiement Peer-to-Peer",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Monnaie digitale: BAM annonce un premier paiement Peer-to-Peer\nlavieeco.com",
-    "tags": [
-      "FINTECH",
-      "MAROC"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "81241981",
-    "title": "Google launches Doppl AI outfit virtual try-on app from Labs",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Google launches Doppl AI outfit virtual try-on app from Labs\nperplexity.ai",
-    "tags": [
-      "GOOGLE",
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "7bc0d5c0",
-    "title": "La Société Générale Maroc devient Saham Bank",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "La Société Générale Maroc devient Saham Bank\nmaroc-diplomatique.net",
-    "tags": [
-      "DEV",
-      "FINTECH",
-      "MAROC"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "270d61a9",
-    "title": "La recherche en ligne avec ChatGPT s'améliore : OpenAI promet de meilleures réponses pour concurrencer Google",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "La recherche en ligne avec ChatGPT s'améliore : OpenAI promet de meilleures réponses pour concurrencer Google\n01net.com",
-    "tags": [
-      "GOOGLE",
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "8819640c",
-    "title": "5G: Orange fait cavalier seul et balise le terrain",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "5G: Orange fait cavalier seul et balise le terrain\nfr.le360.ma",
-    "tags": [
-      "TELECOM"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "925f0538",
-    "title": "Tesla officialise son implantation au Maroc avec des ambitions dans l'énergie solaire et le stockage",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Tesla officialise son implantation au Maroc avec des ambitions dans l'énergie solaire et le stockage\nmedias24.com",
-    "tags": [
-      "IA",
-      "MAROC",
-      "TECH"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "46b21f2c",
-    "title": "L'outil anti-scam de Chrome est enfin disponible pour tout le monde",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "L'outil anti-scam de Chrome est enfin disponible pour tout le monde\nclubic.com",
-    "tags": [
-      "SECURITE"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "330b1852",
-    "title": "Une attaque hautement sophistiquée\" : ce mail de Google est un piège et ne doit pas être ouvert",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Une attaque hautement sophistiquée\" : ce mail de Google est un piège et ne doit pas être ouvert\nsfsd.fr",
-    "tags": [
-      "GOOGLE",
-      "SECURITE"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "719d3f90",
-    "title": "OpenAI envisage un abonnement à vie pour ChatGPT Plus, un pari risqué ?",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "OpenAI envisage un abonnement à vie pour ChatGPT Plus, un pari risqué ?\nclubic.com",
-    "tags": [
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "a3113798",
-    "title": "ChatGPT est en train de remplacer Excel, et ça fait paniquer Microsoft",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "ChatGPT est en train de remplacer Excel, et ça fait paniquer Microsoft\nphonandroid.com",
-    "tags": [
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "6d272dcd",
-    "title": "ChatGPT : Deep Research peut analyser le contenu d’un dépôt GitHub",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "ChatGPT : Deep Research peut analyser le contenu d’un dépôt GitHub\nblogdumoderateur.com",
-    "tags": [
-      "DEV",
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "99b48ade",
-    "title": "Les médecins diagnostiquent de l’arthrose, ChatGPT identifie un cancer",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Les médecins diagnostiquent de l’arthrose, ChatGPT identifie un cancer\nsantemagazine.fr",
-    "tags": [
-      "IA"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "3eb675ef",
-    "title": "Apple told to remove ‘Available now’ from Apple Intelligence page",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Apple told to remove ‘Available now’ from Apple Intelligence page\nperplexity.ai",
-    "tags": [
-      "IA",
-      "TECH"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "c2a42a9d",
-    "title": "Zeekr fait son entrée sur le marché marocain",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "Zeekr fait son entrée sur le marché marocain\nlesiteinfo.com",
-    "tags": [
-      "MAROC"
-    ],
-    "date": "2026-04-04"
-  },
-  {
-    "id": "255eec80",
-    "title": "La date de lancement de la 5G connue",
-    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
-    "excerpt": "La date de lancement de la 5G connue\nfr.le360.ma",
-    "tags": [
-      "TELECOM"
-    ],
-    "date": "2026-04-04"
-  },
-  {
     "id": "8d46c12f",
     "title": "J’ai hâte de découvrir les technologies qui façonnent le monde à GITEX AFRICA, du 7 au 9 avril 2026 à Marrakech https...",
     "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
@@ -531,7 +7,8 @@
     "tags": [
       "MEETMEATGITEXAFRICA2026"
     ],
-    "date": "2026-04-03"
+    "date": "2026-04-03",
+    "order": 0
   },
   {
     "id": "839a08fe",
@@ -539,10 +16,11 @@
     "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
     "excerpt": "EmDash - Cloudflare refait WordPress from scratch - Korben\nkorben.info",
     "tags": [
-      "CLOUD",
-      "WORDPRESS"
+      "WORDPRESS",
+      "CLOUD"
     ],
-    "date": "2026-04-03"
+    "date": "2026-04-03",
+    "order": 1
   },
   {
     "id": "2033ec47",
@@ -553,7 +31,8 @@
       "GOOGLE",
       "IA"
     ],
-    "date": "2026-04-03"
+    "date": "2026-04-03",
+    "order": 2
   },
   {
     "id": "130e0160",
@@ -565,7 +44,8 @@
       "IA",
       "RAM"
     ],
-    "date": "2026-03-30"
+    "date": "2026-03-30",
+    "order": 3
   },
   {
     "id": "cd74006b",
@@ -573,16 +53,523 @@
     "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
     "excerpt": "Un seul modèle d’IA pour tout faire… c’est déjà dépassé.\n\nEn 2026, les organisations les plus avancées ne déploient plus une IA “générique”.\nElles construisent des systèmes multi-agents : plusieurs IA spécialisées qui collaborent, se répartissent les tâches et s’orchestrent pour exécuter des processus de bout en bout.\n\nConcrètement, cela veut dire quoi ?\nImaginez une chaîne logistique où :\n • un agent surveille les stocks en temps réel,\n • un autre analyse les signaux marché pour anticiper les ruptures,\n • un troisième déclenche les commandes fournisseurs,\n • un quatrième alerte un responsable si un seuil critique est dépassé.\n\nPour les équipes tech, le sujet n’est plus seulement le modèle, mais l’architecture : orchestration, passage de contexte, gestion des erreurs, sécurité et gouvernance. Les échecs viennent souvent de la coordination entre agents, pas seulement de la capacité du modèle lui-même.\n\nPour les décideurs, l’enjeu est tout aussi clair : il ne s’agit plus de répondre à “quelle IA choisir ?”, mais à “comment intégrer plusieurs agents dans nos processus métiers sans perdre le contrôle ?”.\n\nLa vraie différence se joue désormais sur une compétence clé : penser en systèmes, pas en outils.\n\nEt vous ?\nAvez-vous déjà testé une approche multi-agents dans votre organisation ?\nQu’est-ce qui a freiné — ou accéléré — l’adoption ?\n\n \n#IA \n#IntelligenceArtificielle \n#MultiAgent \n#AgenticAI \n#Transformation \n#Innovation \n#Tech \n#DigitalStrategy",
     "tags": [
-      "AGENTICAI",
       "DIGITALSTRATEGY",
-      "IA",
-      "INNOVATION",
-      "INTELLIGENCEARTIFICIELLE",
-      "MULTIAGENT",
-      "SECURITE",
+      "TRANSFORMATION",
       "TECH",
-      "TRANSFORMATION"
+      "IA",
+      "AGENTICAI",
+      "MULTIAGENT",
+      "INTELLIGENCEARTIFICIELLE",
+      "INNOVATION"
     ],
-    "date": "2026-03-29"
+    "date": "2026-03-29",
+    "order": 4
+  },
+  {
+    "id": "719085ec",
+    "title": "Google lance Gemini Embedding 2, un modèle qui comprend texte, image, vidéo et audio en même temps - Korben",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Google lance Gemini Embedding 2, un modèle qui comprend texte, image, vidéo et audio en même temps - Korben\nkorben.info",
+    "tags": [
+      "GOOGLE",
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 5
+  },
+  {
+    "id": "fa750ad3",
+    "title": "Elon Musk veut remplacer votre banque : voici X Money, la future néobanque intégrée à X",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Elon Musk veut remplacer votre banque : voici X Money, la future néobanque intégrée à X\nfrandroid.com",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 6
+  },
+  {
+    "id": "3b977866",
+    "title": "Gemini CLI : Google déploie Plan Mode, un environnement sécurisé pour planifier le code",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Gemini CLI : Google déploie Plan Mode, un environnement sécurisé pour planifier le code\nblogdumoderateur.com",
+    "tags": [
+      "GOOGLE"
+    ],
+    "date": "2026-04-04",
+    "order": 7
+  },
+  {
+    "id": "6cfdd2f6",
+    "title": "Damane Cash s’allie aux pharmaciens pour accélérer la digitalisation des paiements - Le Desk",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Damane Cash s’allie aux pharmaciens pour accélérer la digitalisation des paiements - Le Desk\nledesk.ma",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 8
+  },
+  {
+    "id": "02ecb105",
+    "title": "IA : ce projet open source permet de faire sauter tous les garde-fous en un clic",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "IA : ce projet open source permet de faire sauter tous les garde-fous en un clic\nnumerama.com\n1",
+    "tags": [
+      "OPENSOURCE",
+      "IA",
+      "RAM"
+    ],
+    "date": "2026-04-04",
+    "order": 9
+  },
+  {
+    "id": "2b1fbba4",
+    "title": "Chrome : une étude prouve que les adblockers sont plus forts que jamais, malgré le Manifest V3",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Chrome : une étude prouve que les adblockers sont plus forts que jamais, malgré le Manifest V3\nclubic.com",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 10
+  },
+  {
+    "id": "807cac4e",
+    "title": "Claude Opus 4.6 : Anthropic dévoile son modèle d'IA le plus intelligent",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Claude Opus 4.6 : Anthropic dévoile son modèle d'IA le plus intelligent\nkulturegeek.fr\n1",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 11
+  },
+  {
+    "id": "e164ad4f",
+    "title": "Ce n'est plus un concept, Xiaomi s'apprête à lancer son objectif magnétique pour smartphone — Frandroid",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Ce n'est plus un concept, Xiaomi s'apprête à lancer son objectif magnétique pour smartphone — Frandroid\nfrandroid.com",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 12
+  },
+  {
+    "id": "48f1f563",
+    "title": "Réduction du cash : Bank Al-Maghrib lance un Fonds pour accélérer les paiements électroniques chez les commerçants",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Réduction du cash : Bank Al-Maghrib lance un Fonds pour accélérer les paiements électroniques chez les commerçants\nlematin.ma",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 13
+  },
+  {
+    "id": "1e3510de",
+    "title": "Goose : cet agent IA gratuit fait aussi bien que Claude Code",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Goose : cet agent IA gratuit fait aussi bien que Claude Code\njournaldunet.com",
+    "tags": [
+      "IA",
+      "AGENTS"
+    ],
+    "date": "2026-04-04",
+    "order": 14
+  },
+  {
+    "id": "4a92c419",
+    "title": "10 serveurs MCP pour les DevOps - Le Monde Informatique",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "10 serveurs MCP pour les DevOps - Le Monde Informatique\nlemondeinformatique.fr",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 15
+  },
+  {
+    "id": "9fc19fb4",
+    "title": "NAPS déploie une solution de paiement électronique pour les bureaux de change",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "NAPS déploie une solution de paiement électronique pour les bureaux de change\nmedias24.com",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 16
+  },
+  {
+    "id": "39f15630",
+    "title": "Rabat–Salé–Témara : « Blassty », une application pour facilite les déplacements",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Rabat–Salé–Témara : « Blassty », une application pour facilite les déplacements\nlematin.ma",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 17
+  },
+  {
+    "id": "467589e6",
+    "title": "Google makes Gemini 3 Flash default AI model globally",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Google makes Gemini 3 Flash default AI model globally\nperplexity.ai\n1",
+    "tags": [
+      "GOOGLE",
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 18
+  },
+  {
+    "id": "76b0969a",
+    "title": "Google vient de sortir un site gratuit pour apprendre à utiliser l'IA : Skills.",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Google vient de sortir un site gratuit pour apprendre à utiliser l'IA : Skills.\n\nPlein de petites formations, de l'utilisation de prompts Gemini à la création de workflows automatiques.\n\nPas d'excuses pour apprendre les compétences de demain.\nC'est ici : skills.google\n… plus\nGoogle Skills\nskills.google",
+    "tags": [
+      "GOOGLE",
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 19
+  },
+  {
+    "id": "77bfa0fa",
+    "title": "Maroc Telecom, Medi Telecom et Wana Corporate obtiennent le feu vert pour la 5G",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Maroc Telecom, Medi Telecom et Wana Corporate obtiennent le feu vert pour la 5G\nmedias24.com",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 20
+  },
+  {
+    "id": "72f1c37d",
+    "title": "Daret\" : quand la tontine marocaine entre dans l’ère du digital",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "\"Daret\" : quand la tontine marocaine entre dans l’ère du digital\nmedias24.com\n2",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 21
+  },
+  {
+    "id": "432d8b6d",
+    "title": "Fier de vous présenter KBA.CoreUtilities - Le toolkit .NET le plus complet pour vos applications !",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "🚀 Fier de vous présenter KBA.CoreUtilities - Le toolkit .NET le plus complet pour vos applications !\n\n📦 500+ méthodes utilitaires | 🎯 Multi-targeting (.NET 6/7/8) | ✅ Production-ready\n\nCe que vous obtenez :\n\n💰 FINTECH & PAYMENTS\n- Validation IBAN, cartes bancaires, BIC/SWIFT\n- QR Codes EMV conformes (170+ devises ISO 4217)\n- Support de 200+ pays avec codes ISO\n\n🔐 SÉCURITÉ & CRYPTOGRAPHIE\n- Chiffrement AES-256, RSA-2048\n- Hachage sécurisé (PBKDF2, SHA256/512)\n- Génération de tokens & OTP\n\n⚡ ASYNC & PERFORMANCE\n- TaskExtensions (Retry, Timeout, FireAndForget)\n- Performance monitoring & profiling\n- In-memory caching avec expiration\n- Rate limiting\n\n🔍 REFLECTION & CONFIGURATION\n- Accès dynamique aux propriétés/méthodes\n- Configuration typée avec validation\n- Object mapping automatique\n\n📝 120+ EXTENSIONS\n- String (IsEmail, ToSHA256, Capitalize...)\n- Collections (Chunk, Shuffle, Page...)\n- Object (null handling, JSON, conversions...)\n\n✨ Et bien plus : Serialization, FileUtils, DateTimeUtils, API consumption, Logging...\n\n🔗 Package NuGet : https://lnkd.in/ezjKU2rq\n\n📥 Installation :\ndotnet add package KBA.CoreUtilities\n\n💡 Parfait pour les applications FinTech, les microservices, et tout projet .NET moderne qui nécessite des utilitaires robustes.\n\nLe code est clean, documenté, et prêt à booster votre productivité ! 🚀\n\n\n#dotnet \n#csharp \n#nuget \n#fintech \n#microservices \n#opensource \n#developers \n#programming \n#backend \n#enterprise \n#dotnetcore \n#aspnetcore \n#softwareengineering\n… plus\n1",
+    "tags": [
+      "OPENSOURCE",
+      "SOFTWAREENGINEERING",
+      "DOTNETCORE",
+      "PROGRAMMING",
+      "ENTERPRISE",
+      "ASPNETCORE",
+      "DEVELOPERS",
+      "FINTECH",
+      "BACKEND",
+      "DOTNET",
+      "MICROSERVICES",
+      "CSHARP",
+      "NUGET"
+    ],
+    "date": "2026-04-04",
+    "order": 22
+  },
+  {
+    "id": "617c4eaf",
+    "title": "La fintech émiratie Pay10 obtient l'agrément d'établissement de paiement au Maroc",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "La fintech émiratie Pay10 obtient l'agrément d'établissement de paiement au Maroc\nlematin.ma\n3\n1 republication",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 23
+  },
+  {
+    "id": "d134254b",
+    "title": "Le projet de feuille de soins électronique déjà confronté à des blocages avant son démarrage",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Le projet de feuille de soins électronique déjà confronté à des blocages avant son démarrage\nmedias24.com",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 24
+  },
+  {
+    "id": "facf1ca3",
+    "title": "Attijari Payment, Visa et Woliz unissent leurs forces pour digitaliser le commerce au Maroc",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Attijari Payment, Visa et Woliz unissent leurs forces pour digitaliser le commerce au Maroc\nlematin.ma",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 25
+  },
+  {
+    "id": "851f65db",
+    "title": "Pour remplacer Wikipedia et ses biais supposés, Elon Musk veut lancer \"Grokipedia\", une encyclopédie générée par son IA",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Pour remplacer Wikipedia et ses biais supposés, Elon Musk veut lancer \"Grokipedia\", une encyclopédie générée par son IA\nbfmtv.com",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 26
+  },
+  {
+    "id": "79f6a2cf",
+    "title": "Spotify va supprimer des milliers de titres : la plateforme va bannir les musiques IA",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Spotify va supprimer des milliers de titres : la plateforme va bannir les musiques IA\npresse-citron.net",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 27
+  },
+  {
+    "id": "e69fea59",
+    "title": "Perplexity launches AI email assistant that can manage your Outlook or Gmail inbox for you — but it will cost $200 a ...",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Perplexity launches AI email assistant that can manage your Outlook or Gmail inbox for you — but it will cost $200 a month\nwindowscentral.com",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 28
+  },
+  {
+    "id": "07e9ec89",
+    "title": "ExpressVPN lance un VPN gratuit, rapide, RAM-only pour Mac et iPhone, mais...",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "ExpressVPN lance un VPN gratuit, rapide, RAM-only pour Mac et iPhone, mais...\nclubic.com",
+    "tags": [
+      "RAM"
+    ],
+    "date": "2026-04-04",
+    "order": 29
+  },
+  {
+    "id": "feff52d7",
+    "title": "Face à Perplexity et OpenAI, Microsoft Edge devient un navigateur IA",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Face à Perplexity et OpenAI, Microsoft Edge devient un navigateur IA\nblogdumoderateur.com",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 30
+  },
+  {
+    "id": "0bf2a8ae",
+    "title": "Revolut désigne Amine Berrada pour diriger ses futures opérations au Maroc - Le Desk",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Revolut désigne Amine Berrada pour diriger ses futures opérations au Maroc - Le Desk\nmobile.ledesk.ma",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 31
+  },
+  {
+    "id": "1df53793",
+    "title": "Vibe coding : Google dévoile Opal, un outil IA pour créer des apps sans coder",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Vibe coding : Google dévoile Opal, un outil IA pour créer des apps sans coder\nblogdumoderateur.com",
+    "tags": [
+      "GOOGLE",
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 32
+  },
+  {
+    "id": "158dd913",
+    "title": "Saham Bank lance sa filiale Saham Paiements pour moderniser l’encaissement au Maroc",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Saham Bank lance sa filiale Saham Paiements pour moderniser l’encaissement au Maroc\nmedias24.com\n1",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 33
+  },
+  {
+    "id": "f9040f22",
+    "title": "Avec PayPal World, une petite révolution s'annonce pour les systèmes de paiements",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Avec PayPal World, une petite révolution s'annonce pour les systèmes de paiements\nlecho.be",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 34
+  },
+  {
+    "id": "a479758f",
+    "title": "GitHub launches Spark AI tool that builds apps from natural language prompts",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "GitHub launches Spark AI tool that builds apps from natural language prompts\nperplexity.ai",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 35
+  },
+  {
+    "id": "6aad9cef",
+    "title": "Google joins prompt-based AI app builder market with Opal",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Google joins prompt-based AI app builder market with Opal\nperplexity.ai",
+    "tags": [
+      "GOOGLE",
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 36
+  },
+  {
+    "id": "8ab2c43d",
+    "title": "Starlink : l'Internet haut débit par satellite enfin accessible partout en France",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Starlink : l'Internet haut débit par satellite enfin accessible partout en France\nlesnumeriques.com",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 37
+  },
+  {
+    "id": "48e40208",
+    "title": "Monnaie digitale: BAM annonce un premier paiement Peer-to-Peer",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Monnaie digitale: BAM annonce un premier paiement Peer-to-Peer\nlavieeco.com\n1",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 38
+  },
+  {
+    "id": "81241981",
+    "title": "Google launches Doppl AI outfit virtual try-on app from Labs",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Google launches Doppl AI outfit virtual try-on app from Labs\nperplexity.ai",
+    "tags": [
+      "GOOGLE",
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 39
+  },
+  {
+    "id": "7bc0d5c0",
+    "title": "La Société Générale Maroc devient Saham Bank",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "La Société Générale Maroc devient Saham Bank\nmaroc-diplomatique.net",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 40
+  },
+  {
+    "id": "270d61a9",
+    "title": "La recherche en ligne avec ChatGPT s'améliore : OpenAI promet de meilleures réponses pour concurrencer Google",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "La recherche en ligne avec ChatGPT s'améliore : OpenAI promet de meilleures réponses pour concurrencer Google\n01net.com",
+    "tags": [
+      "GOOGLE"
+    ],
+    "date": "2026-04-04",
+    "order": 41
+  },
+  {
+    "id": "8819640c",
+    "title": "5G: Orange fait cavalier seul et balise le terrain",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "5G: Orange fait cavalier seul et balise le terrain\nfr.le360.ma",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 42
+  },
+  {
+    "id": "925f0538",
+    "title": "Tesla officialise son implantation au Maroc avec des ambitions dans l'énergie solaire et le stockage",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Tesla officialise son implantation au Maroc avec des ambitions dans l'énergie solaire et le stockage\nmedias24.com",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 43
+  },
+  {
+    "id": "46b21f2c",
+    "title": "L'outil anti-scam de Chrome est enfin disponible pour tout le monde",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "L'outil anti-scam de Chrome est enfin disponible pour tout le monde\nclubic.com",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 44
+  },
+  {
+    "id": "330b1852",
+    "title": "Une attaque hautement sophistiquée\" : ce mail de Google est un piège et ne doit pas être ouvert",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Une attaque hautement sophistiquée\" : ce mail de Google est un piège et ne doit pas être ouvert\nsfsd.fr",
+    "tags": [
+      "GOOGLE"
+    ],
+    "date": "2026-04-04",
+    "order": 45
+  },
+  {
+    "id": "719d3f90",
+    "title": "OpenAI envisage un abonnement à vie pour ChatGPT Plus, un pari risqué ?",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "OpenAI envisage un abonnement à vie pour ChatGPT Plus, un pari risqué ?\nclubic.com",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 46
+  },
+  {
+    "id": "a3113798",
+    "title": "ChatGPT est en train de remplacer Excel, et ça fait paniquer Microsoft",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "ChatGPT est en train de remplacer Excel, et ça fait paniquer Microsoft\nphonandroid.com",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 47
+  },
+  {
+    "id": "6d272dcd",
+    "title": "ChatGPT : Deep Research peut analyser le contenu d’un dépôt GitHub",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "ChatGPT : Deep Research peut analyser le contenu d’un dépôt GitHub\nblogdumoderateur.com",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 48
+  },
+  {
+    "id": "99b48ade",
+    "title": "Les médecins diagnostiquent de l’arthrose, ChatGPT identifie un cancer",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Les médecins diagnostiquent de l’arthrose, ChatGPT identifie un cancer\nsantemagazine.fr",
+    "tags": [
+      "IA"
+    ],
+    "date": "2026-04-04",
+    "order": 49
+  },
+  {
+    "id": "3eb675ef",
+    "title": "Apple told to remove ‘Available now’ from Apple Intelligence page",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Apple told to remove ‘Available now’ from Apple Intelligence page\nperplexity.ai",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 50
+  },
+  {
+    "id": "c2a42a9d",
+    "title": "Zeekr fait son entrée sur le marché marocain",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "Zeekr fait son entrée sur le marché marocain\nlesiteinfo.com",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 51
+  },
+  {
+    "id": "255eec80",
+    "title": "La date de lancement de la 5G connue",
+    "url": "https://www.linkedin.com/in/khalilbenazzouz/recent-activity/all/",
+    "excerpt": "La date de lancement de la 5G connue\nfr.le360.ma\n1",
+    "tags": [],
+    "date": "2026-04-04",
+    "order": 52
   }
 ]
