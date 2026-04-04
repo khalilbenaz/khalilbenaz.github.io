@@ -110,7 +110,7 @@
         .posts {
             max-width: 800px;
             margin: 0 auto;
-            padding: 0 24px 80px;
+            padding: 0 24px 24px;
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -198,6 +198,60 @@
             color: var(--accent-light);
         }
 
+        /* Pagination */
+        .pagination {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 8px 24px 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            min-width: 40px;
+            height: 40px;
+            padding: 0 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-btn:hover:not(.active):not(:disabled) {
+            border-color: var(--accent);
+            color: var(--accent-light);
+            background: var(--accent-glow);
+        }
+
+        .page-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        .page-info {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            padding: 0 8px;
+        }
+
         /* Empty state */
         .empty-state {
             text-align: center;
@@ -250,6 +304,7 @@
     </header>
 
     <div class="posts" id="posts"></div>
+    <div class="pagination" id="pagination"></div>
 
     <script>
         // Theme
@@ -271,14 +326,18 @@
         applyTheme(theme);
         toggle.addEventListener('click', () => applyTheme(theme === 'dark' ? 'light' : 'dark'));
 
-        // Load posts
+        // Pagination
+        const POSTS_PER_PAGE = 10;
+        let allPosts = [];
+        let currentPage = 1;
+
         async function loadPosts() {
             const container = document.getElementById('posts');
             try {
                 const res = await fetch('posts.json?t=' + Date.now());
-                const posts = await res.json();
+                allPosts = await res.json();
 
-                if (!posts.length) {
+                if (!allPosts.length) {
                     container.innerHTML = `
                         <div class="empty-state fade-in visible">
                             <div class="empty-icon">&#9997;</div>
@@ -288,36 +347,104 @@
                     return;
                 }
 
-                // Sort by date descending
-                posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-                container.innerHTML = posts.map((post, i) => `
-                    <a href="${post.url}" target="_blank" class="post-card fade-in" style="transition-delay: ${i * 0.05}s">
-                        <div class="post-date">
-                            ${formatDate(post.date)}
-                            <span class="post-source">LinkedIn</span>
-                        </div>
-                        <h2 class="post-title">${escapeHtml(post.title)}</h2>
-                        ${post.excerpt ? `<p class="post-excerpt">${escapeHtml(post.excerpt)}</p>` : ''}
-                        ${post.tags && post.tags.length ? `
-                            <div class="post-tags">
-                                ${post.tags.map(t => `<span class="post-tag">${escapeHtml(t)}</span>`).join('')}
-                            </div>` : ''}
-                        <span class="post-read">Lire sur LinkedIn &rarr;</span>
-                    </a>
-                `).join('');
+                // Read page from URL hash
+                const hash = parseInt(location.hash.replace('#page', ''));
+                if (hash > 0) currentPage = hash;
 
-                // Animate
-                requestAnimationFrame(() => {
-                    document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-                });
-
+                renderPage(currentPage);
             } catch (e) {
                 container.innerHTML = `
                     <div class="empty-state">
                         <p class="empty-text">Erreur de chargement</p>
                     </div>`;
             }
+        }
+
+        function renderPage(page) {
+            const container = document.getElementById('posts');
+            const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+            currentPage = Math.max(1, Math.min(page, totalPages));
+
+            const start = (currentPage - 1) * POSTS_PER_PAGE;
+            const pagePosts = allPosts.slice(start, start + POSTS_PER_PAGE);
+
+            container.innerHTML = pagePosts.map((post, i) => `
+                <a href="${post.url}" target="_blank" class="post-card fade-in" style="transition-delay: ${i * 0.04}s">
+                    <div class="post-date">
+                        ${formatDate(post.date)}
+                        <span class="post-source">LinkedIn</span>
+                    </div>
+                    <h2 class="post-title">${escapeHtml(post.title)}</h2>
+                    ${post.excerpt ? `<p class="post-excerpt">${escapeHtml(post.excerpt)}</p>` : ''}
+                    ${post.tags && post.tags.length ? `
+                        <div class="post-tags">
+                            ${post.tags.map(t => `<span class="post-tag">${escapeHtml(t)}</span>`).join('')}
+                        </div>` : ''}
+                    <span class="post-read">Lire sur LinkedIn &rarr;</span>
+                </a>
+            `).join('');
+
+            renderPagination(totalPages);
+
+            // Animate
+            requestAnimationFrame(() => {
+                document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+            });
+
+            // Scroll to top smoothly
+            if (page !== currentPage || history.state) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update URL hash
+            history.replaceState(null, '', page === 1 ? 'blog.html' : `#page${currentPage}`);
+        }
+
+        function renderPagination(totalPages) {
+            const pag = document.getElementById('pagination');
+            if (totalPages <= 1) { pag.innerHTML = ''; return; }
+
+            let html = '';
+
+            // Prev
+            html += `<button class="page-btn" onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&larr;</button>`;
+
+            // Page numbers
+            const range = getPageRange(currentPage, totalPages);
+            if (range[0] > 1) {
+                html += `<button class="page-btn" onclick="goPage(1)">1</button>`;
+                if (range[0] > 2) html += `<span class="page-info">...</span>`;
+            }
+            for (const p of range) {
+                html += `<button class="page-btn ${p === currentPage ? 'active' : ''}" onclick="goPage(${p})">${p}</button>`;
+            }
+            if (range[range.length - 1] < totalPages) {
+                if (range[range.length - 1] < totalPages - 1) html += `<span class="page-info">...</span>`;
+                html += `<button class="page-btn" onclick="goPage(${totalPages})">${totalPages}</button>`;
+            }
+
+            // Next
+            html += `<button class="page-btn" onclick="goPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>&rarr;</button>`;
+
+            pag.innerHTML = html;
+        }
+
+        function getPageRange(current, total) {
+            const delta = 2;
+            let start = Math.max(1, current - delta);
+            let end = Math.min(total, current + delta);
+            if (current - delta < 1) end = Math.min(total, end + (1 - (current - delta)));
+            if (current + delta > total) start = Math.max(1, start - (current + delta - total));
+            const range = [];
+            for (let i = start; i <= end; i++) range.push(i);
+            return range;
+        }
+
+        function goPage(p) {
+            renderPage(p);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function formatDate(dateStr) {
