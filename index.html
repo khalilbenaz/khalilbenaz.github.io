@@ -722,7 +722,7 @@
         }
         .print-btn:hover { border-color: var(--accent); transform: scale(1.05); }
 
-        /* ===== Print Styles — Magazine two-column layout ===== */
+        /* ===== Print Styles — Elegant multi-page CV ===== */
         @media print {
             * {
                 -webkit-print-color-adjust: exact !important;
@@ -731,118 +731,151 @@
                 animation: none !important;
             }
 
-            @page { margin: 0; size: A4; }
+            @page {
+                margin: 14mm 16mm;
+                size: A4;
+            }
+
+            @page :first {
+                margin-top: 0;
+            }
 
             body {
                 background: white !important;
                 color: #1e1e2e !important;
                 font-size: 9.5pt;
-                line-height: 1.55;
-                margin: 0;
-                padding: 0;
+                line-height: 1.5;
             }
 
-            /* ── Hide web-only elements ── */
+            /* ── Hide web-only ── */
             .theme-toggle, .print-btn, .scroll-top, .footer,
-            .hero-link, .status-badge, .hero-quote, .stats { display: none !important; }
+            .hero-link, .status-badge { display: none !important; }
             .fade-in { opacity: 1 !important; transform: none !important; }
 
-            /* ══════════════════════════════════════════
-               COMPLETE LAYOUT OVERRIDE — 2-Column CV
-               Left: dark sidebar | Right: white content
-               ══════════════════════════════════════════ */
-
-            /* ── Full-page wrapper ── */
+            /* ══════════════════════════════
+               HEADER — Dark banner on page 1
+               ══════════════════════════════ */
             .hero {
-                display: block !important;
-                position: fixed;
-                left: 0; top: 0;
-                width: 210mm; height: 297mm;
-                padding: 0 !important;
-                margin: 0 !important;
+                background: #1a1a2e !important;
+                margin: 0 -16mm !important;
+                padding: 10mm 20mm 8mm !important;
                 max-width: none !important;
+                width: calc(100% + 32mm) !important;
             }
 
             .hero-top {
-                position: absolute;
-                left: 0; top: 0;
-                width: 72mm; height: 297mm;
-                background: #1a1a2e !important;
-                flex-direction: column !important;
+                display: flex !important;
+                flex-direction: row !important;
                 align-items: center !important;
-                padding: 28mm 6mm 10mm !important;
-                margin: 0 !important;
-                gap: 0 !important;
-                z-index: 10;
+                gap: 6mm !important;
+                margin-bottom: 5mm !important;
             }
 
-            /* ── Photo in sidebar ── */
             .hero-avatar {
-                width: 48mm !important; height: 48mm !important;
+                width: 22mm !important;
+                height: 22mm !important;
                 border-radius: 50% !important;
-                box-shadow: 0 0 0 3pt #2d2d4e !important;
-                margin-bottom: 5mm;
+                box-shadow: 0 0 0 2pt rgba(255,255,255,0.15) !important;
+                flex-shrink: 0;
                 order: -1;
             }
 
-            /* ── Name in sidebar ── */
-            .hero-info {
-                text-align: center;
-                width: 100%;
-            }
+            .hero-info { flex: 1; }
 
             .hero-name {
-                font-size: 20pt !important;
+                font-size: 22pt !important;
                 color: white !important;
                 letter-spacing: -0.5pt;
-                line-height: 1.2;
-                margin-bottom: 2mm;
+                line-height: 1.15;
+                margin-bottom: 1mm;
             }
-            .hero-name br { content: ' '; }
-            .hero-name br::after { content: ' '; }
+            .hero-name br { display: none; }
             .hero-name .accent {
                 background: none !important;
-                -webkit-text-fill-color: #818cf8 !important;
+                -webkit-text-fill-color: #a5b4fc !important;
             }
 
             .hero-title {
-                font-size: 8.5pt !important;
-                color: #a0a0c0 !important;
+                font-size: 9pt !important;
+                color: #94a3b8 !important;
                 margin-bottom: 0;
-                line-height: 1.4;
             }
 
             .hero-links { display: none !important; }
 
-            /* ── Sidebar sections (skills, languages, certs) ── */
-            /* These are repositioned into the sidebar via a print-only
-               contact block we inject with ::after pseudo-elements */
+            /* ── Stats row in header ── */
+            .stats {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 3mm !important;
+                margin-bottom: 5mm !important;
+            }
 
-            /* ── Main content area ── */
+            .stat {
+                padding: 2.5mm 3mm !important;
+                background: rgba(255,255,255,0.06) !important;
+                border: 1px solid rgba(255,255,255,0.1) !important;
+                border-radius: 4pt !important;
+                text-align: center;
+            }
+            .stat-value {
+                font-size: 13pt !important;
+                color: white !important;
+            }
+            .stat-label {
+                font-size: 6.5pt !important;
+                color: #94a3b8 !important;
+            }
+
+            /* ── Quote in header ── */
+            .hero-quote {
+                background: rgba(255,255,255,0.05) !important;
+                border-left: 2.5pt solid #818cf8 !important;
+                border-radius: 0 4pt 4pt 0 !important;
+                padding: 2.5mm 4mm !important;
+                font-size: 8pt !important;
+                color: #cbd5e1 !important;
+            }
+
+            /* ── Contact info after header ── */
+            .hero::after {
+                content: 'linkedin.com/in/khalilbenazzouz  ·  github.com/khalilbenaz  ·  khalilbenaz.github.io';
+                display: block;
+                text-align: center;
+                font-size: 7pt;
+                font-family: 'JetBrains Mono', monospace;
+                color: #64748b !important;
+                margin-top: 4mm;
+                padding-top: 3mm;
+                border-top: 0.5pt solid rgba(255,255,255,0.1);
+            }
+
+            /* ══════════════════════════════
+               CONTENT — flows across pages
+               ══════════════════════════════ */
             .content {
-                position: fixed !important;
-                left: 72mm; top: 0;
-                width: 138mm; height: 297mm;
-                padding: 12mm 10mm 10mm 10mm !important;
-                margin: 0 !important;
-                max-width: none !important;
-                overflow: hidden;
+                padding: 5mm 0 0 !important;
+                max-width: 100% !important;
             }
 
             /* ── Section titles ── */
             .section-title {
-                font-size: 11pt !important;
+                font-size: 10pt !important;
                 font-weight: 800 !important;
                 text-transform: uppercase !important;
                 letter-spacing: 2pt !important;
                 color: #1a1a2e !important;
                 margin-bottom: 4mm !important;
-                padding-bottom: 2mm;
+                padding-bottom: 1.5mm;
                 border-bottom: 2pt solid #1a1a2e !important;
+                page-break-after: avoid;
             }
             .section-title::after { display: none !important; }
 
-            .section { margin-bottom: 5mm !important; }
+            .section {
+                margin-bottom: 6mm !important;
+                page-break-inside: auto;
+            }
 
             /* ── Timeline ── */
             .timeline { padding-left: 5mm !important; }
@@ -852,7 +885,11 @@
                 background: #d0d0e0 !important;
             }
 
-            .timeline-item { margin-bottom: 1mm !important; }
+            .timeline-item {
+                margin-bottom: 2mm !important;
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
 
             .timeline-dot {
                 width: 8pt !important; height: 8pt !important;
@@ -872,8 +909,6 @@
                 background: transparent !important;
                 border: none !important;
                 border-radius: 0 !important;
-                break-inside: avoid;
-                page-break-inside: avoid;
             }
 
             .exp-header { margin-bottom: 1mm !important; }
@@ -882,7 +917,6 @@
                 font-size: 11pt !important;
                 font-weight: 800 !important;
                 color: #1a1a2e !important;
-                letter-spacing: -0.3pt;
             }
 
             .exp-company {
@@ -897,10 +931,8 @@
                 background: none !important;
                 padding: 0 !important;
                 color: #888 !important;
-                font-weight: 500;
             }
 
-            .exp-list { margin: 0 !important; }
             .exp-list li {
                 font-size: 8.5pt !important;
                 color: #444 !important;
@@ -918,7 +950,7 @@
             .exp-tag {
                 font-size: 6.5pt !important;
                 padding: 1pt 5pt !important;
-                background: #eef !important;
+                background: #eef2ff !important;
                 color: #4f46e5 !important;
                 border-radius: 3pt !important;
                 font-weight: 700;
@@ -967,7 +999,7 @@
             }
 
             .edu-card {
-                padding: 2.5mm !important;
+                padding: 3mm !important;
                 background: #f8f8fc !important;
                 border: none !important;
                 border-radius: 3pt !important;
@@ -991,18 +1023,19 @@
                 color: #888 !important;
             }
 
-            /* ── Languages — inline in print ── */
+            /* ── Languages ── */
             .lang-list {
                 flex-direction: row !important;
                 gap: 3mm !important;
             }
             .lang-item {
-                padding: 2mm 3mm !important;
+                padding: 2.5mm 3mm !important;
                 background: #f8f8fc !important;
                 border: none !important;
                 border-radius: 3pt !important;
                 min-width: 0 !important;
                 flex: 1;
+                break-inside: avoid;
             }
             .lang-flag { font-size: 14pt !important; margin-bottom: 0.5mm !important; }
             .lang-name { font-size: 8.5pt !important; color: #1a1a2e !important; }
@@ -1011,47 +1044,15 @@
             /* ── Certifications ── */
             .cert-list { gap: 3mm !important; }
             .cert-item {
-                padding: 2mm 3mm !important;
+                padding: 2.5mm 3mm !important;
                 background: #f8f8fc !important;
                 border: none !important;
                 border-radius: 3pt !important;
+                break-inside: avoid;
             }
             .cert-icon { font-size: 12pt !important; margin-bottom: 0.5mm !important; }
             .cert-name { font-size: 8.5pt !important; color: #1a1a2e !important; }
             .cert-org { font-size: 7pt !important; color: #888 !important; }
-
-            /* ── Sidebar contact info via pseudo-elements ── */
-            .hero-top::after {
-                content:
-                    'CONTACT'
-                    '\A\A'
-                    'linkedin.com/in/khalilbenazzouz'
-                    '\A\A'
-                    'github.com/khalilbenaz'
-                    '\A\A'
-                    'khalilbenaz.github.io';
-                display: block;
-                white-space: pre-line;
-                color: #a0a0c0 !important;
-                font-size: 7pt;
-                line-height: 1.6;
-                text-align: center;
-                margin-top: 8mm;
-                padding-top: 5mm;
-                border-top: 0.5pt solid #2d2d4e;
-                font-family: 'JetBrains Mono', monospace;
-                letter-spacing: 0;
-            }
-
-            /* Style the "CONTACT" word */
-            .hero-top::before {
-                content: '';
-                display: block;
-                width: 30mm;
-                height: 0.5pt;
-                background: #4f46e5 !important;
-                margin: 5mm auto 0;
-            }
 
             /* ── Links ── */
             a { color: inherit !important; text-decoration: none !important; }
