@@ -24,7 +24,13 @@ window.BLOG_CONFIG = {
     "terraform": "Terraform", "cloudflare": "Cloudflare", "css": "CSS",
     "webassembly": "WebAssembly", "aws": "AWS", "python": "Python",
     "kafka": "Kafka", "docker": "Docker", "mongodb": "MongoDB",
-    "zig": "Zig", "linux": "Linux", "pulumi": "Pulumi"
+    "zig": "Zig", "linux": "Linux", "pulumi": "Pulumi",
+    "mistral": "Mistral", "tauri": "Tauri", "tooling": "Tooling",
+    "frontend": "Frontend", "webrtc": "WebRTC", "crystal": "Crystal",
+    "fsharp": "F#", "networking": "Networking", "api": "API",
+    "observability": "Observability", "data": "Data", "devops": "DevOps",
+    "testing": "Testing", "mobile": "Mobile", "scylla": "ScyllaDB",
+    "elixir": "Elixir", "hono": "Hono", "htmx": "HTMX"
   },
   // Cache TTL (sessionStorage) — 5 minutes
   cacheTtlMs: 5 * 60 * 1000,
