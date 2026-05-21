@@ -35,7 +35,7 @@ window.BLOG_CONFIG = {
   // Cache TTL (sessionStorage) — 5 minutes
   cacheTtlMs: 5 * 60 * 1000,
   // Words/min for reading time
-  wordsPerMin: 220
+  wordsPerMin: 180
 };
 
 window.Blog = (function () {
@@ -107,7 +107,7 @@ window.Blog = (function () {
   // ---- helpers ----
   function readingTime(text) {
     const words = (text || "").trim().split(/\s+/).filter(Boolean).length;
-    return Math.max(1, Math.round(words / cfg.wordsPerMin));
+    return Math.max(1, Math.ceil(words / cfg.wordsPerMin));
   }
 
   function formatDate(iso, locale) {
