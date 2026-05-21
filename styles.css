@@ -122,7 +122,7 @@ section:first-of-type { border-top: 0; }
 }
 
 /* ---------- Hero ---------- */
-.hero { padding: 88px 0 56px; }
+.hero { padding: 36px 0 56px; }
 .hero h1 { margin-bottom: 18px; }
 .hero h1 .accent { color: var(--accent); }
 .hero-meta {
