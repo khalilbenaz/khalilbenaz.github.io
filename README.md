@@ -90,9 +90,14 @@ C'est déjà un site statique → push sur la branche `main` du repo `khalilbena
 - ✅ Commentaires affichés inline (fetched depuis les commentaires de l'issue)
 - ✅ Bouton "Commenter sur GitHub" pour réagir
 
+## État
+
+- ✅ `photo.jpg` déposée à la racine.
+- ✅ Labels `blog` (émeraude `#059669`) et `draft` (gris) créés sur le repo.
+- ✅ Site déployé sur https://khalilbenaz.github.io
+
 ## TODO
 
-- Déposer `photo.jpg` à la racine.
 - Vérifier l'URL LinkedIn (`linkedin.com/in/khalilbenazzouz` — à confirmer).
 - Activer Discussions sur le repo si vous voulez aller plus loin que les commentaires d'issues.
 - (Optionnel) Workflow GitHub Actions qui pré-génère `articles.json` au push d'une issue → suppression totale de la limite API.
