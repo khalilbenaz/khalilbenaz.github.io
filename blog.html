@@ -8,15 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=4" />
+<link rel="stylesheet" href="styles.css?v=5" />
 <style>
   .filters {
-    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    display: flex; flex-direction: column; gap: 10px;
     padding: 18px 0; border-bottom: 1px solid var(--border);
     position: sticky; top: 60px; z-index: 20;
     background: color-mix(in oklab, var(--bg) 92%, transparent);
     backdrop-filter: blur(10px);
   }
+  .filters-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
   .search {
     display: flex; align-items: center; gap: 8px;
     flex: 1; min-width: 220px; max-width: 360px;
@@ -28,16 +29,66 @@
   .search input { border: 0; outline: 0; background: transparent; color: var(--text); font: inherit; height: 36px; flex: 1; }
   .search svg { width: 14px; height: 14px; color: var(--text-3); }
   .search kbd { font-family: var(--font-mono); font-size: 11px; color: var(--text-3); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; }
-  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chips-wrap {
+    position: relative;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .chips-scroll-btn {
+    flex-shrink: 0; width: 28px; height: 28px;
+    border-radius: 999px; border: 1px solid var(--border);
+    background: var(--bg-elev); color: var(--text-2);
+    display: grid; place-items: center; cursor: pointer;
+    transition: all .15s;
+  }
+  .chips-scroll-btn:hover { color: var(--text); border-color: var(--border-strong); }
+  .chips-scroll-btn:disabled { opacity: .3; cursor: default; }
+  .chips-scroll-btn svg { width: 14px; height: 14px; }
+  .chips {
+    display: flex; gap: 6px;
+    overflow-x: auto; overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    flex: 1; min-width: 0;
+    padding: 2px 0;
+    mask-image: linear-gradient(to right, transparent, #000 12px, #000 calc(100% - 12px), transparent);
+  }
+  .chips::-webkit-scrollbar { display: none; }
   .chip {
     font-family: var(--font-mono); font-size: 12px;
     padding: 5px 10px; border-radius: 999px;
     background: var(--bg-soft); color: var(--text-2);
     border: 1px solid var(--border);
     cursor: pointer; transition: all .15s;
+    white-space: nowrap; flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 6px;
   }
   .chip:hover { color: var(--text); border-color: var(--border-strong); }
   .chip[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .chip .count {
+    font-size: 10px; opacity: .7;
+    padding: 0 5px; border-radius: 999px;
+    background: color-mix(in oklab, currentColor 18%, transparent);
+  }
+
+  .pagination {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 0; gap: 12px; flex-wrap: wrap;
+  }
+  .pagination-info { color: var(--text-3); font-family: var(--font-mono); font-size: 12px; }
+  .pagination-controls { display: flex; gap: 6px; }
+  .page-btn {
+    min-width: 34px; height: 34px; padding: 0 10px;
+    border-radius: 8px; border: 1px solid var(--border);
+    background: var(--bg-elev); color: var(--text-2);
+    font: inherit; font-size: 13px; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    transition: all .15s;
+  }
+  .page-btn:hover:not(:disabled) { color: var(--text); border-color: var(--border-strong); }
+  .page-btn:disabled { opacity: .4; cursor: not-allowed; }
+  .page-btn[aria-current="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .page-btn svg { width: 14px; height: 14px; }
+  .page-ellipsis { color: var(--text-3); padding: 0 4px; align-self: center; }
 
   .post-list { display: flex; flex-direction: column; }
   .post-row {
@@ -77,8 +128,8 @@
   }
   @keyframes sh { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 </style>
-<script src="shared.js?v=4" defer></script>
-<script src="blog.js?v=4" defer></script>
+<script src="shared.js?v=5" defer></script>
+<script src="blog.js?v=5" defer></script>
 </head>
 <body>
 <header class="nav">
@@ -122,13 +173,23 @@
 
   <!-- Filters -->
   <div class="filters">
-    <label class="search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="q" type="search" placeholder="Rechercher…" aria-label="Search" />
-      <kbd>⌘K</kbd>
-    </label>
-    <div class="chips" id="chips" role="group" aria-label="Filter by tag">
-      <button class="chip" data-tag="all" aria-pressed="true"><span data-lang="fr">Tout</span><span data-lang="en">All</span></button>
+    <div class="filters-row">
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Rechercher…" aria-label="Search" />
+        <kbd>⌘K</kbd>
+      </label>
+    </div>
+    <div class="chips-wrap">
+      <button class="chips-scroll-btn" id="chips-prev" aria-label="Scroll tags left" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 6-6 6 6 6"/></svg>
+      </button>
+      <div class="chips" id="chips" role="group" aria-label="Filter by tag">
+        <button class="chip" data-tag="all" aria-pressed="true"><span data-lang="fr">Tout</span><span data-lang="en">All</span><span class="count" id="count-all"></span></button>
+      </div>
+      <button class="chips-scroll-btn" id="chips-next" aria-label="Scroll tags right" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
+      </button>
     </div>
   </div>
 
@@ -138,6 +199,12 @@
     <div class="skeleton" style="opacity:.7"></div>
     <div class="skeleton" style="opacity:.4"></div>
   </div>
+
+  <!-- Pagination -->
+  <nav class="pagination" id="pagination" aria-label="Pagination" hidden>
+    <div class="pagination-info" id="pagination-info"></div>
+    <div class="pagination-controls" id="pagination-controls"></div>
+  </nav>
 
 </main>
 
@@ -242,38 +309,131 @@ window.addEventListener("DOMContentLoaded", async function () {
     return row;
   }
 
-  function buildChips(allTags) {
+  function buildChips(tagCounts, total) {
     chips.querySelectorAll(".chip:not([data-tag='all'])").forEach((n) => n.remove());
-    allTags.forEach((t) => {
+    const countAll = document.getElementById("count-all");
+    if (countAll) countAll.textContent = total;
+    // Sort tags by count descending, then alpha
+    const sorted = [...tagCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    sorted.forEach(([t, n]) => {
       const c = el("button", { class: "chip", "data-tag": t });
       c.setAttribute("aria-pressed", "false");
-      c.textContent = Blog.tagLabel(t);
+      c.type = "button";
+      c.innerHTML = `${Blog.tagLabel(t)}<span class="count">${n}</span>`;
       chips.appendChild(c);
     });
+    updateChipsScrollBtns();
   }
+
+  // Chips horizontal scroll
+  const chipsPrev = document.getElementById("chips-prev");
+  const chipsNext = document.getElementById("chips-next");
+  function updateChipsScrollBtns() {
+    if (!chipsPrev || !chipsNext) return;
+    const max = chips.scrollWidth - chips.clientWidth;
+    chipsPrev.disabled = chips.scrollLeft <= 2;
+    chipsNext.disabled = chips.scrollLeft >= max - 2;
+  }
+  chipsPrev?.addEventListener("click", () => chips.scrollBy({ left: -240, behavior: "smooth" }));
+  chipsNext?.addEventListener("click", () => chips.scrollBy({ left: 240, behavior: "smooth" }));
+  chips.addEventListener("scroll", updateChipsScrollBtns, { passive: true });
+  window.addEventListener("resize", updateChipsScrollBtns);
 
   let allRows = [];
   let activeTag = "all";
+  const PAGE_SIZE = 12;
+  let currentPage = 1;
 
-  function applyFilters() {
+  function visibleRows() {
     const term = (q.value || "").trim().toLowerCase();
-    allRows.forEach((r) => {
+    return allRows.filter((r) => {
       const tags = (r.dataset.tags || "").split(/\s+/);
       const text = r.textContent.toLowerCase();
       const tagOk = activeTag === "all" || tags.includes(activeTag);
       const termOk = !term || text.includes(term);
-      r.classList.toggle("hidden", !(tagOk && termOk));
+      return tagOk && termOk;
     });
   }
+
+  function renderPage() {
+    const visible = visibleRows();
+    const total = visible.length;
+    const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+    if (currentPage > totalPages) currentPage = totalPages;
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const end = start + PAGE_SIZE;
+
+    allRows.forEach((r) => r.classList.add("hidden"));
+    visible.slice(start, end).forEach((r) => r.classList.remove("hidden"));
+
+    renderPagination(total, totalPages);
+  }
+
+  function renderPagination(total, totalPages) {
+    const pagi = document.getElementById("pagination");
+    const info = document.getElementById("pagination-info");
+    const controls = document.getElementById("pagination-controls");
+    const locale = document.documentElement.getAttribute("data-locale") || "fr";
+    const en = locale === "en";
+
+    if (total === 0) {
+      pagi.hidden = true;
+      return;
+    }
+
+    const startN = (currentPage - 1) * PAGE_SIZE + 1;
+    const endN = Math.min(currentPage * PAGE_SIZE, total);
+    info.textContent = en
+      ? `${startN}–${endN} of ${total}`
+      : `${startN}–${endN} sur ${total}`;
+
+    if (totalPages <= 1) {
+      pagi.hidden = false;
+      controls.innerHTML = "";
+      return;
+    }
+    pagi.hidden = false;
+
+    const arrowL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 6-6 6 6 6"/></svg>';
+    const arrowR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>';
+
+    const parts = [];
+    parts.push(`<button class="page-btn" data-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""} aria-label="${en ? "Previous" : "Précédent"}">${arrowL}</button>`);
+
+    // Build page list with ellipses
+    const pages = new Set([1, totalPages, currentPage - 1, currentPage, currentPage + 1]);
+    const sortedPages = [...pages].filter((p) => p >= 1 && p <= totalPages).sort((a, b) => a - b);
+    let prev = 0;
+    for (const p of sortedPages) {
+      if (p - prev > 1) parts.push('<span class="page-ellipsis">…</span>');
+      parts.push(`<button class="page-btn" data-page="${p}" ${p === currentPage ? 'aria-current="true"' : ""}>${p}</button>`);
+      prev = p;
+    }
+
+    parts.push(`<button class="page-btn" data-page="${currentPage + 1}" ${currentPage === totalPages ? "disabled" : ""} aria-label="${en ? "Next" : "Suivant"}">${arrowR}</button>`);
+    controls.innerHTML = parts.join("");
+  }
+
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("#pagination-controls .page-btn");
+    if (!btn || btn.disabled) return;
+    const p = parseInt(btn.dataset.page, 10);
+    if (!isNaN(p)) {
+      currentPage = p;
+      renderPage();
+      document.querySelector(".filters")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
 
   chips.addEventListener("click", (e) => {
     const c = e.target.closest(".chip"); if (!c) return;
     chips.querySelectorAll(".chip").forEach((x) => x.setAttribute("aria-pressed", "false"));
     c.setAttribute("aria-pressed", "true");
     activeTag = c.dataset.tag;
-    applyFilters();
+    currentPage = 1;
+    renderPage();
   });
-  q.addEventListener("input", applyFilters);
+  q.addEventListener("input", () => { currentPage = 1; renderPage(); });
   document.addEventListener("keydown", (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); q.focus(); }
   });
@@ -282,15 +442,15 @@ window.addEventListener("DOMContentLoaded", async function () {
   function renderList(issues) {
     posts.innerHTML = "";
     allRows = [];
-    const tagSet = new Set();
+    const tagCounts = new Map();
     issues.forEach((i) => {
-      Blog.tagsOf(i).forEach((t) => tagSet.add(t));
+      Blog.tagsOf(i).forEach((t) => tagCounts.set(t, (tagCounts.get(t) || 0) + 1));
       const row = renderRow(i);
       allRows.push(row);
       posts.appendChild(row);
     });
-    buildChips([...tagSet].sort());
-    applyFilters();
+    buildChips(tagCounts, issues.length);
+    renderPage();
   }
   document.addEventListener("kb:locale-change", () => { if (loadedIssues.length) renderList(loadedIssues); });
 

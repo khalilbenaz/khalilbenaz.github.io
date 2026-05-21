@@ -63,13 +63,13 @@ window.Blog = (function () {
   async function listPublishedIssues() {
     // Pull-requests are also "issues" in GitHub's API — filter them out.
     const issues = await cachedFetch(
-      `${apiBase}/issues?state=closed&labels=${cfg.publishedLabel}&per_page=50&sort=created&direction=desc`
+      `${apiBase}/issues?state=closed&labels=${cfg.publishedLabel}&per_page=100&sort=created&direction=desc`
     );
     const closed = Array.isArray(issues) ? issues.filter((i) => !i.pull_request) : [];
 
     // Also include OPEN issues with the label (treated as published too)
     const openIssues = await cachedFetch(
-      `${apiBase}/issues?state=open&labels=${cfg.publishedLabel}&per_page=50&sort=created&direction=desc`
+      `${apiBase}/issues?state=open&labels=${cfg.publishedLabel}&per_page=100&sort=created&direction=desc`
     );
     const open = Array.isArray(openIssues) ? openIssues.filter((i) => !i.pull_request) : [];
 
