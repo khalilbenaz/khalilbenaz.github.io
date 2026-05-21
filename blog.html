@@ -210,10 +210,12 @@ window.addEventListener("DOMContentLoaded", async function () {
   function renderRow(issue) {
     const tags = Blog.tagsOf(issue);
     const body = issue.body || "";
-    const { body: clean } = Blog.parseFrontMatter(body);
-    const excerpt = Blog.plainExcerpt(clean);
-    const rt = Blog.readingTime(clean);
+    const { fm, body: clean } = Blog.parseFrontMatter(body);
     const locale = document.documentElement.getAttribute("data-locale") || "fr";
+    const localized = Blog.localizedBody(clean, locale);
+    const excerpt = Blog.localizedLede(fm, locale) || Blog.plainExcerpt(localized);
+    const rt = Blog.readingTime(localized);
+    const title = Blog.localizedTitle(issue, fm, locale);
 
     const row = el("a", {
       class: "post-row",
@@ -223,7 +225,7 @@ window.addEventListener("DOMContentLoaded", async function () {
     row.appendChild(el("div", { class: "when" }, Blog.formatDate(issue.created_at, locale)));
 
     const middle = el("div");
-    middle.appendChild(el("h3", {}, issue.title));
+    middle.appendChild(el("h3", {}, title));
     if (excerpt) middle.appendChild(el("p", {}, excerpt));
     if (tags.length) {
       const tagsEl = el("div", { class: "tags" });
@@ -276,10 +278,10 @@ window.addEventListener("DOMContentLoaded", async function () {
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); q.focus(); }
   });
 
-  try {
-    const issues = await Blog.listPublishedIssues();
-    if (!issues.length) { renderEmpty("empty"); return; }
+  let loadedIssues = [];
+  function renderList(issues) {
     posts.innerHTML = "";
+    allRows = [];
     const tagSet = new Set();
     issues.forEach((i) => {
       Blog.tagsOf(i).forEach((t) => tagSet.add(t));
@@ -288,6 +290,15 @@ window.addEventListener("DOMContentLoaded", async function () {
       posts.appendChild(row);
     });
     buildChips([...tagSet].sort());
+    applyFilters();
+  }
+  document.addEventListener("kb:locale-change", () => { if (loadedIssues.length) renderList(loadedIssues); });
+
+  try {
+    const issues = await Blog.listPublishedIssues();
+    if (!issues.length) { renderEmpty("empty"); return; }
+    loadedIssues = issues;
+    renderList(issues);
   } catch (e) {
     if (e.message === "RATE_LIMIT") renderEmpty("rate");
     else renderEmpty("error");

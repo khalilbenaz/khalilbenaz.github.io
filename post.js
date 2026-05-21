@@ -33,39 +33,41 @@
 
   const { fm, body } = Blog.parseFrontMatter(issue.body || "");
   const tags = Blog.tagsOf(issue);
-  const rt = Blog.readingTime(body);
 
-  // Title + meta
-  document.title = issue.title + " — Khalil Benazzouz";
-  setText("article-title", issue.title);
   $("article-eyebrow").textContent = tags.map(Blog.tagLabel).join(" · ") || "Article";
-
-  if (fm.lede || fm.description) {
-    $("article-lede").textContent = fm.lede || fm.description;
-  } else {
-    $("article-lede").textContent = Blog.plainExcerpt(body, 260);
-  }
-
-  $("meta-date").textContent = Blog.formatDate(issue.created_at, locale());
-  $("meta-read").textContent = rt + " min";
-  if (issue.updated_at && issue.updated_at !== issue.created_at) {
-    $("meta-updated").textContent = "Mis à jour le " + Blog.formatDate(issue.updated_at, locale());
-    $("meta-updated").hidden = false;
-  }
   $("github-link").href = Blog.issueUrl(number);
   $("comments-link").href = Blog.issueUrl(number) + "#new_comment";
 
-  // Body
-  const html = Blog.renderMarkdown(body);
-  $("article-body").innerHTML = html;
-  if (window.hljs) {
-    $("article-body").querySelectorAll("pre code").forEach((b) => hljs.highlightElement(b));
+  function renderLocalized() {
+    const lc = locale();
+    const localized = Blog.localizedBody(body, lc);
+    const title = Blog.localizedTitle(issue, fm, lc);
+    const lede = Blog.localizedLede(fm, lc) || Blog.plainExcerpt(localized, 260);
+    const rt = Blog.readingTime(localized);
+
+    document.title = title + " — Khalil Benazzouz";
+    setText("article-title", title);
+    $("article-lede").textContent = lede;
+    $("meta-date").textContent = Blog.formatDate(issue.created_at, lc);
+    $("meta-read").textContent = rt + " min";
+    if (issue.updated_at && issue.updated_at !== issue.created_at) {
+      $("meta-updated").textContent = (lc === "en" ? "Updated " : "Mis à jour le ") + Blog.formatDate(issue.updated_at, lc);
+      $("meta-updated").hidden = false;
+    }
+
+    $("article-body").innerHTML = Blog.renderMarkdown(localized);
+    if (window.hljs) {
+      $("article-body").querySelectorAll("pre code").forEach((b) => hljs.highlightElement(b));
+    }
+    buildToc();
   }
 
-  // Build TOC
-  const tocList = $("toc-list");
-  const headings = $("article-body").querySelectorAll("h2[id], h3[id]");
-  if (headings.length >= 2) {
+  function buildToc() {
+    const tocList = $("toc-list");
+    tocList.innerHTML = "";
+    const headings = $("article-body").querySelectorAll("h2[id], h3[id]");
+    if (headings.length < 2) { $("toc").style.display = "none"; return; }
+    $("toc").style.display = "";
     headings.forEach((h) => {
       const li = document.createElement("li");
       if (h.tagName === "H3") li.className = "h3";
@@ -75,7 +77,6 @@
       li.appendChild(a);
       tocList.appendChild(li);
     });
-    // Scroll spy
     const links = new Map();
     tocList.querySelectorAll("a").forEach((a) => links.set(a.getAttribute("href").slice(1), a));
     const io = new IntersectionObserver((entries) => {
@@ -88,9 +89,10 @@
       });
     }, { rootMargin: "-30% 0px -60% 0px" });
     headings.forEach((h) => io.observe(h));
-  } else {
-    $("toc").style.display = "none";
   }
+
+  renderLocalized();
+  document.addEventListener("kb:locale-change", renderLocalized);
 
   // Reading progress
   const bar = $("progress");
@@ -151,14 +153,17 @@
   function renderRelated(items) {
     const target = $("related-grid");
     target.innerHTML = "";
+    const lc = locale();
     items.forEach((i) => {
+      const { fm: rfm, body: rbody } = Blog.parseFrontMatter(i.body || "");
+      const rlocalized = Blog.localizedBody(rbody, lc);
       const a = document.createElement("a");
       a.className = "card";
       a.href = `post.html?id=${i.number}`;
       a.innerHTML = `
-        <div class="meta">${Blog.formatDate(i.created_at, locale())}</div>
-        <h3>${i.title}</h3>
-        <p>${Blog.plainExcerpt(Blog.parseFrontMatter(i.body || "").body, 160)}</p>
+        <div class="meta">${Blog.formatDate(i.created_at, lc)}</div>
+        <h3>${Blog.localizedTitle(i, rfm, lc)}</h3>
+        <p>${Blog.localizedLede(rfm, lc) || Blog.plainExcerpt(rlocalized, 160)}</p>
       `;
       target.appendChild(a);
     });

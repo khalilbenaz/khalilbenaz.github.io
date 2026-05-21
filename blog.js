@@ -7,12 +7,14 @@ window.BLOG_CONFIG = {
   publishedLabel: "blog",
   draftLabel: "draft",
   // Tag labels surfaced in the UI (lowercase). Anything else is shown as a generic tag.
-  tagLabels: ["dotnet", "fintech", "payments", "ai", "architecture", "tutorial", "open-source", "leadership"],
+  tagLabels: ["dotnet", "fintech", "payments", "ai", "architecture", "tutorial", "open-source", "leadership", "anthropic", "openai", "mcp", "security", "chromium"],
   // Friendly display names per label
   tagDisplay: {
     "dotnet": ".NET", "fintech": "Fintech", "payments": "Payments",
     "ai": "IA / LLM", "architecture": "Architecture", "tutorial": "Tutoriel",
-    "open-source": "Open source", "leadership": "Leadership"
+    "open-source": "Open source", "leadership": "Leadership",
+    "anthropic": "Anthropic", "openai": "OpenAI", "mcp": "MCP",
+    "security": "Sécurité", "chromium": "Chromium"
   },
   // Cache TTL (sessionStorage) — 5 minutes
   cacheTtlMs: 5 * 60 * 1000,
@@ -126,6 +128,34 @@ window.Blog = (function () {
     return m ? m[1] : null;
   }
 
+  // Extract the body block matching the requested locale.
+  // Convention: <!--lang:fr-->...<!--/lang:fr--> and <!--lang:en-->...<!--/lang:en-->
+  // Fallback: the other locale, then the whole body (mono-language article).
+  function localizedBody(md, locale) {
+    if (!md) return "";
+    const hasBlocks = /<!--\s*lang:(fr|en)\s*-->/i.test(md);
+    if (!hasBlocks) return md;
+    const re = (lang) => new RegExp(`<!--\\s*lang:${lang}\\s*-->([\\s\\S]*?)<!--\\s*/lang:${lang}\\s*-->`, "i");
+    const wanted = md.match(re(locale));
+    if (wanted) return wanted[1].trim();
+    const other = md.match(re(locale === "fr" ? "en" : "fr"));
+    if (other) return other[1].trim();
+    // Strip all lang blocks if neither matched
+    return md.replace(/<!--\s*lang:(fr|en)\s*-->[\s\S]*?<!--\s*\/lang:\1\s*-->/gi, "").trim();
+  }
+
+  function localizedTitle(issue, fm, locale) {
+    if (locale === "en" && fm && fm.title_en) return fm.title_en;
+    if (locale === "fr" && fm && fm.title_fr) return fm.title_fr;
+    return issue.title;
+  }
+
+  function localizedLede(fm, locale) {
+    if (!fm) return "";
+    if (locale === "en") return fm.lede_en || fm.lede || "";
+    return fm.lede || fm.lede_en || "";
+  }
+
   // Optional front-matter style: ---\nlang: en\nlede: ...\n--- at top of body
   function parseFrontMatter(md) {
     if (!md) return { fm: {}, body: md || "" };
@@ -175,6 +205,7 @@ window.Blog = (function () {
     cfg, listPublishedIssues, getIssue, getComments,
     readingTime, formatDate, tagsOf, tagLabel,
     plainExcerpt, firstImage, parseFrontMatter,
+    localizedBody, localizedTitle, localizedLede,
     renderMarkdown, newPostUrl, issueUrl
   };
 })();

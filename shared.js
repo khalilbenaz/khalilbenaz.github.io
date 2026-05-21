@@ -44,6 +44,7 @@
       document.documentElement.lang = next;
       localStorage.setItem("kb.locale", next);
       reflectButtons();
+      document.dispatchEvent(new CustomEvent("kb:locale-change", { detail: { locale: next } }));
     }
   });
 
