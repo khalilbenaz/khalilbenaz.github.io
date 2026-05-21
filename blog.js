@@ -65,21 +65,27 @@ window.Blog = (function () {
     return data;
   }
 
-  // ---- fetchers ----
+  async function fetchAllPages(stateLabel) {
+    // GitHub caps at 100/page; loop until short page or 5 pages max.
+    const all = [];
+    for (let page = 1; page <= 5; page++) {
+      const url = `${apiBase}/issues?state=${stateLabel}&labels=${cfg.publishedLabel}&per_page=100&sort=created&direction=desc&page=${page}`;
+      const data = await cachedFetch(url);
+      if (!Array.isArray(data) || data.length === 0) break;
+      all.push(...data);
+      if (data.length < 100) break;
+    }
+    return all;
+  }
+
   async function listPublishedIssues() {
-    // Pull-requests are also "issues" in GitHub's API — filter them out.
-    const issues = await cachedFetch(
-      `${apiBase}/issues?state=closed&labels=${cfg.publishedLabel}&per_page=100&sort=created&direction=desc`
-    );
-    const closed = Array.isArray(issues) ? issues.filter((i) => !i.pull_request) : [];
+    const [openIssues, closedIssues] = await Promise.all([
+      fetchAllPages("open"),
+      fetchAllPages("closed"),
+    ]);
+    const open = openIssues.filter((i) => !i.pull_request);
+    const closed = closedIssues.filter((i) => !i.pull_request);
 
-    // Also include OPEN issues with the label (treated as published too)
-    const openIssues = await cachedFetch(
-      `${apiBase}/issues?state=open&labels=${cfg.publishedLabel}&per_page=100&sort=created&direction=desc`
-    );
-    const open = Array.isArray(openIssues) ? openIssues.filter((i) => !i.pull_request) : [];
-
-    // Merge, dedupe, drop drafts
     const seen = new Set();
     const merged = [...open, ...closed].filter((i) => {
       if (seen.has(i.number)) return false;
@@ -87,8 +93,6 @@ window.Blog = (function () {
       const isDraft = (i.labels || []).some((l) => (l.name || "").toLowerCase() === cfg.draftLabel);
       return !isDraft;
     });
-
-    // Sort newest first
     merged.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     return merged;
   }
