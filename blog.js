@@ -7,7 +7,7 @@ window.BLOG_CONFIG = {
   publishedLabel: "blog",
   draftLabel: "draft",
   // Tag labels surfaced in the UI (lowercase). Anything else is shown as a generic tag.
-  tagLabels: ["dotnet", "fintech", "payments", "ai", "architecture", "tutorial", "open-source", "leadership", "anthropic", "openai", "mcp", "security", "chromium", "gemini", "typescript", "javascript", "postgres", "rust", "kubernetes", "tailwind", "webgpu", "bun"],
+  tagLabels: ["dotnet", "fintech", "payments", "ai", "architecture", "tutorial", "open-source", "leadership", "anthropic", "openai", "mcp", "security", "chromium", "gemini", "typescript", "javascript", "postgres", "rust", "kubernetes", "tailwind", "webgpu", "bun", "astro", "vue", "svelte", "nextjs", "react", "deno", "nodejs", "vite", "go", "java", "kotlin", "swift", "sqlite", "duckdb", "redis", "terraform", "cloudflare", "css", "webassembly", "aws", "python", "kafka", "docker", "mongodb", "zig", "linux", "pulumi"],
   tagDisplay: {
     "dotnet": ".NET", "fintech": "Fintech", "payments": "Payments",
     "ai": "IA / LLM", "architecture": "Architecture", "tutorial": "Tutoriel",
@@ -16,7 +16,15 @@ window.BLOG_CONFIG = {
     "security": "Sécurité", "chromium": "Chromium", "gemini": "Gemini",
     "typescript": "TypeScript", "javascript": "JavaScript",
     "postgres": "PostgreSQL", "rust": "Rust", "kubernetes": "Kubernetes",
-    "tailwind": "Tailwind", "webgpu": "WebGPU", "bun": "Bun"
+    "tailwind": "Tailwind", "webgpu": "WebGPU", "bun": "Bun",
+    "astro": "Astro", "vue": "Vue", "svelte": "Svelte", "nextjs": "Next.js",
+    "react": "React", "deno": "Deno", "nodejs": "Node.js", "vite": "Vite",
+    "go": "Go", "java": "Java", "kotlin": "Kotlin", "swift": "Swift",
+    "sqlite": "SQLite", "duckdb": "DuckDB", "redis": "Redis / Valkey",
+    "terraform": "Terraform", "cloudflare": "Cloudflare", "css": "CSS",
+    "webassembly": "WebAssembly", "aws": "AWS", "python": "Python",
+    "kafka": "Kafka", "docker": "Docker", "mongodb": "MongoDB",
+    "zig": "Zig", "linux": "Linux", "pulumi": "Pulumi"
   },
   // Cache TTL (sessionStorage) — 5 minutes
   cacheTtlMs: 5 * 60 * 1000,
