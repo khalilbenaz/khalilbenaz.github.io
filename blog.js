@@ -40,7 +40,10 @@ window.Blog = (function () {
       throw new Error("HTTP_" + res.status);
     }
     const data = await res.json();
-    try { sessionStorage.setItem(key, JSON.stringify({ ts: Date.now(), data })); } catch (_) {}
+    const isEmptyArray = Array.isArray(data) && data.length === 0;
+    if (!isEmptyArray) {
+      try { sessionStorage.setItem(key, JSON.stringify({ ts: Date.now(), data })); } catch (_) {}
+    }
     return data;
   }
 

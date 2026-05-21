@@ -81,6 +81,7 @@ C'est déjà un site statique → push sur la branche `main` du repo `khalilbena
 - ✅ Temps de lecture estimé
 - ✅ Bouton "+ écrire un article" qui ouvre une nouvelle issue préremplie
 - ✅ États vides / d'erreur / rate-limit gérés
+- Pas de newsletter (les lecteurs peuvent s'abonner au flux Atom des issues : `https://github.com/khalilbenaz/khalilbenaz.github.io/issues.atom?labels=blog`)
 
 **Article (`post.html?id=N`)**
 - ✅ Markdown rendu (marked.js), syntax highlighting (highlight.js)
