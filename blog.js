@@ -30,7 +30,11 @@ window.BLOG_CONFIG = {
     "fsharp": "F#", "networking": "Networking", "api": "API",
     "observability": "Observability", "data": "Data", "devops": "DevOps",
     "testing": "Testing", "mobile": "Mobile", "scylla": "ScyllaDB",
-    "elixir": "Elixir", "hono": "Hono", "htmx": "HTMX"
+    "elixir": "Elixir", "hono": "Hono", "htmx": "HTMX",
+    "email": "Email", "search": "Search", "automation": "Automation",
+    "docs": "Docs", "vue": "Vue", "pwa": "PWA",
+    "open-source": "Open Source", "misc": "Divers", "nodejs": "Node.js",
+    "deno": "Deno"
   },
   // Cache TTL (sessionStorage) — 5 minutes
   cacheTtlMs: 5 * 60 * 1000,
