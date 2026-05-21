@@ -1,120 +1,98 @@
 # khalilbenaz.github.io
 
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://khalilbenaz.github.io)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-
-CV & Blog de **Khalil Benazzouz** — Senior Software Engineer & Team Leader .NET, specialise Fintech & Payments.
-
-**[Voir en ligne → khalilbenaz.github.io](https://khalilbenaz.github.io)**
-
----
-
-## Pages
-
-| Page | URL | Description |
-|------|-----|-------------|
-| **CV** | [`/`](https://khalilbenaz.github.io) | Parcours, competences, formation |
-| **Blog** | [`/blog.html`](https://khalilbenaz.github.io/blog.html) | Articles et retours d'experience |
-| **Portfolio** | [`/portfolio.html`](https://khalilbenaz.github.io/portfolio.html) | Projets open source et SaaS |
-| **Admin** | [`/admin.html`](https://khalilbenaz.github.io/admin.html) | Interface privee pour publier des articles |
-
----
-
-## Fonctionnalites
-
-- **Theme light/dark** — Bascule automatique selon l'heure (6h-18h), toggle manuel, partage entre les 3 pages
-- **Design editorial** — Layout single-column, timeline d'experience, skill cards par categorie
-- **Responsive** — Mobile, tablette et desktop
-- **Blog avec admin** — Publie des articles depuis le navigateur via l'API GitHub (zero backend)
-- **Blog pagine** — 10 articles par page, navigation numerotee, URL hash pour liens directs (`#page2`)
-- **Sync LinkedIn automatique** — Recupere les posts LinkedIn via MCP et met a jour `posts.json` en incremental
-- **Auto-tagging** — Tags generes automatiquement (FINTECH, MAROC, IA, DEV, TELECOM, SECURITE...)
-- **Zero dependance** — HTML/CSS/JS pur, pas de framework
-
----
-
-## Blog : comment publier
-
-### Option 1 — Sync LinkedIn (recommande)
-
-Synchronise automatiquement les posts LinkedIn vers le blog :
-
-```bash
-# Via Claude Code (commande projet incluse dans le repo)
-/project:sync-blog
-
-# Ou directement
-python3 scripts/sync-linkedin.py --apply --push
-
-# Preview sans modification
-python3 scripts/sync-linkedin.py
-```
-
-Seuls les **nouveaux posts** sont ajoutes (deduplication par titre).
-
-**Setup pour votre propre profil :**
-
-1. Installer [linkedin-scraper-mcp](https://github.com/stickerdaniel/linkedin-mcp-server) :
-   ```bash
-   uvx linkedin-scraper-mcp@latest --login
-   ```
-2. Modifier `LINKEDIN_USERNAME` dans `scripts/sync-linkedin.py`
-3. Lancer `/project:sync-blog` ou `python3 scripts/sync-linkedin.py --apply --push`
-
-### Option 2 — Admin web
-
-1. Aller sur [`/admin.html`](https://khalilbenaz.github.io/admin.html)
-2. Se connecter avec un [GitHub Personal Access Token](https://github.com/settings/tokens/new?scopes=repo&description=Blog+Admin) (permission `repo`)
-3. Remplir le formulaire : titre, lien LinkedIn, extrait, tags
-4. Cliquer **Publier** — le fichier `posts.json` est mis a jour directement dans le repo
-
-Le token est stocke en `sessionStorage` (efface a la fermeture du navigateur).
-
----
-
-## Stack
-
-| Techno | Usage |
-|--------|-------|
-| HTML5 | Structure semantique |
-| CSS3 | Variables CSS, responsive, transitions |
-| JavaScript | Theme auto, blog CMS, GitHub API |
-| Google Fonts | Inter + JetBrains Mono |
-| GitHub Pages | Hebergement |
-| GitHub API | Backend du blog (commits via Content API) |
-| [linkedin-scraper-mcp](https://github.com/stickerdaniel/linkedin-mcp-server) | Sync posts LinkedIn via MCP |
-| Python 3 | Script de sync incremental |
-
----
-
-## Lancer en local
-
-```bash
-git clone https://github.com/khalilbenaz/khalilbenaz.github.io.git
-cd khalilbenaz.github.io
-python3 -m http.server 8000
-# → http://localhost:8000
-```
-
----
+CV / portfolio + blog statique, hébergé sur GitHub Pages.
+**Le blog est branché sur les Issues GitHub** : pas de toolchain, pas de Markdown sur disque, pas de re-déploiement.
 
 ## Structure
 
+| Fichier | Rôle |
+|---|---|
+| `index.html` | CV / portfolio |
+| `blog.html` | Liste des articles (fetch en live depuis l'API GitHub) |
+| `post.html` | Vue article (rendu Markdown + TOC + commentaires) |
+| `styles.css` · `article.css` | Design system (light/dark, accent émeraude) |
+| `shared.js` | Toggle thème / langue (FR / EN), localStorage |
+| `blog.js` | Fetch + cache + helpers pour les articles |
+| `post.js` | Rendu d'un article + commentaires + scroll-spy |
+| `photo.jpg` | Votre photo (à déposer à la racine) |
+
+## Comment écrire un article
+
+1. Aller sur **github.com/khalilbenaz/khalilbenaz.github.io/issues/new**
+2. Cocher le label **`blog`**
+3. **Titre** = titre de l'article
+4. **Corps** = contenu en Markdown
+   - `## Heading 2` et `### Heading 3` apparaissent dans le sommaire
+   - Drag-drop d'images directement dans l'éditeur GitHub (hébergées par GitHub)
+   - Blocs ```code``` colorés automatiquement (highlight.js)
+   - Tableaux, listes, blockquotes, etc. — tout ce que GitHub supporte
+5. (Optionnel) Ajouter d'autres labels comme tags : `dotnet`, `fintech`, `payments`, `architecture`, `tutorial`, `ai`, `leadership`, `open-source`
+6. (Optionnel) Front-matter en tête du corps pour personnaliser le chapô :
+   ```
+   ---
+   lede: Une phrase qui s'affiche sous le titre, à la place de l'extrait auto.
+   ---
+   ```
+7. Cliquer **Submit new issue** → l'article apparaît sur le blog dans les 5 minutes (cache).
+
+### Brouillons
+
+Pour cacher un article publié : ajouter le label **`draft`**.
+Pour le republier : retirer `draft`.
+
+### Modifier un article
+
+Aller sur l'issue → bouton ✏️ à côté du titre/corps. C'est édité.
+Les **commentaires** de l'issue deviennent automatiquement les commentaires de l'article.
+
+### Cache & limite API
+
+L'API GitHub est limitée à 60 requêtes/heure par IP (non authentifié).
+On cache les réponses pendant 5 min en `sessionStorage` côté client. Largement suffisant.
+Si vous voulez plus de marge, on peut passer en `static.json` pré-généré (workflow GitHub Actions optionnel).
+
+## Lancer en local
+
+Aucune dépendance. Servez le dossier :
+
+```bash
+python -m http.server 8000
+# puis http://localhost:8000
 ```
-index.html                       # CV
-blog.html                        # Blog pagine (public)
-portfolio.html                   # Portfolio projets (public)
-admin.html                       # Admin blog (prive)
-posts.json                       # Donnees des articles
-photo.jpg                        # Photo de profil
-scripts/sync-linkedin.py         # Sync incremental LinkedIn → blog
-.claude/commands/sync-blog.md    # Commande Claude Code /project:sync-blog
-```
 
----
+Ou ouvrez `index.html` directement, mais le blog nécessite `http://` pour que l'API GitHub réponde (CORS).
 
-## License
+## Déploiement
 
-MIT
+C'est déjà un site statique → push sur la branche `main` du repo `khalilbenaz.github.io` → GitHub Pages publie automatiquement. Aucune action à configurer.
+
+## Fonctionnalités prêtes
+
+**CV (`index.html`)**
+- ✅ Bilingue FR / EN avec toggle (persisté localStorage)
+- ✅ Light / Dark avec toggle (suit `prefers-color-scheme` par défaut)
+- ✅ Hero avec photo, stats, citation
+- ✅ Expériences (timeline), projets (RIVORA, MDAN, QRLIB, Mocka, Claude Skills), compétences, formation, certifs, langues, contact
+
+**Blog (`blog.html`)**
+- ✅ Liste live depuis Issues GitHub
+- ✅ Recherche (`⌘K`)
+- ✅ Filtres par tag (générés depuis les labels)
+- ✅ Temps de lecture estimé
+- ✅ Bouton "+ écrire un article" qui ouvre une nouvelle issue préremplie
+- ✅ États vides / d'erreur / rate-limit gérés
+
+**Article (`post.html?id=N`)**
+- ✅ Markdown rendu (marked.js), syntax highlighting (highlight.js)
+- ✅ Sommaire sticky avec scroll-spy
+- ✅ Barre de progression de lecture
+- ✅ Articles liés (même tag)
+- ✅ Commentaires affichés inline (fetched depuis les commentaires de l'issue)
+- ✅ Bouton "Commenter sur GitHub" pour réagir
+
+## TODO
+
+- Déposer `photo.jpg` à la racine.
+- Vérifier l'URL LinkedIn (`linkedin.com/in/khalilbenazzouz` — à confirmer).
+- Activer Discussions sur le repo si vous voulez aller plus loin que les commentaires d'issues.
+- (Optionnel) Workflow GitHub Actions qui pré-génère `articles.json` au push d'une issue → suppression totale de la limite API.

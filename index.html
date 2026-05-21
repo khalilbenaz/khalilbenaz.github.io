@@ -1,1421 +1,463 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khalil Benazzouz - Senior Software Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0a0a0f;
-            --bg-card: #111118;
-            --bg-card-hover: #16161f;
-            --surface: #1a1a24;
-            --border: rgba(255,255,255,0.06);
-            --border-hover: rgba(255,255,255,0.12);
-            --text: #f0f0f5;
-            --text-secondary: #8888a0;
-            --text-muted: #55556a;
-            --accent: #6366f1;
-            --accent-light: #818cf8;
-            --accent-glow: rgba(99,102,241,0.15);
-            --green: #22c55e;
-            --amber: #f59e0b;
-        }
-
-        [data-theme="light"] {
-            --bg: #fafafa;
-            --bg-card: #ffffff;
-            --bg-card-hover: #f8f8fc;
-            --surface: #f0f0f5;
-            --border: rgba(0,0,0,0.06);
-            --border-hover: rgba(0,0,0,0.12);
-            --text: #111118;
-            --text-secondary: #555568;
-            --text-muted: #9999aa;
-            --accent: #4f46e5;
-            --accent-light: #6366f1;
-            --accent-glow: rgba(79,70,229,0.08);
-            --green: #16a34a;
-            --amber: #d97706;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', -apple-system, system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            -webkit-font-smoothing: antialiased;
-            line-height: 1.6;
-        }
-
-        /* ===== Theme Toggle ===== */
-        .theme-toggle {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            z-index: 100;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 18px;
-            transition: all 0.2s ease;
-            backdrop-filter: blur(20px);
-        }
-        .theme-toggle:hover {
-            border-color: var(--accent);
-            transform: scale(1.05);
-        }
-
-        /* ===== Hero Section ===== */
-        .hero {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 32px 40px;
-        }
-
-        .hero-top {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 40px;
-            margin-bottom: 32px;
-        }
-
-        .hero-info { flex: 1; }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            background: rgba(34,197,94,0.1);
-            border: 1px solid rgba(34,197,94,0.2);
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--green);
-            margin-bottom: 20px;
-        }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--green);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        .hero-name {
-            font-size: clamp(36px, 5vw, 56px);
-            font-weight: 900;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin-bottom: 12px;
-        }
-
-        .hero-name .accent {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-title {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-        }
-
-        .hero-links {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .hero-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .hero-link--primary {
-            background: var(--accent);
-            color: white;
-        }
-        .hero-link--primary:hover {
-            filter: brightness(1.15);
-            transform: translateY(-1px);
-        }
-
-        .hero-link--secondary {
-            background: var(--surface);
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-        .hero-link--secondary:hover {
-            border-color: var(--border-hover);
-            background: var(--bg-card-hover);
-        }
-
-        .hero-avatar {
-            width: 130px;
-            height: 130px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, var(--accent), #a855f7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 52px;
-            flex-shrink: 0;
-            box-shadow: 0 8px 32px rgba(99,102,241,0.2);
-            overflow: hidden;
-        }
-
-        .hero-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* ===== Stats Row ===== */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-
-        .stat {
-            padding: 20px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            text-align: center;
-            transition: all 0.2s ease;
-        }
-
-        .stat:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-2px);
-        }
-
-        .stat-value {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--text);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .stat-label {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 4px;
-        }
-
-        /* ===== Quote ===== */
-        .hero-quote {
-            padding: 24px 28px;
-            background: var(--accent-glow);
-            border-left: 3px solid var(--accent);
-            border-radius: 0 12px 12px 0;
-            font-size: 15px;
-            font-style: italic;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* ===== Section Layout ===== */
-        .content {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 32px 80px;
-        }
-
-        .section {
-            margin-bottom: 56px;
-        }
-
-        .section-title {
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--accent);
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        /* ===== Experience Timeline ===== */
-        .timeline {
-            position: relative;
-            padding-left: 32px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 8px;
-            bottom: 8px;
-            width: 2px;
-            background: linear-gradient(180deg, var(--accent), var(--border));
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 8px;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -29px;
-            top: 28px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--bg);
-            border: 3px solid var(--accent);
-            z-index: 1;
-        }
-
-        .timeline-item:first-child .timeline-dot {
-            background: var(--accent);
-            box-shadow: 0 0 0 4px var(--accent-glow);
-        }
-
-        .exp-card {
-            padding: 28px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .exp-card:hover {
-            border-color: var(--border-hover);
-            background: var(--bg-card-hover);
-            transform: translateX(4px);
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
-        }
-
-        .exp-role {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-
-        .exp-period {
-            font-size: 13px;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 500;
-            color: var(--text-muted);
-            padding: 4px 12px;
-            background: var(--surface);
-            border-radius: 6px;
-            white-space: nowrap;
-        }
-
-        .exp-company {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--accent-light);
-            margin-bottom: 14px;
-        }
-
-        .exp-list {
-            list-style: none;
-        }
-
-        .exp-list li {
-            font-size: 14px;
-            color: var(--text-secondary);
-            padding: 4px 0 4px 20px;
-            position: relative;
-            line-height: 1.7;
-        }
-
-        .exp-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 12px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent);
-            opacity: 0.5;
-        }
-
-        .exp-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 14px;
-        }
-
-        .exp-tag {
-            font-size: 11px;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 6px;
-            background: var(--accent-glow);
-            color: var(--accent-light);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* ===== Skills Grid ===== */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 16px;
-        }
-
-        .skill-card {
-            padding: 24px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .skill-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-2px);
-        }
-
-        .skill-card-title {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            font-size: 13px;
-            font-weight: 500;
-            padding: 6px 14px;
-            border-radius: 8px;
-            background: var(--surface);
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-            transition: all 0.15s ease;
-        }
-
-        .skill-tag:hover {
-            border-color: var(--accent);
-            color: var(--accent-light);
-            background: var(--accent-glow);
-        }
-
-        /* ===== Two Column Grid ===== */
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        /* ===== Education ===== */
-        .edu-card {
-            padding: 24px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .edu-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-2px);
-        }
-
-        .edu-degree {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 6px;
-            line-height: 1.4;
-        }
-
-        .edu-school {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--accent-light);
-            margin-bottom: 4px;
-        }
-
-        .edu-year {
-            font-size: 13px;
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--text-muted);
-        }
-
-        /* ===== Languages ===== */
-        .lang-list {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .lang-item {
-            flex: 1;
-            min-width: 160px;
-            padding: 20px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            text-align: center;
-            transition: all 0.2s ease;
-        }
-
-        .lang-item:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-2px);
-        }
-
-        .lang-flag {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-
-        .lang-name {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .lang-level {
-            font-size: 12px;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* ===== Certifications ===== */
-        .cert-list {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .cert-item {
-            flex: 1;
-            min-width: 200px;
-            padding: 20px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .cert-item:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .cert-icon {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .cert-name {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .cert-org {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        /* ===== Footer ===== */
-        .footer {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 48px 32px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-cta {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .footer-sub {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-            margin-bottom: 28px;
-            flex-wrap: wrap;
-        }
-
-        .footer-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .footer-btn--linkedin {
-            background: #0a66c2;
-            color: white;
-        }
-        .footer-btn--linkedin:hover {
-            background: #004182;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(10,102,194,0.35);
-        }
-
-        .footer-btn--github {
-            background: var(--surface);
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-        .footer-btn--github:hover {
-            border-color: var(--border-hover);
-            background: var(--bg-card-hover);
-            transform: translateY(-2px);
-        }
-
-        .footer-copy {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        /* ===== Responsive ===== */
-        @media (max-width: 768px) {
-            .hero { padding: 60px 20px 32px; }
-            .content { padding: 0 20px 60px; }
-
-            .hero-top {
-                flex-direction: column-reverse;
-                align-items: center;
-                text-align: center;
-            }
-
-            .hero-name { text-align: center; }
-            .hero-title { text-align: center; }
-            .hero-links { justify-content: center; }
-
-            .hero-avatar {
-                width: 96px;
-                height: 96px;
-                font-size: 42px;
-                border-radius: 16px;
-            }
-
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .two-col {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline { padding-left: 24px; }
-            .timeline-dot { left: -21px; width: 12px; height: 12px; }
-
-            .exp-header { flex-direction: column; gap: 8px; }
-        }
-
-        @media (max-width: 480px) {
-            .lang-list { flex-direction: column; }
-            .cert-list { flex-direction: column; }
-            .hero-links { flex-direction: column; align-items: stretch; }
-            .hero-link { justify-content: center; }
-        }
-
-        /* ===== Animations ===== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== Print Button ===== */
-        .print-btn {
-            position: fixed;
-            top: 24px;
-            right: 80px;
-            z-index: 100;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 18px;
-            transition: all 0.2s ease;
-            backdrop-filter: blur(20px);
-        }
-        .print-btn:hover { border-color: var(--accent); transform: scale(1.05); }
-
-        /* ===== Print Styles — Magazine two-column layout ===== */
-        @media print {
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                transition: none !important;
-                animation: none !important;
-            }
-
-            @page { margin: 0; size: A4; }
-
-            body {
-                background: white !important;
-                color: #1e1e2e !important;
-                font-size: 9.5pt;
-                line-height: 1.55;
-                margin: 0;
-                padding: 0;
-            }
-
-            /* ── Hide web-only elements ── */
-            .theme-toggle, .print-btn, .scroll-top, .footer,
-            .hero-link, .status-badge, .hero-quote, .stats { display: none !important; }
-            .fade-in { opacity: 1 !important; transform: none !important; }
-
-            /* ══════════════════════════════════════════
-               COMPLETE LAYOUT OVERRIDE — 2-Column CV
-               Left: dark sidebar | Right: white content
-               ══════════════════════════════════════════ */
-
-            .hero {
-                display: block !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                max-width: none !important;
-            }
-
-            /* Sidebar: fixed so it repeats on every printed page */
-            .hero-top {
-                position: fixed;
-                left: 0; top: 0;
-                width: 72mm; height: 100%;
-                background: #1a1a2e !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                padding: 28mm 6mm 10mm !important;
-                margin: 0 !important;
-                gap: 0 !important;
-                z-index: 10;
-            }
-
-            .hero-avatar {
-                width: 48mm !important; height: 48mm !important;
-                border-radius: 50% !important;
-                box-shadow: 0 0 0 3pt #2d2d4e !important;
-                margin-bottom: 5mm;
-                order: -1;
-            }
-
-            .hero-info {
-                text-align: center;
-                width: 100%;
-            }
-
-            .hero-name {
-                font-size: 20pt !important;
-                color: white !important;
-                letter-spacing: -0.5pt;
-                line-height: 1.2;
-                margin-bottom: 2mm;
-            }
-            .hero-name br { content: ' '; }
-            .hero-name br::after { content: ' '; }
-            .hero-name .accent {
-                background: none !important;
-                -webkit-text-fill-color: #818cf8 !important;
-            }
-
-            .hero-title {
-                font-size: 8.5pt !important;
-                color: #a0a0c0 !important;
-                margin-bottom: 0;
-                line-height: 1.4;
-            }
-
-            .hero-links { display: none !important; }
-
-            /* ── Experience & other sections: allow page breaks ── */
-            .timeline-item {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
-
-            .skill-card, .edu-card, .lang-item, .cert-item {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
-
-            .section-title {
-                break-after: avoid;
-                page-break-after: avoid;
-            }
-
-            /* ── Main content area — flows naturally across pages ── */
-            .content {
-                position: relative !important;
-                margin-left: 72mm !important;
-                padding: 12mm 10mm 10mm 10mm !important;
-                max-width: none !important;
-                width: auto !important;
-                overflow: visible !important;
-            }
-
-            /* ── Section titles ── */
-            .section-title {
-                font-size: 11pt !important;
-                font-weight: 800 !important;
-                text-transform: uppercase !important;
-                letter-spacing: 2pt !important;
-                color: #1a1a2e !important;
-                margin-bottom: 4mm !important;
-                padding-bottom: 2mm;
-                border-bottom: 2pt solid #1a1a2e !important;
-            }
-            .section-title::after { display: none !important; }
-
-            .section { margin-bottom: 5mm !important; }
-
-            /* ── Timeline ── */
-            .timeline { padding-left: 5mm !important; }
-            .timeline::before {
-                left: 1.2mm !important;
-                width: 1.5pt !important;
-                background: #d0d0e0 !important;
-            }
-
-            .timeline-item { margin-bottom: 1mm !important; }
-
-            .timeline-dot {
-                width: 8pt !important; height: 8pt !important;
-                left: -4.6mm !important;
-                top: 4mm !important;
-                border: 2pt solid #1a1a2e !important;
-                background: white !important;
-            }
-            .timeline-item:first-child .timeline-dot {
-                background: #1a1a2e !important;
-                box-shadow: none !important;
-            }
-
-            /* ── Experience cards ── */
-            .exp-card {
-                padding: 2.5mm 3mm !important;
-                background: transparent !important;
-                border: none !important;
-                border-radius: 0 !important;
-            }
-
-            .exp-header { margin-bottom: 1mm !important; }
-
-            .exp-role {
-                font-size: 11pt !important;
-                font-weight: 800 !important;
-                color: #1a1a2e !important;
-                letter-spacing: -0.3pt;
-            }
-
-            .exp-company {
-                font-size: 9.5pt !important;
-                color: #4f46e5 !important;
-                font-weight: 700 !important;
-                margin-bottom: 0.5mm !important;
-            }
-
-            .exp-period {
-                font-size: 7.5pt !important;
-                background: none !important;
-                padding: 0 !important;
-                color: #888 !important;
-                font-weight: 500;
-            }
-
-            .exp-list { margin: 0 !important; }
-            .exp-list li {
-                font-size: 8.5pt !important;
-                color: #444 !important;
-                padding-left: 3.5mm !important;
-                margin-bottom: 0.3mm !important;
-                line-height: 1.5;
-            }
-            .exp-list li::before {
-                width: 4pt !important; height: 4pt !important;
-                top: 2.2mm !important;
-                background: #4f46e5 !important;
-            }
-
-            .exp-stack { margin-top: 1.5mm !important; gap: 2pt !important; }
-            .exp-tag {
-                font-size: 6.5pt !important;
-                padding: 1pt 5pt !important;
-                background: #eef !important;
-                color: #4f46e5 !important;
-                border-radius: 3pt !important;
-                font-weight: 700;
-            }
-
-            /* ── Skills ── */
-            .skills-grid {
-                grid-template-columns: 1fr 1fr !important;
-                gap: 3mm !important;
-            }
-
-            .skill-card {
-                padding: 2.5mm !important;
-                background: transparent !important;
-                border: none !important;
-                border-left: 2.5pt solid #4f46e5 !important;
-                border-radius: 0 !important;
-            }
-
-            .skill-card-title {
-                font-size: 8.5pt !important;
-                font-weight: 800 !important;
-                text-transform: uppercase !important;
-                letter-spacing: 0.5pt !important;
-                color: #1a1a2e !important;
-                margin-bottom: 1.5mm !important;
-            }
-
-            .skill-tags { gap: 2pt !important; }
-            .skill-tag {
-                font-size: 7.5pt !important;
-                padding: 1.5pt 6pt !important;
-                background: #f0f0f8 !important;
-                border: 0.5pt solid #ddd !important;
-                color: #333 !important;
-                border-radius: 2pt !important;
-                font-family: 'Inter', sans-serif !important;
-            }
-
-            /* ── Education ── */
-            .two-col {
-                grid-template-columns: 1fr 1fr !important;
-                gap: 3mm !important;
-            }
-
-            .edu-card {
-                padding: 2.5mm !important;
-                background: #f8f8fc !important;
-                border: none !important;
-                border-radius: 3pt !important;
-            }
-
-            .edu-degree {
-                font-size: 9pt !important;
-                font-weight: 700 !important;
-                color: #1a1a2e !important;
-                margin-bottom: 0.5mm !important;
-            }
-            .edu-school {
-                font-size: 8pt !important;
-                color: #4f46e5 !important;
-                margin-bottom: 0.3mm !important;
-            }
-            .edu-year {
-                font-size: 7.5pt !important;
-                color: #888 !important;
-            }
-
-            /* ── Languages ── */
-            .lang-list {
-                flex-direction: row !important;
-                gap: 3mm !important;
-            }
-            .lang-item {
-                padding: 2mm 3mm !important;
-                background: #f8f8fc !important;
-                border: none !important;
-                border-radius: 3pt !important;
-                min-width: 0 !important;
-                flex: 1;
-            }
-            .lang-flag { font-size: 14pt !important; margin-bottom: 0.5mm !important; }
-            .lang-name { font-size: 8.5pt !important; color: #1a1a2e !important; }
-            .lang-level { font-size: 7pt !important; color: #888 !important; }
-
-            /* ── Certifications ── */
-            .cert-list { gap: 3mm !important; }
-            .cert-item {
-                padding: 2mm 3mm !important;
-                background: #f8f8fc !important;
-                border: none !important;
-                border-radius: 3pt !important;
-            }
-            .cert-icon { font-size: 12pt !important; margin-bottom: 0.5mm !important; }
-            .cert-name { font-size: 8.5pt !important; color: #1a1a2e !important; }
-            .cert-org { font-size: 7pt !important; color: #888 !important; }
-
-            /* ── Sidebar contact info ── */
-            .hero-top::after {
-                content:
-                    'CONTACT'
-                    '\A\A'
-                    'linkedin.com/in/'
-                    '\A khalilbenazzouz'
-                    '\A\A'
-                    'github.com/'
-                    '\A khalilbenaz'
-                    '\A\A'
-                    'khalilbenaz.github.io';
-                display: block;
-                white-space: pre-line;
-                color: #a0a0c0 !important;
-                font-size: 7pt;
-                line-height: 1.6;
-                text-align: center;
-                margin-top: 8mm;
-                padding-top: 5mm;
-                border-top: 0.5pt solid #2d2d4e;
-                font-family: 'JetBrains Mono', monospace;
-                letter-spacing: 0;
-            }
-
-            .hero-top::before {
-                content: '';
-                display: block;
-                width: 30mm;
-                height: 0.5pt;
-                background: #4f46e5 !important;
-                margin: 5mm auto 0;
-            }
-
-            /* ── Links ── */
-            a { color: inherit !important; text-decoration: none !important; }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Khalil Benazzouz — Senior Software Engineer · Team Leader Fintech</title>
+<meta name="description" content="Khalil Benazzouz — Senior Software Engineer, Team Leader B3G. 7+ ans en .NET, microservices et solutions de paiement." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script src="shared.js" defer></script>
 </head>
 <body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">KB</span>
+      <span>Khalil Benazzouz</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work" data-lang="fr">Parcours</a><a href="#work" data-lang="en">Work</a>
+      <a href="#projects" data-lang="fr">Projets</a><a href="#projects" data-lang="en">Projects</a>
+      <a href="#skills" data-lang="fr">Compétences</a><a href="#skills" data-lang="en">Skills</a>
+      <a href="blog.html">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" data-action="toggle-locale" type="button">FR</button>
+      <button class="icon-btn" data-action="toggle-theme" type="button" aria-label="Toggle theme">
+        <svg data-icon="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg data-icon="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" hidden><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
 
-    <!-- Print Button -->
-    <div class="print-btn" onclick="window.print()" title="Imprimer le CV">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" style="border-top:0">
+    <p class="eyebrow"><span data-lang="fr">Disponible pour de nouvelles opportunités</span><span data-lang="en">Available for new opportunities</span></p>
+    <div style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start;margin-top:18px" class="hero-grid">
+      <div>
+        <h1>
+          <span data-lang="fr">Khalil Benazzouz.<br/>Senior <span class="accent">Software Engineer</span> &amp; Team Leader sur les solutions de paiement.</span>
+          <span data-lang="en">Khalil Benazzouz.<br/>Senior <span class="accent">Software Engineer</span> &amp; Team Leader in digital payments.</span>
+        </h1>
+        <p class="lede" style="margin-top:22px">
+          <span data-lang="fr">7+ ans en .NET, microservices et fintech. Aujourd’hui Team Leader chez B3G, où je pilote les plateformes critiques de paiement digital — du wallet à l’API.</span>
+          <span data-lang="en">7+ years across .NET, microservices and fintech. Currently Team Leader at B3G, where I lead the critical digital-payment platforms — wallet to API.</span>
+        </p>
+        <div class="hero-meta">
+          <span><span class="dot"></span><span data-lang="fr">Ouvert aux opportunités</span><span data-lang="en">Open to opportunities</span></span>
+          <span>FR · EN · AR</span>
+          <span data-lang="fr">2× Master 2</span><span data-lang="en">Dual Master’s</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">
+            <span data-lang="fr">Me contacter</span><span data-lang="en">Get in touch</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="https://linkedin.com/in/khalilbenazzouz" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.82-2.05 3.75-2.05 4 0 4.74 2.63 4.74 6.05V21h-4v-5.4c0-1.29-.03-2.96-1.8-2.96-1.8 0-2.08 1.41-2.08 2.86V21h-4V9Z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/khalilbenaz" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+      <!-- Photo placeholder. Drop your real photo at photo.jpg next to this file then swap the src below. -->
+      <div style="width:180px;height:180px;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:linear-gradient(135deg,var(--bg-soft),var(--bg-elev));display:grid;place-items:center;flex-shrink:0;position:relative">
+        <span style="font-family:var(--font-serif);font-size:64px;color:var(--text-3);letter-spacing:-0.04em">KB</span>
+        <span style="position:absolute;bottom:8px;font-family:var(--font-mono);font-size:9px;color:var(--text-3);letter-spacing:0.06em">PHOTO · photo.jpg</span>
+      </div>
     </div>
 
-    <!-- Theme Toggle -->
-    <div class="theme-toggle" id="themeToggle">
-        <span id="themeIcon">&#9790;</span>
+    <!-- Stats strip -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:48px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
+      <div style="background:var(--bg-elev);padding:20px 22px">
+        <div style="font-size:28px;font-weight:600;letter-spacing:-0.02em">7+</div>
+        <div style="color:var(--text-3);font-size:12px;font-family:var(--font-mono);margin-top:4px"><span data-lang="fr">ANS D’EXPÉRIENCE</span><span data-lang="en">YEARS OF EXPERIENCE</span></div>
+      </div>
+      <div style="background:var(--bg-elev);padding:20px 22px">
+        <div style="font-size:28px;font-weight:600;letter-spacing:-0.02em">.NET</div>
+        <div style="color:var(--text-3);font-size:12px;font-family:var(--font-mono);margin-top:4px"><span data-lang="fr">STACK PRINCIPALE</span><span data-lang="en">CORE STACK</span></div>
+      </div>
+      <div style="background:var(--bg-elev);padding:20px 22px">
+        <div style="font-size:28px;font-weight:600;letter-spacing:-0.02em">B3G</div>
+        <div style="color:var(--text-3);font-size:12px;font-family:var(--font-mono);margin-top:4px">TEAM LEADER</div>
+      </div>
+      <div style="background:var(--bg-elev);padding:20px 22px">
+        <div style="font-size:28px;font-weight:600;letter-spacing:-0.02em">2×</div>
+        <div style="color:var(--text-3);font-size:12px;font-family:var(--font-mono);margin-top:4px">MASTER 2</div>
+      </div>
     </div>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-top">
-            <div class="hero-info">
-                <div class="status-badge">
-                    <span class="status-dot"></span>
-                    Disponible pour de nouvelles opportunites
-                </div>
-                <h1 class="hero-name">Khalil<br><span class="accent">Benazzouz</span></h1>
-                <p class="hero-title">Senior Software Engineer &middot; Team Leader &middot; Fintech &amp; Payments</p>
-                <div class="hero-links">
-                    <a href="https://linkedin.com/in/khalilbenazzouz" class="hero-link hero-link--primary" target="_blank">
-                        &#8599; LinkedIn
-                    </a>
-                    <a href="https://github.com/khalilbenaz" class="hero-link hero-link--secondary" target="_blank">
-                        &#9776; GitHub
-                    </a>
-                    <a href="blog.html" class="hero-link hero-link--secondary">
-                        &#9997; Blog
-                    </a>
-                    <a href="portfolio.html" class="hero-link hero-link--secondary">
-                        &#9670; Portfolio
-                    </a>
-                </div>
-            </div>
-            <div class="hero-avatar"><img src="photo.jpg" alt="Khalil Benazzouz"></div>
+    <!-- Quote -->
+    <blockquote style="margin:48px 0 0;padding:20px 0 0;border-top:1px solid var(--border);font-family:var(--font-serif);font-style:italic;font-size:20px;line-height:1.5;color:var(--text-2);max-width:60ch">
+      <span data-lang="fr">« C’est votre attitude, bien plus que votre aptitude, qui détermine votre altitude. »</span>
+      <span data-lang="en">“It is your attitude, more than your aptitude, that determines your altitude.”</span>
+    </blockquote>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-head">
+      <p class="eyebrow">01 · <span data-lang="fr">Expérience professionnelle</span><span data-lang="en">Experience</span></p>
+      <h2 data-lang="fr">Sept ans à construire des plateformes de paiement.</h2>
+      <h2 data-lang="en">Seven years building payment platforms.</h2>
+    </div>
+    <div class="timeline">
+
+      <article class="exp">
+        <div><div class="when">Oct 2024 — <span data-lang="fr">aujourd’hui</span><span data-lang="en">present</span></div></div>
+        <div>
+          <h3>Team Leader</h3>
+          <p class="where">B3G</p>
+          <ul>
+            <li data-lang="fr">Leadership technique et gestion d’équipe pour les solutions de paiement numérique.</li>
+            <li data-lang="en">Technical leadership and team management for digital-payment solutions.</li>
+            <li data-lang="fr">Coordination de projets critiques et supervision du développement.</li>
+            <li data-lang="en">Coordinating critical projects and overseeing development.</li>
+            <li data-lang="fr">Amélioration des processus de développement et des standards de qualité.</li>
+            <li data-lang="en">Improving development processes and quality standards.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag accent">.NET</span><span class="tag">Microservices</span><span class="tag">Leadership</span>
+          </div>
         </div>
+      </article>
 
-        <div class="stats fade-in">
-            <div class="stat">
-                <div class="stat-value">+7</div>
-                <div class="stat-label">Ans d'experience</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">.NET</div>
-                <div class="stat-label">Stack principale</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">B3G</div>
-                <div class="stat-label">Team Leader</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">2x</div>
-                <div class="stat-label">Master</div>
-            </div>
+      <article class="exp">
+        <div><div class="when">Mai 2021 — Oct 2024</div></div>
+        <div>
+          <h3>Full Stack Engineer .NET</h3>
+          <p class="where">B3G</p>
+          <ul>
+            <li data-lang="fr">Développement full stack sur les plateformes critiques de l’entreprise.</li>
+            <li data-lang="en">Full-stack development on the company’s critical platforms.</li>
+            <li data-lang="fr">Conception et implémentation de solutions de paiement digital.</li>
+            <li data-lang="en">Designed and built digital-payment solutions.</li>
+            <li data-lang="fr">Développement de microservices et APIs robustes.</li>
+            <li data-lang="en">Built robust microservices and APIs.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">ASP.NET</span><span class="tag">C#</span><span class="tag">SQL Server</span><span class="tag">REST API</span>
+          </div>
         </div>
+      </article>
 
-        <div class="hero-quote fade-in">
-            C'est votre attitude, bien plus que votre aptitude, qui determine votre altitude.
+      <article class="exp">
+        <div><div class="when">Mai 2019 — Mai 2021</div></div>
+        <div>
+          <h3>Software Engineer .NET</h3>
+          <p class="where">B3G</p>
+          <ul>
+            <li data-lang="fr">Évolution et maintenance des systèmes financiers et portefeuilles électroniques.</li>
+            <li data-lang="en">Evolved and maintained financial systems and electronic wallets.</li>
+            <li data-lang="fr">Développement de fonctionnalités pour solutions de paiement.</li>
+            <li data-lang="en">Delivered new features for payment solutions.</li>
+            <li data-lang="fr">Optimisation des performances et sécurité des applications.</li>
+            <li data-lang="en">Optimized application performance and security.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">C#</span><span class="tag">Wallet</span><span class="tag">Payments</span>
+          </div>
         </div>
-    </section>
+      </article>
 
-    <!-- Content -->
-    <div class="content">
+      <article class="exp">
+        <div><div class="when">Jan 2019</div></div>
+        <div>
+          <h3>Ingénieur Études et Dev .NET</h3>
+          <p class="where">ISIC Rabat</p>
+          <ul>
+            <li data-lang="fr">Développement d’un site intranet de bibliothèque.</li>
+            <li data-lang="en">Built an intranet library website.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">ASP.NET</span><span class="tag">SQL Server</span><span class="tag">Razor</span>
+          </div>
+        </div>
+      </article>
 
-        <!-- Experience -->
-        <section class="section fade-in">
-            <h2 class="section-title">Experience professionnelle</h2>
-            <div class="timeline">
+      <article class="exp">
+        <div><div class="when">Jan — Juin 2018</div></div>
+        <div>
+          <h3>Ingénieur Études et Dev</h3>
+          <p class="where">Rabat Fluid</p>
+          <ul>
+            <li data-lang="fr">Développement d’un site web e-commerce.</li>
+            <li data-lang="en">Built an e-commerce website.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">WordPress</span><span class="tag">MySQL</span>
+          </div>
+        </div>
+      </article>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <div class="exp-role">Team Leader</div>
-                                <div class="exp-company">B3G</div>
-                            </div>
-                            <span class="exp-period">Oct 2024 &mdash; Present</span>
-                        </div>
-                        <ul class="exp-list">
-                            <li>Leadership technique et gestion d'equipe pour les solutions de paiement numerique</li>
-                            <li>Coordination de projets critiques et supervision du developpement</li>
-                            <li>Amelioration des processus de developpement et des standards de qualite</li>
-                        </ul>
-                        <div class="exp-stack">
-                            <span class="exp-tag">.NET</span>
-                            <span class="exp-tag">Microservices</span>
-                            <span class="exp-tag">Leadership</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <div class="exp-role">Full Stack Engineer .NET</div>
-                                <div class="exp-company">B3G</div>
-                            </div>
-                            <span class="exp-period">Mai 2021 &mdash; Oct 2024</span>
-                        </div>
-                        <ul class="exp-list">
-                            <li>Developpement full stack sur les plateformes critiques de l'entreprise</li>
-                            <li>Conception et implementation de solutions de paiement digital</li>
-                            <li>Developpement de microservices et APIs robustes</li>
-                        </ul>
-                        <div class="exp-stack">
-                            <span class="exp-tag">ASP.NET</span>
-                            <span class="exp-tag">C#</span>
-                            <span class="exp-tag">SQL Server</span>
-                            <span class="exp-tag">REST API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <div class="exp-role">Software Engineer .NET</div>
-                                <div class="exp-company">B3G</div>
-                            </div>
-                            <span class="exp-period">Mai 2019 &mdash; Mai 2021</span>
-                        </div>
-                        <ul class="exp-list">
-                            <li>Evolution et maintenance des systemes financiers et portefeuilles electroniques</li>
-                            <li>Developpement de fonctionnalites pour solutions de paiement</li>
-                            <li>Optimisation des performances et securite des applications</li>
-                        </ul>
-                        <div class="exp-stack">
-                            <span class="exp-tag">C#</span>
-                            <span class="exp-tag">Wallet</span>
-                            <span class="exp-tag">Payments</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <div class="exp-role">Ingenieur Etudes et Dev .NET</div>
-                                <div class="exp-company">ISIC Rabat</div>
-                            </div>
-                            <span class="exp-period">Jan 2019</span>
-                        </div>
-                        <ul class="exp-list">
-                            <li>Developpement d'un site intranet de bibliotheque</li>
-                        </ul>
-                        <div class="exp-stack">
-                            <span class="exp-tag">ASP.NET</span>
-                            <span class="exp-tag">SQL Server</span>
-                            <span class="exp-tag">Razor</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <div class="exp-role">Ingenieur Etudes et Dev</div>
-                                <div class="exp-company">Rabat Fluid</div>
-                            </div>
-                            <span class="exp-period">Jan &mdash; Juin 2018</span>
-                        </div>
-                        <ul class="exp-list">
-                            <li>Developpement d'un site web e-commerce</li>
-                        </ul>
-                        <div class="exp-stack">
-                            <span class="exp-tag">WordPress</span>
-                            <span class="exp-tag">MySQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <div class="exp-role">Ingenieur Stagiaire (PFE Master)</div>
-                                <div class="exp-company">SNTL Group</div>
-                            </div>
-                            <span class="exp-period">Mai &mdash; Dec 2017</span>
-                        </div>
-                        <ul class="exp-list">
-                            <li>Application mobile de geolocalisation et declaration de sinistre</li>
-                            <li>API REST backend</li>
-                        </ul>
-                        <div class="exp-stack">
-                            <span class="exp-tag">Laravel</span>
-                            <span class="exp-tag">PHP</span>
-                            <span class="exp-tag">Ionic</span>
-                            <span class="exp-tag">MySQL</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Skills -->
-        <section class="section fade-in">
-            <h2 class="section-title">Competences</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-card-title">Backend</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">C#</span>
-                        <span class="skill-tag">.NET</span>
-                        <span class="skill-tag">ASP.NET Core</span>
-                        <span class="skill-tag">REST API</span>
-                        <span class="skill-tag">Microservices</span>
-                        <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">Laravel</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-card-title">Frontend</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">Razor</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">Ionic</span>
-                        <span class="skill-tag">WordPress</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-card-title">Data & Infra</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">SQL Server</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">Git</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-card-title">Domaine</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Fintech</span>
-                        <span class="skill-tag">Payments</span>
-                        <span class="skill-tag">Wallet</span>
-                        <span class="skill-tag">Leadership</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education & Certifications -->
-        <section class="section fade-in">
-            <h2 class="section-title">Formation</h2>
-            <div class="two-col">
-                <div class="edu-card">
-                    <div class="edu-degree">Master 2 - Systemes d'Informations Distribues</div>
-                    <div class="edu-school">Universite de Lorraine</div>
-                    <div class="edu-year">2016 &mdash; 2017</div>
-                </div>
-                <div class="edu-card">
-                    <div class="edu-degree">Master 2 - Ingenierie logicielle et developpement web</div>
-                    <div class="edu-school">Groupe ISGA</div>
-                    <div class="edu-year">2016 &mdash; 2017</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Languages -->
-        <section class="section fade-in">
-            <h2 class="section-title">Langues</h2>
-            <div class="lang-list">
-                <div class="lang-item">
-                    <div class="lang-flag">&#127467;&#127479;</div>
-                    <div class="lang-name">Francais</div>
-                    <div class="lang-level">Natif</div>
-                </div>
-                <div class="lang-item">
-                    <div class="lang-flag">&#127468;&#127463;</div>
-                    <div class="lang-name">Anglais</div>
-                    <div class="lang-level">Professionnel</div>
-                </div>
-                <div class="lang-item">
-                    <div class="lang-flag">&#127474;&#127462;</div>
-                    <div class="lang-name">Arabe</div>
-                    <div class="lang-level">Courant</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certifications -->
-        <section class="section fade-in">
-            <h2 class="section-title">Certifications</h2>
-            <div class="cert-list">
-                <div class="cert-item">
-                    <div class="cert-icon">&#127942;</div>
-                    <div class="cert-name">Big Data Developer</div>
-                    <div class="cert-org">Explorer Award &middot; 2016</div>
-                </div>
-                <div class="cert-item">
-                    <div class="cert-icon">&#128187;</div>
-                    <div class="cert-name">Python Developer</div>
-                    <div class="cert-org">OpenClassrooms</div>
-                </div>
-            </div>
-        </section>
+      <article class="exp">
+        <div><div class="when">Mai — Déc 2017</div></div>
+        <div>
+          <h3 data-lang="fr">Ingénieur Stagiaire (PFE Master)</h3>
+          <h3 data-lang="en">Engineering Intern (Master’s thesis)</h3>
+          <p class="where">SNTL Group</p>
+          <ul>
+            <li data-lang="fr">Application mobile de géolocalisation et déclaration de sinistre.</li>
+            <li data-lang="en">Mobile app for geolocation and claim reporting.</li>
+            <li data-lang="fr">API REST backend.</li>
+            <li data-lang="en">REST API backend.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Ionic</span><span class="tag">MySQL</span>
+          </div>
+        </div>
+      </article>
 
     </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-cta">Travaillons ensemble</div>
-        <p class="footer-sub">Disponible pour discuter de vos projets et opportunites</p>
-        <div class="footer-links">
-            <a href="https://linkedin.com/in/khalilbenazzouz" class="footer-btn footer-btn--linkedin" target="_blank">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                LinkedIn
-            </a>
-            <a href="https://github.com/khalilbenaz" class="footer-btn footer-btn--github" target="_blank">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                GitHub
-            </a>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-head">
+      <p class="eyebrow">02 · <span data-lang="fr">Projets &amp; open source</span><span data-lang="en">Projects &amp; open source</span></p>
+      <h2 data-lang="fr">Ce que je construis le soir.</h2>
+      <h2 data-lang="en">What I build after hours.</h2>
+    </div>
+
+    <div class="grid-2">
+
+      <a class="card" href="https://github.com/khalilbenaz/RIVORA" target="_blank" rel="noopener">
+        <div class="meta">◆ ENTERPRISE FRAMEWORK</div>
+        <h3>RIVORA</h3>
+        <p data-lang="fr">Framework cloud-native pour .NET 9 basé sur Clean Architecture, DDD et multi-tenancy. Conçu pour les applications SaaS professionnelles. 89% Native AOT, 93 tests.</p>
+        <p data-lang="en">Cloud-native framework for .NET 9 built on Clean Architecture, DDD and multi-tenancy. Made for professional SaaS apps. 89% Native AOT, 93 tests.</p>
+        <div class="tags">
+          <span class="tag accent">.NET 9</span><span class="tag">React 19</span><span class="tag">EF Core</span><span class="tag">CQRS</span><span class="tag">GraphQL</span><span class="tag">Docker</span>
         </div>
-        <p class="footer-copy">&copy; 2025 Khalil Benazzouz</p>
-    </footer>
+      </a>
 
-    <script>
-        // Theme
-        const toggle = document.getElementById('themeToggle');
-        const icon = document.getElementById('themeIcon');
-        let theme = localStorage.getItem('theme') || (new Date().getHours() >= 6 && new Date().getHours() < 18 ? 'light' : 'dark');
+      <a class="card" href="https://github.com/khalilbenaz/MDAN" target="_blank" rel="noopener">
+        <div class="meta">★ AI AGENT NETWORK</div>
+        <h3>MDAN</h3>
+        <p data-lang="fr">Multi-Agent Development Agentic Network. 25+ wizards en 5 phases (Discover → Ship), 19+ agents spécialisés, modes Discussion / Débat / Consensus. Compatible Claude Code &amp; Cursor via MCP.</p>
+        <p data-lang="en">Multi-Agent Development Agentic Network. 25+ wizards across 5 phases (Discover → Ship), 19+ specialised agents, Discussion / Debate / Consensus modes. Compatible with Claude Code &amp; Cursor via MCP.</p>
+        <div class="tags">
+          <span class="tag accent">Node.js</span><span class="tag">MCP</span><span class="tag">Claude Code</span><span class="tag">YAML</span>
+        </div>
+      </a>
 
-        function applyTheme(t) {
-            theme = t;
-            if (t === 'light') {
-                document.documentElement.setAttribute('data-theme', 'light');
-                icon.innerHTML = '&#9728;';
-            } else {
-                document.documentElement.removeAttribute('data-theme');
-                icon.innerHTML = '&#9790;';
-            }
-            localStorage.setItem('theme', t);
-        }
+      <a class="card" href="https://github.com/khalilbenaz/QRLIB" target="_blank" rel="noopener">
+        <div class="meta">▩ NUGET LIBRARY</div>
+        <h3>QRLIB</h3>
+        <p data-lang="fr">Librairie .NET 8 zéro-dépendance pour générer, parser et valider les QR Codes EMVCo Merchant (MPM). Conforme EMVCo et ISO/IEC 18004. CRC16-CCITT automatique.</p>
+        <p data-lang="en">Zero-dependency .NET 8 library for generating, parsing and validating EMVCo Merchant QR Codes (MPM). EMVCo &amp; ISO/IEC 18004 compliant. Automatic CRC16-CCITT.</p>
+        <div class="tags">
+          <span class="tag accent">.NET 8</span><span class="tag">C#</span><span class="tag">EMVCo</span><span class="tag">NuGet</span>
+        </div>
+      </a>
 
-        applyTheme(theme);
-        toggle.addEventListener('click', () => applyTheme(theme === 'dark' ? 'light' : 'dark'));
+      <a class="card" href="https://mock-a.netlify.app/" target="_blank" rel="noopener">
+        <div class="meta">⚡ SAAS · DEMO LIVE</div>
+        <h3>Mocka</h3>
+        <p data-lang="fr">Plateforme pour créer des serveurs mock API instantanément. URLs live, tous les verbes HTTP, CORS intégré, simulation de latence, partage d’équipe.</p>
+        <p data-lang="en">Platform for spinning up mock API servers instantly. Live URLs, every HTTP verb, built-in CORS, latency simulation, team sharing.</p>
+        <div class="tags">
+          <span class="tag accent">Next.js</span><span class="tag">React</span><span class="tag">Tailwind</span><span class="tag">Clerk</span><span class="tag">Vercel</span>
+        </div>
+      </a>
 
-        // Scroll animations
-        const obs = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      <a class="card" href="https://github.com/khalilbenaz/ultra-tv" target="_blank" rel="noopener">
+        <div class="meta">📺 ANDROID TV · DESKTOP · WEB</div>
+        <h3>Ultra TV</h3>
+        <p data-lang="fr">Lecteur IPTV moderne pour Android TV / Google TV (natif Compose-TV), desktop et web. Xtream, M3U, Stalker · HLS/DASH/MPEG-TS · EPG, DVR, Chromecast, multi-langues (EN/FR/ES/AR).</p>
+        <p data-lang="en">Modern IPTV player for Android TV / Google TV (native Compose-TV), desktop and web. Xtream, M3U, Stalker · HLS/DASH/MPEG-TS · EPG, DVR, Chromecast, multi-language (EN/FR/ES/AR).</p>
+        <div class="tags">
+          <span class="tag accent">Kotlin</span><span class="tag">Compose-TV</span><span class="tag">Media3</span><span class="tag">Room</span><span class="tag">Hilt</span>
+        </div>
+      </a>
 
-        document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-    </script>
+      <a class="card" href="https://khalilbenaz.github.io/DBTeam/" target="_blank" rel="noopener">
+        <div class="meta">🗄 WINDOWS DESKTOP IDE</div>
+        <h3>DB TEAM</h3>
+        <p data-lang="fr">IDE SQL Server professionnel pour Windows — modulaire, bilingue (EN/FR), thèmes. Schema/Data Compare, Query Profiler, Table Designer, Data Generator, AI assistant intégré.</p>
+        <p data-lang="en">Professional SQL Server IDE for Windows — modular, bilingual (EN/FR), themeable. Schema/Data Compare, Query Profiler, Table Designer, Data Generator, built-in AI assistant.</p>
+        <div class="tags">
+          <span class="tag accent">.NET 8</span><span class="tag">WPF</span><span class="tag">AvalonEdit</span><span class="tag">MVVM</span><span class="tag">Bogus</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://github.com/khalilbenaz/cleanmac-pro" target="_blank" rel="noopener">
+        <div class="meta">🧹 MACOS · NATIVE</div>
+        <h3>CleanMac Pro</h3>
+        <p data-lang="fr">Cleaner natif Swift pour macOS — rapide, transparent, open source. Binaire ~4 MB, zéro télémétrie. Dashboard SwiftUI : Smart Scan, Space Lens (treemap), audit Privacy/Security.</p>
+        <p data-lang="en">Native Swift cleaner for macOS — fast, transparent, open source. ~4 MB binary, zero telemetry. SwiftUI dashboard: Smart Scan, Space Lens treemap, Privacy/Security audit.</p>
+        <div class="tags">
+          <span class="tag accent">Swift</span><span class="tag">SwiftUI</span><span class="tag">macOS 14+</span><span class="tag">MIT</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://github.com/khalilbenaz/claude-skills-collection" target="_blank" rel="noopener">
+        <div class="meta">⚙ PLUGIN · OPEN SOURCE</div>
+        <h3>Claude Skills Collection</h3>
+        <p data-lang="fr">La plus grande collection open source de skills pour Claude Code : <strong>347 skills, 32 domaines</strong>. Agents, dev, frameworks IA, orchestration multi-agents. Installable en un clic.</p>
+        <p data-lang="en">The largest open-source skills collection for Claude Code: <strong>347 skills across 32 domains</strong>. Agents, dev, AI frameworks, multi-agent orchestration. One-click install.</p>
+        <div class="tags">
+          <span class="tag accent">Claude Code</span><span class="tag">MCP</span><span class="tag">347 skills</span><span class="tag">32 domaines</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-head">
+      <p class="eyebrow">03 · <span data-lang="fr">Compétences</span><span data-lang="en">Skills</span></p>
+      <h2 data-lang="fr">Stack &amp; expertise.</h2>
+      <h2 data-lang="en">Stack &amp; expertise.</h2>
+    </div>
+    <div>
+      <div class="skill-group">
+        <h4>Backend</h4>
+        <div class="skill-list">
+          <span class="tag">C#</span><span class="tag">.NET</span><span class="tag">ASP.NET Core</span><span class="tag">REST API</span><span class="tag">Microservices</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Frontend</h4>
+        <div class="skill-list">
+          <span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Razor</span><span class="tag">CSS</span><span class="tag">Ionic</span><span class="tag">WordPress</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Data &amp; Infra</h4>
+        <div class="skill-list">
+          <span class="tag">SQL Server</span><span class="tag">MySQL</span><span class="tag">EF Core</span><span class="tag">Git</span><span class="tag">Docker</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4><span data-lang="fr">Domaine</span><span data-lang="en">Domain</span></h4>
+        <div class="skill-list">
+          <span class="tag">Fintech</span><span class="tag">Payments</span><span class="tag">Wallet</span><span class="tag">Leadership</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTS + EDU + LANG -->
+  <section id="credentials">
+    <div class="section-head">
+      <p class="eyebrow">04 · <span data-lang="fr">Formation, certifications &amp; langues</span><span data-lang="en">Education, certifications &amp; languages</span></p>
+      <h2 data-lang="fr">Bases académiques.</h2>
+      <h2 data-lang="en">Academic foundations.</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:36px" class="creds-grid">
+      <div>
+        <h3 style="margin-bottom:14px" data-lang="fr">Formation</h3>
+        <h3 style="margin-bottom:14px" data-lang="en">Education</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:18px;font-size:14px">
+          <li>
+            <div style="color:var(--text);font-weight:500">Master 2 — <span data-lang="fr">Systèmes d’Informations Distribués</span><span data-lang="en">Distributed Information Systems</span></div>
+            <div class="meta" style="color:var(--text-3);font-family:var(--font-mono);font-size:12px;margin-top:3px">Université de Lorraine · 2016—2017</div>
+          </li>
+          <li>
+            <div style="color:var(--text);font-weight:500">Master 2 — <span data-lang="fr">Ingénierie logicielle &amp; développement web</span><span data-lang="en">Software engineering &amp; web dev</span></div>
+            <div class="meta" style="color:var(--text-3);font-family:var(--font-mono);font-size:12px;margin-top:3px">Groupe ISGA · 2016—2017</div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:14px">Certifications</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:18px;font-size:14px">
+          <li>
+            <div style="color:var(--text);font-weight:500">🏆 Big Data Developer</div>
+            <div class="meta" style="color:var(--text-3);font-family:var(--font-mono);font-size:12px;margin-top:3px">Explorer Award · 2016</div>
+          </li>
+          <li>
+            <div style="color:var(--text);font-weight:500">💻 Python Developer</div>
+            <div class="meta" style="color:var(--text-3);font-family:var(--font-mono);font-size:12px;margin-top:3px">OpenClassrooms</div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:14px" data-lang="fr">Langues</h3>
+        <h3 style="margin-bottom:14px" data-lang="en">Languages</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:18px;font-size:14px">
+          <li>
+            <div style="color:var(--text);font-weight:500">🇫🇷 <span data-lang="fr">Français</span><span data-lang="en">French</span></div>
+            <div class="meta" style="color:var(--text-3);font-family:var(--font-mono);font-size:12px;margin-top:3px"><span data-lang="fr">Natif</span><span data-lang="en">Native</span></div>
+          </li>
+          <li>
+            <div style="color:var(--text);font-weight:500">🇬🇧 <span data-lang="fr">Anglais</span><span data-lang="en">English</span></div>
+            <div class="meta" style="color:var(--text-3);font-family:var(--font-mono);font-size:12px;margin-top:3px"><span data-lang="fr">Professionnel</span><span data-lang="en">Professional</span></div>
+          </li>
+          <li>
+            <div style="color:var(--text);font-weight:500">🇲🇦 <span data-lang="fr">Arabe</span><span data-lang="en">Arabic</span></div>
+            <div class="meta" style="color:var(--text-3);font-family:var(--font-mono);font-size:12px;margin-top:3px"><span data-lang="fr">Courant</span><span data-lang="en">Fluent</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-head">
+      <p class="eyebrow">05 · Contact</p>
+      <h2 data-lang="fr">Travaillons ensemble.</h2>
+      <h2 data-lang="en">Let’s work together.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:140px 1fr;gap:36px">
+      <div></div>
+      <div>
+        <p class="lede" style="margin-bottom:24px">
+          <span data-lang="fr">Disponible pour discuter de vos projets et opportunités — Team Lead, architecture .NET, plateformes de paiement, ou simplement échanger.</span>
+          <span data-lang="en">Available to discuss projects and opportunities — Team Lead roles, .NET architecture, payment platforms, or just to chat.</span>
+        </p>
+        <div style="display:flex;flex-direction:column;gap:1px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
+          <a href="https://linkedin.com/in/khalilbenazzouz" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;padding:14px 18px;background:var(--bg-elev);border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-3);font-family:var(--font-mono);font-size:12px">LINKEDIN</span>
+            <span>/in/khalilbenazzouz ↗</span>
+          </a>
+          <a href="https://github.com/khalilbenaz" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;padding:14px 18px;background:var(--bg-elev);border-bottom:1px solid var(--border)">
+            <span style="color:var(--text-3);font-family:var(--font-mono);font-size:12px">GITHUB</span>
+            <span>@khalilbenaz ↗</span>
+          </a>
+          <a href="blog.html" style="display:flex;justify-content:space-between;padding:14px 18px;background:var(--bg-elev)">
+            <span style="color:var(--text-3);font-family:var(--font-mono);font-size:12px">BLOG</span>
+            <span data-lang="fr">Lire le blog →</span><span data-lang="en">Read the blog →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 Khalil Benazzouz</div>
+    <div style="display:flex;gap:18px">
+      <a href="blog.html">Blog</a>
+      <a href="https://linkedin.com/in/khalilbenazzouz" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/khalilbenaz" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</footer>
+<style>
+  @media (max-width: 720px) {
+    .hero-grid { grid-template-columns: 1fr !important; }
+    .creds-grid { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 920px) {
+    .creds-grid { grid-template-columns: 1fr 1fr !important; }
+  }
+</style>
 </body>
 </html>
