@@ -7,14 +7,16 @@ window.BLOG_CONFIG = {
   publishedLabel: "blog",
   draftLabel: "draft",
   // Tag labels surfaced in the UI (lowercase). Anything else is shown as a generic tag.
-  tagLabels: ["dotnet", "fintech", "payments", "ai", "architecture", "tutorial", "open-source", "leadership", "anthropic", "openai", "mcp", "security", "chromium"],
-  // Friendly display names per label
+  tagLabels: ["dotnet", "fintech", "payments", "ai", "architecture", "tutorial", "open-source", "leadership", "anthropic", "openai", "mcp", "security", "chromium", "gemini", "typescript", "javascript", "postgres", "rust", "kubernetes", "tailwind", "webgpu", "bun"],
   tagDisplay: {
     "dotnet": ".NET", "fintech": "Fintech", "payments": "Payments",
     "ai": "IA / LLM", "architecture": "Architecture", "tutorial": "Tutoriel",
     "open-source": "Open source", "leadership": "Leadership",
     "anthropic": "Anthropic", "openai": "OpenAI", "mcp": "MCP",
-    "security": "Sécurité", "chromium": "Chromium"
+    "security": "Sécurité", "chromium": "Chromium", "gemini": "Gemini",
+    "typescript": "TypeScript", "javascript": "JavaScript",
+    "postgres": "PostgreSQL", "rust": "Rust", "kubernetes": "Kubernetes",
+    "tailwind": "Tailwind", "webgpu": "WebGPU", "bun": "Bun"
   },
   // Cache TTL (sessionStorage) — 5 minutes
   cacheTtlMs: 5 * 60 * 1000,
@@ -131,17 +133,20 @@ window.Blog = (function () {
   // Extract the body block matching the requested locale.
   // Convention: <!--lang:fr-->...<!--/lang:fr--> and <!--lang:en-->...<!--/lang:en-->
   // Fallback: the other locale, then the whole body (mono-language article).
+  function stripLangMarkers(s) {
+    return (s || "").replace(/<!--\s*\/?\s*lang:(fr|en)\s*-->/gi, "");
+  }
+
   function localizedBody(md, locale) {
     if (!md) return "";
     const hasBlocks = /<!--\s*lang:(fr|en)\s*-->/i.test(md);
     if (!hasBlocks) return md;
     const re = (lang) => new RegExp(`<!--\\s*lang:${lang}\\s*-->([\\s\\S]*?)<!--\\s*/lang:${lang}\\s*-->`, "i");
     const wanted = md.match(re(locale));
-    if (wanted) return wanted[1].trim();
+    if (wanted) return stripLangMarkers(wanted[1]).trim();
     const other = md.match(re(locale === "fr" ? "en" : "fr"));
-    if (other) return other[1].trim();
-    // Strip all lang blocks if neither matched
-    return md.replace(/<!--\s*lang:(fr|en)\s*-->[\s\S]*?<!--\s*\/lang:\1\s*-->/gi, "").trim();
+    if (other) return stripLangMarkers(other[1]).trim();
+    return stripLangMarkers(md).trim();
   }
 
   function localizedTitle(issue, fm, locale) {
@@ -171,6 +176,7 @@ window.Blog = (function () {
 
   // ---- markdown rendering ----
   function renderMarkdown(md) {
+    md = stripLangMarkers(md || "");
     if (window.marked) {
       const renderer = new marked.Renderer();
       // Add ids to headings for TOC + anchor scrolling
