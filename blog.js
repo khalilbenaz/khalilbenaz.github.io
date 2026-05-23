@@ -83,15 +83,11 @@ window.Blog = (function () {
   }
 
   async function listPublishedIssues() {
-    const [openIssues, closedIssues] = await Promise.all([
-      fetchAllPages("open"),
-      fetchAllPages("closed"),
-    ]);
+    const openIssues = await fetchAllPages("open");
     const open = openIssues.filter((i) => !i.pull_request);
-    const closed = closedIssues.filter((i) => !i.pull_request);
 
     const seen = new Set();
-    const merged = [...open, ...closed].filter((i) => {
+    const merged = open.filter((i) => {
       if (seen.has(i.number)) return false;
       seen.add(i.number);
       const isDraft = (i.labels || []).some((l) => (l.name || "").toLowerCase() === cfg.draftLabel);
