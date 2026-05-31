@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "e51df60e",
+    "title": "Bun.serve et le futur HTTP TypeScript",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/271",
+    "excerpt": "## Bun.serve — l'intégré Bun runtime intègre `Bun.serve()` : serveur HTTP natif, performant. ```ts Bun.serve({ port: 3000, fetch(req) { const url = new URL(req.url); if (url.pathname === \"/\") return new Response(\"Hello\"); if (url.pathname === \"/api/users\") return Response.json([{ id: 1 }]); return new Response(\"Not Found\", { status: 404 }); }, }); ``` Pas d'imports externes. API standard Web (Request/Response). ## Pe",
+    "tags": [
+      "BLOG",
+      "BUN",
+      "JAVASCRIPT"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
