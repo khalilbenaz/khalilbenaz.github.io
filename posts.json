@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "4141b992",
+    "title": "Migrations zero-downtime — patterns 2026",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/284",
+    "excerpt": "## Le problème SaaS production, vous voulez modifier schema DB : - Renamer une column. - Ajouter une column NOT NULL. - Drop une column. - Modifier type. Si vous faites naïvement : DB lock, app down, users furieux. ## Expand-Contract pattern **Étape 1 : Expand** — ajout sans casser : ```sql -- Add new column nullable ALTER TABLE users ADD COLUMN email_v2 TEXT; ``` App ancienne : ignore. App nouvelle : write des deux ",
+    "tags": [
+      "BLOG",
+      "POSTGRES",
+      "ARCHITECTURE"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
