@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "c4118514",
+    "title": "Cursor — l'IDE AI-first en 2026",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/256",
+    "excerpt": "## Cursor en 2026 Cursor a maintenu son lead vs GitHub Copilot dans VS Code grâce à : - **Tab predictions** : suggestions cross-file, contextuelles. - **Composer** : edit multi-files via prompt. - **Agents** : tâches autonomes longues. - **MCP integration** : connecter tools custom. Pricing : $20/mois pour Pro. ## Tab predictions Différence vs Copilot : - Cursor lit votre **cursor position + edits récents** + **fichi",
+    "tags": [
+      "BLOG",
+      "AI",
+      "TOOLING"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
