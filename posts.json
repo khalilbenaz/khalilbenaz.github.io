@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "464c920d",
+    "title": "Async Rust avec Axum — patterns 2026",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/292",
+    "excerpt": "## Axum — sweet spot Rust HTTP Axum (Tokio team) est devenu défaut Rust HTTP. Sweet spot : composable, type-safe, performant. ```rust use axum::{routing::get, Router, Json}; async fn root() -> &'static str { \"Hello\" } async fn user() -> Json<User> { Json(User { id: 1, name: \"Khalil\".into() }) } #[tokio::main] async fn main() { let app = Router::new() .route(\"/\", get(root)) .route(\"/user\", get(user)); let listener = t",
+    "tags": [
+      "BLOG",
+      "RUST"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
