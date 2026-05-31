@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "5ba990f5",
+    "title": "Vitest 3 — le test runner moderne",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/257",
+    "excerpt": "## Vitest vs Jest Jest dominait JS testing depuis 2016. En 2026, Vitest a pris le lead pour projets modernes : - **Vite-native** : utilise votre config Vite, hot reload de tests. - **ESM-first** : pas de hacks pour ESM. - **Plus rapide** : 2-3× vs Jest sur projets moyens. - **Browser mode** : tests dans vraie browser sans Playwright lourd. ## Setup ```bash npm install -D vitest ``` ```ts // vitest.config.ts import { ",
+    "tags": [
+      "BLOG",
+      "JAVASCRIPT",
+      "TESTING"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
