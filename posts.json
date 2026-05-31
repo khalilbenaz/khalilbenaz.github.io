@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "74c4aa7d",
+    "title": "Rust async — Tokio en 2026",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/273",
+    "excerpt": "## Tokio en 2026 Tokio (créé 2016) est le runtime async dominant Rust : - **Async/await** : syntaxe standard depuis Rust 2018 edition. - **Performance** : top tier (proche C). - **Écosystème** : axum, sqlx, tonic, tracing tous Tokio-native. Quasi-monopole : 95 % des projets async Rust utilisent Tokio. ## Patterns standards **Spawn task** : ```rust tokio::spawn(async { println!(\"Hello from task\"); }); ``` **Async I/O*",
+    "tags": [
+      "BLOG",
+      "RUST"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
