@@ -571,5 +571,16 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "4588da74",
+    "title": "io_uring : I/O async Linux haute performance",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/303",
+    "excerpt": "## Pourquoi io_uring Sur Linux, l'I/O async historique était fragmentée : - **epoll** : readiness notification mais syscalls bloquants ensuite. - **AIO** : completion-based mais buggé, file-only, sync sur certains cas. - **Threads + blocking** : simple mais coûteux (context switches). io_uring (depuis 5.1, 2019) unifie tout : completion-based, batch, zero-copy possible, supporte fichiers/sockets/timers/everything. ##",
+    "tags": [
+      "BLOG"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
