@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "4031f111",
+    "title": "PNPM workspaces — monorepo TS moderne",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/287",
+    "excerpt": "## PNPM vs npm vs Yarn | | npm | Yarn | PNPM | |---|---|---|---| | Install speed | Lent | Mid | Rapide | | Disk space | Énorme (dup) | Énorme | Symlinks (économique) | | Workspaces | Oui | Oui | Excellent | | Strict mode | Non | Non | Oui (pas d'import implicit) | | Adoption | Mainstream | Décline | Croissante | PNPM gagne sur perf + disk + workspaces. ## Setup workspace ```yaml # pnpm-workspace.yaml packages: - 'app",
+    "tags": [
+      "BLOG",
+      "JAVASCRIPT",
+      "TOOLING"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
