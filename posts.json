@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "91c94f29",
+    "title": "Sentry — error tracking et performance",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/285",
+    "excerpt": "## Sentry 2026 Sentry combine : - **Error tracking** : exceptions, source maps. - **Performance monitoring** : traces, slow queries. - **Session replay** : video user reproducing bug. - **Profiling** : flamegraphs production. Tout intégré dans une plateforme. ## Setup Node ```bash npm install @sentry/node ``` ```ts import * as Sentry from '@sentry/node'; Sentry.init({ dsn: process.env.SENTRY_DSN, tracesSampleRate: 0.",
+    "tags": [
+      "BLOG",
+      "OBSERVABILITY"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
