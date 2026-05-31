@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "1674817a",
+    "title": "Domain-driven design — pragmatique 2026",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/291",
+    "excerpt": "## DDD — l'essentiel utile Domain-Driven Design (Eric Evans, 2003) propose des patterns pour domaines complexes. En 2026, beaucoup d'idées sont devenues standard, mais l'application dogmatique reste piège. ## Les concepts utiles **Ubiquitous Language** : code utilise les termes business. Pas `User` mais `Customer`, `Patient`, `Subscriber` selon contexte. **Bounded Contexts** : domaines délimités. \"Customer\" en market",
+    "tags": [
+      "BLOG",
+      "ARCHITECTURE"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
