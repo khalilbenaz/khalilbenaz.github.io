@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "e183213b",
+    "title": "Crossplane — Infrastructure as Kubernetes Resource",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/265",
+    "excerpt": "## Crossplane — l'IaC via K8s Crossplane (CNCF) installe des **CRDs** dans votre cluster K8s qui exposent les ressources cloud (S3 bucket, RDS, etc.) comme des objets Kubernetes. ```yaml apiVersion: rds.aws.upbound.io/v1beta1 kind: Instance metadata: name: my-db spec: forProvider: region: us-east-1 engine: postgres engineVersion: \"16\" instanceClass: db.t3.medium allocatedStorage: 20 providerConfigRef: name: aws-defau",
+    "tags": [
+      "BLOG",
+      "KUBERNETES",
+      "DEVOPS"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
