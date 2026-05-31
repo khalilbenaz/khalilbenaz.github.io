@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "f33e2ea9",
+    "title": "Vitest vs Jest — choix testing TS",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/275",
+    "excerpt": "## L'évolution testing TS Jest dominait depuis 2016. En 2026, Vitest a pris le lead : - **Plus rapide** : 2-3× vs Jest. - **ESM natif** : pas de hacks. - **Vite-native** : same config que votre Vite app. - **Browser mode** : tests dans real browser. ## Vitest setup ```ts // vitest.config.ts import { defineConfig } from 'vitest/config'; export default defineConfig({ test: { environment: 'happy-dom', globals: true, cov",
+    "tags": [
+      "BLOG",
+      "JAVASCRIPT",
+      "TESTING"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
