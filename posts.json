@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "2de4ce5b",
+    "title": "Browser DevTools 2026 — Chrome, Firefox, Safari",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/296",
+    "excerpt": "## DevTools sous-utilisés Chrome, Firefox, Safari ont ajoutés des features puissants que beaucoup de devs ignorent. ## Chrome — Recorder Onglet Recorder : enregistre user flow, replay automatique pour test. ``` 1. Recorder tab → Start recording 2. Vous cliquez votre flow (login, navigate, fill form). 3. Stop recording. 4. Replay anytime to verify. 5. Export en Puppeteer / Playwright script. ``` Idéal pour tests E2E s",
+    "tags": [
+      "BLOG",
+      "TOOLING",
+      "FRONTEND"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
