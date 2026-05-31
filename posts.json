@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "52fd2e2f",
+    "title": "Embedding models 2026 — Voyage, Cohere, Jina, OpenAI",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/289",
+    "excerpt": "## Le choix embedding Pour RAG, l'embedding model détermine la quality du retrieval. Plusieurs options en 2026. ## OpenAI text-embedding-3-large ```python from openai import OpenAI client = OpenAI() response = client.embeddings.create( input=\"Hello\", model=\"text-embedding-3-large\" ) embedding = response.data[0].embedding # 3072 dims ``` - **Dimensions** : 3072 (compressible à 256-1536 via truncation). - **Coût** : $0",
+    "tags": [
+      "BLOG",
+      "AI"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
