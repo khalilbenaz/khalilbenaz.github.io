@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "af357441",
+    "title": "Reranking — la couche au-dessus de vector search",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/290",
+    "excerpt": "## Pourquoi reranking Vector search : embed query → top-K nearest neighbors. Rapide mais imparfait. Reranking : top-K candidates → re-score avec model plus précis → top-N final. Pattern : retrieve 50 candidates, rerank top 5. Quality meilleur que vector alone. ## Cohere Rerank ```python import cohere co = cohere.Client() # Step 1: vector search → 50 candidates candidates = vector_search(query, top_k=50) # Step 2: rer",
+    "tags": [
+      "BLOG",
+      "AI"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
