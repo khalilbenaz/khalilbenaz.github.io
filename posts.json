@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "d6ce753a",
+    "title": "Conventional Commits et release automation",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/279",
+    "excerpt": "## Conventional Commits Format standardisé : ``` <type>(<scope>): <description> feat(auth): add OAuth Google provider fix(api): handle null user gracefully docs(readme): update install instructions chore(deps): bump dependencies ``` Types : `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`. ## Pourquoi ? - **Changelog auto-généré** depuis messages commit. - **Version semantic** auto : feat = minor, ",
+    "tags": [
+      "BLOG",
+      "TOOLING"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
