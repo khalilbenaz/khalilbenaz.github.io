@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "5462aa90",
+    "title": "ArgoCD pour GitOps moderne",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/264",
+    "excerpt": "## ArgoCD — GitOps en pratique GitOps = git comme source de vérité pour Kubernetes. Push to git → ArgoCD synchronise cluster avec git. ```yaml # Application ArgoCD apiVersion: argoproj.io/v1alpha1 kind: Application metadata: name: my-app spec: source: repoURL: https://github.com/me/k8s-config path: apps/my-app/overlays/prod targetRevision: main destination: server: https://kubernetes.default.svc namespace: production",
+    "tags": [
+      "BLOG",
+      "KUBERNETES"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
