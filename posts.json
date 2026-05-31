@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "ceb692e9",
+    "title": "Markdown au-delà du blog — outils techniques",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/299",
+    "excerpt": "## Markdown élargi Markdown ne sert pas qu'aux blogs. En 2026, plein d'outils utilisent Markdown comme source pour : - Slides (Marp, Slidev). - Livres techniques (mdBook). - Reports (Quarto). - Dashboards (Observable). ## Marp — slides depuis Markdown ```markdown --- marp: true theme: default --- # Title slide Sub-text --- ## Slide 2 - Bullet 1 - Bullet 2 ``` ```bash marp slides.md -o slides.pdf ``` Présentation géné",
+    "tags": [
+      "BLOG",
+      "DOCS"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
