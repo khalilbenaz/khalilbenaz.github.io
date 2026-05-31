@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "d25624b4",
+    "title": "Tailwind v4 — Rust engine et CSS-first",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/266",
+    "excerpt": "## Tailwind v4 — les changements Tailwind v4 (sorti fin 2024) marque un tournant : - **Rust engine** : 10× plus rapide qu'v3. - **CSS-first config** : `@theme` dans votre CSS, plus de `tailwind.config.js`. - **Native CSS variables** générées automatiquement. - **@import** au lieu de `@tailwind`. ## Setup v4 ```css /* style.css */ @import \"tailwindcss\"; @theme { --color-brand: #059669; --font-display: \"Geist\", sans-se",
+    "tags": [
+      "BLOG",
+      "TAILWIND",
+      "CSS"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
