@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "160905af",
+    "title": "Service Worker patterns modernes",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/254",
+    "excerpt": "## Service Workers — l'essentiel Service Worker = JS qui tourne en background du browser, intercepte requests réseau, gère cache. Base des PWA. Cas d'usage : - **Offline mode** : app marche sans internet. - **Cache strategies** : control sur fetch. - **Push notifications**. - **Background sync** : actions différées online. ## Workbox — le framework Google's Workbox abstrait les patterns courants : ```js // sw.js avec",
+    "tags": [
+      "BLOG",
+      "JAVASCRIPT",
+      "PWA"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
