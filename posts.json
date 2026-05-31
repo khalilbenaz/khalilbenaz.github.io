@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "3f503454",
+    "title": "Renovate vs Dependabot — dependencies auto",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/280",
+    "excerpt": "## Le besoin Dépendances obsolètes = vulnerabilities + tech debt. Renovate et Dependabot ouvrent PRs auto pour bumper deps. ## Dependabot Intégré GitHub. Setup : ```yaml # .github/dependabot.yml version: 2 updates: - package-ecosystem: \"npm\" directory: \"/\" schedule: interval: \"weekly\" ``` Simple. PRs auto chaque semaine pour update deps. Limites : - Config limitée. - Groupement updates basique. - Pas de regex matchin",
+    "tags": [
+      "BLOG",
+      "SECURITY",
+      "TOOLING"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
