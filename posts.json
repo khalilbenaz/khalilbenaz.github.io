@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "d05cff91",
+    "title": "Helm vs Kustomize — choisir son K8s templating",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/263",
+    "excerpt": "## Le besoin Vous voulez déployer une app Kubernetes dans plusieurs environnements (dev, staging, prod). Comment paramétrer les manifests sans dupliquer ? Deux approches dominantes : Helm et Kustomize. ## Helm — le package manager K8s Helm template les YAMLs avec des variables : ```yaml # templates/deployment.yaml apiVersion: apps/v1 kind: Deployment metadata: name: {{ .Values.name }} spec: replicas: {{ .Values.repli",
+    "tags": [
+      "BLOG",
+      "KUBERNETES"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
