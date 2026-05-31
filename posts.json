@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "42e5f65b",
+    "title": "React Hook Form vs TanStack Form",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/277",
+    "excerpt": "## Forms libraries React React Hook Form (RHF) a dominé depuis 2019. TanStack Form (Tanner Linsley) challenge en 2024. ## React Hook Form ```tsx import { useForm } from 'react-hook-form'; import { zodResolver } from '@hookform/resolvers/zod'; import { z } from 'zod'; const schema = z.object({ email: z.string().email(), age: z.number().min(18), }); function MyForm() { const { register, handleSubmit, formState: { error",
+    "tags": [
+      "BLOG",
+      "TYPESCRIPT",
+      "REACT"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
