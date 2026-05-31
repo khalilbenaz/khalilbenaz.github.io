@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "2d0ccd82",
+    "title": "Devbox et Nix — dev environments reproductibles",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/283",
+    "excerpt": "## Le problème setup dev Nouveau dev arrive : - Installer Node version exacte (nvm). - Installer Postgres version exacte. - Installer Redis. - Etc. 3 jours de \"works on my machine\". Frustration. ## Nix — solution puriste Nix package manager garantit reproducibility. Mais syntax Nix = courbe d'apprentissage. ## Devbox — abstraction friendly ```json // devbox.json { \"packages\": [ \"nodejs@20\", \"postgresql@16\", \"redis@7\"",
+    "tags": [
+      "BLOG",
+      "TOOLING"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
