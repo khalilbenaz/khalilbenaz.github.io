@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "a8eac485",
+    "title": "Passkeys — implémentation côté serveur",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/282",
+    "excerpt": "## Passkeys — l'auth moderne Passkeys (WebAuthn) remplacent passwords : - **Phishing-resistant** : domain-bound. - **No credential leak** : private key reste sur device. - **UX excellente** : Face ID, Touch ID, Windows Hello. Adopté Google, Apple, Microsoft, GitHub, AWS en 2025-2026. ## Implementation Node ```bash npm install @simplewebauthn/server ``` ```ts import { generateRegistrationOptions, verifyRegistrationRes",
+    "tags": [
+      "BLOG",
+      "SECURITY"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
