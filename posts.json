@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "835350a1",
+    "title": "OpenTofu — la fork OSS de Terraform",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/262",
+    "excerpt": "## Le contexte HashiCorp a changé Terraform en BSL en 2023 → fork community → OpenTofu. Soutien Linux Foundation, sponsors AWS, GitLab, Spacelift. En 2026, OpenTofu a dépassé Terraform en downloads mensuels. ## Compatibilité OpenTofu compatible Terraform 1.5 + ajouts spécifiques : - Provider-defined functions. - State encryption native. - Loop control flow améliorations. Workflow identique : ```bash tofu init tofu pl",
+    "tags": [
+      "BLOG",
+      "TERRAFORM",
+      "DEVOPS"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
