@@ -3,7 +3,7 @@
 // Other labels = tags. URL of article = post.html?id=<issue_number>.
 
 window.BLOG_CONFIG = {
-  repo: "khalilbenaz/khalilbenaz.github.io",
+  repo: "MikeGarciaAGM/khalilbenaz.github.io",
   publishedLabel: "blog",
   draftLabel: "draft",
   // Tag labels surfaced in the UI (lowercase). Anything else is shown as a generic tag.
