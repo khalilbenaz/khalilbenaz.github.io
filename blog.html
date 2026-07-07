@@ -7,217 +7,104 @@
 <meta name="description" content="Notes, retours d'expérience et tutoriels — .NET, fintech, IA." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=7" />
-<style>
-  .filters {
-    display: flex; flex-direction: column; gap: 10px;
-    padding: 18px 0; border-bottom: 1px solid var(--border);
-    position: sticky; top: 60px; z-index: 20;
-    background: color-mix(in oklab, var(--bg) 92%, transparent);
-    backdrop-filter: blur(10px);
-  }
-  .filters-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
-  .search {
-    display: flex; align-items: center; gap: 8px;
-    flex: 1; min-width: 220px; max-width: 360px;
-    border: 1px solid var(--border); border-radius: 8px;
-    padding: 0 10px; background: var(--bg-elev);
-    transition: border-color .15s;
-  }
-  .search:focus-within { border-color: var(--accent); }
-  .search input { border: 0; outline: 0; background: transparent; color: var(--text); font: inherit; height: 36px; flex: 1; }
-  .search svg { width: 14px; height: 14px; color: var(--text-3); }
-  .search kbd { font-family: var(--font-mono); font-size: 11px; color: var(--text-3); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; }
-  .chips-wrap {
-    position: relative;
-    display: flex; align-items: center; gap: 4px;
-  }
-  .chips-scroll-btn {
-    flex-shrink: 0; width: 28px; height: 28px;
-    border-radius: 999px; border: 1px solid var(--border);
-    background: var(--bg-elev); color: var(--text-2);
-    display: grid; place-items: center; cursor: pointer;
-    transition: all .15s;
-  }
-  .chips-scroll-btn:hover { color: var(--text); border-color: var(--border-strong); }
-  .chips-scroll-btn:disabled { opacity: .3; cursor: default; }
-  .chips-scroll-btn svg { width: 14px; height: 14px; }
-  .chips {
-    display: flex; gap: 6px;
-    overflow-x: auto; overflow-y: hidden;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    flex: 1; min-width: 0;
-    padding: 2px 0;
-    mask-image: linear-gradient(to right, transparent, #000 12px, #000 calc(100% - 12px), transparent);
-  }
-  .chips::-webkit-scrollbar { display: none; }
-  .chip {
-    font-family: var(--font-mono); font-size: 12px;
-    padding: 5px 10px; border-radius: 999px;
-    background: var(--bg-soft); color: var(--text-2);
-    border: 1px solid var(--border);
-    cursor: pointer; transition: all .15s;
-    white-space: nowrap; flex-shrink: 0;
-    display: inline-flex; align-items: center; gap: 6px;
-  }
-  .chip:hover { color: var(--text); border-color: var(--border-strong); }
-  .chip[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .chip .count {
-    font-size: 10px; opacity: .7;
-    padding: 0 5px; border-radius: 999px;
-    background: color-mix(in oklab, currentColor 18%, transparent);
-  }
-
-  .pagination {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 28px 0; gap: 12px; flex-wrap: wrap;
-  }
-  .pagination-info { color: var(--text-3); font-family: var(--font-mono); font-size: 12px; }
-  .pagination-controls { display: flex; gap: 6px; }
-  .page-btn {
-    min-width: 34px; height: 34px; padding: 0 10px;
-    border-radius: 8px; border: 1px solid var(--border);
-    background: var(--bg-elev); color: var(--text-2);
-    font: inherit; font-size: 13px; cursor: pointer;
-    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-    transition: all .15s;
-  }
-  .page-btn:hover:not(:disabled) { color: var(--text); border-color: var(--border-strong); }
-  .page-btn:disabled { opacity: .4; cursor: not-allowed; }
-  .page-btn[aria-current="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .page-btn svg { width: 14px; height: 14px; }
-  .page-ellipsis { color: var(--text-3); padding: 0 4px; align-self: center; }
-
-  .post-list { display: flex; flex-direction: column; }
-  .post-row {
-    display: grid; grid-template-columns: 140px 1fr auto;
-    gap: 28px; padding: 28px 0;
-    border-bottom: 1px solid var(--border);
-    align-items: start;
-    transition: background-color .15s;
-  }
-  .post-row:hover { background: var(--bg-soft); }
-  .post-row:hover h3 { color: var(--accent); }
-  .post-row .when { color: var(--text-3); font-family: var(--font-mono); font-size: 12px; padding-top: 4px; }
-  .post-row .read { color: var(--text-3); font-family: var(--font-mono); font-size: 12px; padding-top: 4px; white-space: nowrap; }
-  .post-row h3 { font-size: 19px; font-weight: 600; margin: 0; transition: color .15s; }
-  .post-row p { margin: 8px 0 0; color: var(--text-2); font-size: 14px; max-width: 65ch; }
-  .post-row .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
-  @media (max-width: 720px) {
-    .post-row { grid-template-columns: 1fr; gap: 6px; }
-    .post-row .when, .post-row .read { padding-top: 0; }
-    .filters { position: static; }
-  }
-  .post-row.hidden { display: none; }
-
-  .state {
-    padding: 56px 0; text-align: center; color: var(--text-2);
-    border-bottom: 1px solid var(--border);
-  }
-  .state-mono { font-family: var(--font-mono); font-size: 13px; color: var(--text-3); margin-bottom: 16px; }
-  .state h3 { font-size: 22px; margin: 0 0 10px; }
-  .state p { margin: 0 auto 18px; max-width: 50ch; }
-
-  .skeleton {
-    height: 90px; border-bottom: 1px solid var(--border);
-    background: linear-gradient(90deg, var(--bg-soft) 25%, var(--bg-elev) 50%, var(--bg-soft) 75%);
-    background-size: 200% 100%;
-    animation: sh 1.4s ease-in-out infinite;
-  }
-  @keyframes sh { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css?v=8" />
 <script src="shared.js?v=6" defer></script>
 <script src="blog.js?v=10" defer></script>
 </head>
 <body>
-<header class="nav">
-  <div class="wrap nav-inner">
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
     <a class="brand" href="index.html">
       <span class="brand-mark">KB</span>
-      <span>Khalil Benazzouz</span>
+      <span class="brand-role">Senior Software<br/>Engineer</span>
     </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="index.html#work" data-lang="fr">Parcours</a><a href="index.html#work" data-lang="en">Work</a>
-      <a href="index.html#projects" data-lang="fr">Projets</a><a href="index.html#projects" data-lang="en">Projects</a>
-      <a href="index.html#skills" data-lang="fr">Compétences</a><a href="index.html#skills" data-lang="en">Skills</a>
-      <a href="blog.html" aria-current="page">Blog</a>
-      <a href="index.html#contact">Contact</a>
+
+    <h1 class="side-name">Khalil<br/>Benaz&shy;zouz<span class="dot">.</span></h1>
+    <p class="side-tagline"><span data-lang="fr">Team Leader &amp; Senior .NET Engineer — solutions de paiement digital.</span><span data-lang="en">Team Leader &amp; Senior .NET Engineer — digital-payment solutions.</span></p>
+    <div class="side-badge"><span class="live"></span><span data-lang="fr">DISPONIBLE</span><span data-lang="en">AVAILABLE</span></div>
+
+    <nav class="side-nav" aria-label="Primary">
+      <a class="navlink" href="index.html#work"><span class="navnum">01</span><span data-lang="fr">Parcours</span><span data-lang="en">Experience</span></a>
+      <a class="navlink" href="index.html#projects"><span class="navnum">02</span><span data-lang="fr">Projets</span><span data-lang="en">Projects</span></a>
+      <a class="navlink" href="index.html#skills"><span class="navnum">03</span><span data-lang="fr">Compétences</span><span data-lang="en">Skills</span></a>
+      <a class="navlink" href="index.html#credentials"><span class="navnum">04</span><span data-lang="fr">Formation</span><span data-lang="en">Education</span></a>
+      <a class="navlink" href="index.html#contact"><span class="navnum">05</span><span>Contact</span></a>
+      <a class="navlink" href="blog.html" aria-current="page"><span class="navnum">→</span><span>Blog</span></a>
     </nav>
-    <div class="nav-tools">
-      <a class="icon-btn" id="new-post-link" href="#" target="_blank" rel="noopener" title="Écrire un nouvel article" aria-label="New post">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-      </a>
-      <button class="icon-btn" data-action="toggle-locale" type="button">FR</button>
-      <button class="icon-btn" data-action="toggle-theme" type="button" aria-label="Toggle theme">
-        <svg data-icon="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
-        <svg data-icon="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" hidden><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      </button>
-    </div>
-  </div>
-</header>
 
-<main class="wrap">
-  <section class="hero" style="border-top:0;padding-bottom:36px">
-    <p class="eyebrow">Blog · 2026</p>
-    <h1 style="margin-top:14px">
-      <span data-lang="fr">Notes de terrain.</span>
-      <span data-lang="en">Field notes.</span>
-    </h1>
-    <p class="lede" style="margin-top:18px">
-      <span data-lang="fr">.NET, fintech, architecture et IA. Articles écrits depuis des Issues GitHub — proposez les vôtres en ouvrant une issue avec le label <code style="font-family:var(--font-mono);background:var(--bg-soft);padding:1px 6px;border-radius:4px">blog</code>.</span>
-      <span data-lang="en">.NET, fintech, architecture and AI. Articles are written as GitHub Issues — feel free to open one with the <code style="font-family:var(--font-mono);background:var(--bg-soft);padding:1px 6px;border-radius:4px">blog</code> label.</span>
-    </p>
-  </section>
-
-  <!-- Filters -->
-  <div class="filters">
-    <div class="filters-row">
-      <label class="search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input id="q" type="search" placeholder="Rechercher…" aria-label="Search" />
-        <kbd>⌘K</kbd>
-      </label>
-    </div>
-    <div class="chips-wrap">
-      <button class="chips-scroll-btn" id="chips-prev" aria-label="Scroll tags left" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 6-6 6 6 6"/></svg>
-      </button>
-      <div class="chips" id="chips" role="group" aria-label="Filter by tag">
-        <button class="chip" data-tag="all" aria-pressed="true"><span data-lang="fr">Tout</span><span data-lang="en">All</span><span class="count" id="count-all"></span></button>
+    <div class="side-foot">
+      <div class="side-tools no-print">
+        <a class="icon-btn" id="new-post-link" href="#" target="_blank" rel="noopener" title="Écrire un nouvel article" aria-label="New post"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></a>
+        <button class="icon-btn" data-action="toggle-locale" type="button">FR</button>
+        <button class="icon-btn" data-action="toggle-theme" type="button" aria-label="Toggle theme">
+          <svg data-icon="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          <svg data-icon="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" hidden><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
       </div>
-      <button class="chips-scroll-btn" id="chips-next" aria-label="Scroll tags right" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
-      </button>
+      <div class="side-copyright">RABAT · MA — © 2026</div>
     </div>
-  </div>
+  </aside>
 
-  <!-- Posts -->
-  <div class="post-list" id="posts" aria-live="polite">
-    <div class="skeleton"></div>
-    <div class="skeleton" style="opacity:.7"></div>
-    <div class="skeleton" style="opacity:.4"></div>
-  </div>
+  <!-- CONTENT -->
+  <main class="content">
 
-  <!-- Pagination -->
-  <nav class="pagination" id="pagination" aria-label="Pagination" hidden>
-    <div class="pagination-info" id="pagination-info"></div>
-    <div class="pagination-controls" id="pagination-controls"></div>
-  </nav>
+    <section class="hero compact">
+      <div class="hero-glow"></div>
+      <p class="hero-kicker">Blog · 2026</p>
+      <h1 style="margin-top:14px;font-weight:800;font-size:clamp(38px,5vw,54px);letter-spacing:-0.035em">
+        <span data-lang="fr">Notes de terrain.</span><span data-lang="en">Field notes.</span>
+      </h1>
+      <p class="hero-lede" style="max-width:60ch">
+        <span data-lang="fr">.NET, fintech, architecture et IA. Articles écrits depuis des Issues GitHub — proposez les vôtres en ouvrant une issue avec le label <code style="font-family:var(--font-mono);background:var(--bg-soft);padding:1px 6px;border-radius:4px">blog</code>.</span>
+        <span data-lang="en">.NET, fintech, architecture and AI. Articles are written as GitHub Issues — feel free to open one with the <code style="font-family:var(--font-mono);background:var(--bg-soft);padding:1px 6px;border-radius:4px">blog</code> label.</span>
+      </p>
+    </section>
 
-</main>
-
-<footer>
-  <div class="wrap foot">
-    <div>© 2026 Khalil Benazzouz</div>
-    <div style="display:flex;gap:18px">
-      <a href="index.html">CV</a>
-      <a href="https://github.com/khalilbenaz/khalilbenaz.github.io/issues?q=is%3Aissue+label%3Ablog" target="_blank" rel="noopener">Source (GitHub Issues)</a>
-      <a href="https://github.com/khalilbenaz" target="_blank" rel="noopener">GitHub</a>
+    <!-- Filters -->
+    <div class="filters">
+      <div class="filters-row">
+        <label class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" placeholder="Rechercher…" aria-label="Search" />
+          <kbd>⌘K</kbd>
+        </label>
+      </div>
+      <div class="chips-wrap">
+        <button class="chips-scroll-btn" id="chips-prev" aria-label="Scroll tags left" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 6-6 6 6 6"/></svg></button>
+        <div class="chips" id="chips" role="group" aria-label="Filter by tag">
+          <button class="chip" data-tag="all" aria-pressed="true"><span data-lang="fr">Tout</span><span data-lang="en">All</span><span class="count" id="count-all"></span></button>
+        </div>
+        <button class="chips-scroll-btn" id="chips-next" aria-label="Scroll tags right" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></button>
+      </div>
     </div>
-  </div>
-</footer>
+
+    <!-- Posts -->
+    <div class="post-list" id="posts" aria-live="polite">
+      <div class="skeleton"></div>
+      <div class="skeleton" style="opacity:.7"></div>
+      <div class="skeleton" style="opacity:.4"></div>
+    </div>
+
+    <!-- Pagination -->
+    <nav class="pagination" id="pagination" aria-label="Pagination" hidden>
+      <div class="pagination-info" id="pagination-info"></div>
+      <div class="pagination-controls" id="pagination-controls"></div>
+    </nav>
+
+    <footer class="foot-bar">
+      <div>© 2026 Khalil Benazzouz</div>
+      <div style="display:flex;gap:18px">
+        <a href="index.html">CV</a>
+        <a href="https://github.com/khalilbenaz/khalilbenaz.github.io/issues?q=is%3Aissue+label%3Ablog" target="_blank" rel="noopener">Source (GitHub Issues)</a>
+        <a href="https://github.com/khalilbenaz" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </footer>
+
+  </main>
+</div>
 
 <script>
 window.addEventListener("DOMContentLoaded", async function () {
@@ -261,7 +148,6 @@ window.addEventListener("DOMContentLoaded", async function () {
         </div>`;
       return;
     }
-    // empty
     posts.innerHTML = `
       <div class="state">
         <div class="state-mono">∅ · ${en ? "NO PUBLISHED ARTICLE YET" : "AUCUN ARTICLE PUBLIÉ"}</div>
@@ -284,11 +170,7 @@ window.addEventListener("DOMContentLoaded", async function () {
     const rt = Blog.readingTime(localized);
     const title = Blog.localizedTitle(issue, fm, locale);
 
-    const row = el("a", {
-      class: "post-row",
-      href: `post.html?id=${issue.number}`,
-      "data-tags": tags.join(" ")
-    });
+    const row = el("a", { class: "post-row", href: `post.html?id=${issue.number}`, "data-tags": tags.join(" ") });
     row.appendChild(el("div", { class: "when" }, Blog.formatDate(issue.created_at, locale)));
 
     const middle = el("div");
@@ -304,7 +186,6 @@ window.addEventListener("DOMContentLoaded", async function () {
       middle.appendChild(tagsEl);
     }
     row.appendChild(middle);
-
     row.appendChild(el("div", { class: "read" }, `${rt} min`));
     return row;
   }
@@ -313,7 +194,6 @@ window.addEventListener("DOMContentLoaded", async function () {
     chips.querySelectorAll(".chip:not([data-tag='all'])").forEach((n) => n.remove());
     const countAll = document.getElementById("count-all");
     if (countAll) countAll.textContent = total;
-    // Sort tags by count descending, then alpha
     const sorted = [...tagCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
     sorted.forEach(([t, n]) => {
       const c = el("button", { class: "chip", "data-tag": t });
@@ -325,7 +205,6 @@ window.addEventListener("DOMContentLoaded", async function () {
     updateChipsScrollBtns();
   }
 
-  // Chips horizontal scroll
   const chipsPrev = document.getElementById("chips-prev");
   const chipsNext = document.getElementById("chips-next");
   function updateChipsScrollBtns() {
@@ -362,10 +241,8 @@ window.addEventListener("DOMContentLoaded", async function () {
     if (currentPage > totalPages) currentPage = totalPages;
     const start = (currentPage - 1) * PAGE_SIZE;
     const end = start + PAGE_SIZE;
-
     allRows.forEach((r) => r.classList.add("hidden"));
     visible.slice(start, end).forEach((r) => r.classList.remove("hidden"));
-
     renderPagination(total, totalPages);
   }
 
@@ -375,32 +252,16 @@ window.addEventListener("DOMContentLoaded", async function () {
     const controls = document.getElementById("pagination-controls");
     const locale = document.documentElement.getAttribute("data-locale") || "fr";
     const en = locale === "en";
-
-    if (total === 0) {
-      pagi.hidden = true;
-      return;
-    }
-
+    if (total === 0) { pagi.hidden = true; return; }
     const startN = (currentPage - 1) * PAGE_SIZE + 1;
     const endN = Math.min(currentPage * PAGE_SIZE, total);
-    info.textContent = en
-      ? `${startN}–${endN} of ${total}`
-      : `${startN}–${endN} sur ${total}`;
-
-    if (totalPages <= 1) {
-      pagi.hidden = false;
-      controls.innerHTML = "";
-      return;
-    }
+    info.textContent = en ? `${startN}–${endN} of ${total}` : `${startN}–${endN} sur ${total}`;
+    if (totalPages <= 1) { pagi.hidden = false; controls.innerHTML = ""; return; }
     pagi.hidden = false;
-
     const arrowL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 6-6 6 6 6"/></svg>';
     const arrowR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>';
-
     const parts = [];
     parts.push(`<button class="page-btn" data-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""} aria-label="${en ? "Previous" : "Précédent"}">${arrowL}</button>`);
-
-    // Build page list with ellipses
     const pages = new Set([1, totalPages, currentPage - 1, currentPage, currentPage + 1]);
     const sortedPages = [...pages].filter((p) => p >= 1 && p <= totalPages).sort((a, b) => a - b);
     let prev = 0;
@@ -409,7 +270,6 @@ window.addEventListener("DOMContentLoaded", async function () {
       parts.push(`<button class="page-btn" data-page="${p}" ${p === currentPage ? 'aria-current="true"' : ""}>${p}</button>`);
       prev = p;
     }
-
     parts.push(`<button class="page-btn" data-page="${currentPage + 1}" ${currentPage === totalPages ? "disabled" : ""} aria-label="${en ? "Next" : "Suivant"}">${arrowR}</button>`);
     controls.innerHTML = parts.join("");
   }
@@ -421,7 +281,7 @@ window.addEventListener("DOMContentLoaded", async function () {
     if (!isNaN(p)) {
       currentPage = p;
       renderPage();
-      document.querySelector(".filters")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   });
 
