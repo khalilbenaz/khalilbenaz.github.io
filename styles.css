@@ -387,10 +387,25 @@ footer.foot-bar a:hover { color: var(--text); }
    ============================================================ */
 @media (max-width: 900px) {
   .shell { grid-template-columns: 1fr; }
-  .sidebar { position: static; height: auto; padding: 26px 24px; }
-  .side-nav { flex-direction: row; flex-wrap: wrap; gap: 2px 18px; margin-top: 20px; }
+  /* Mobile: the sidebar stacks as a header. Follow the light/dark theme
+     (remap the side-* tokens) instead of staying a heavy black slab, and
+     stay compact so the CV content is reachable without a long scroll. */
+  .sidebar {
+    position: static; height: auto; padding: 20px 24px 18px;
+    background: var(--bg); color: var(--text);
+    border-bottom: 1px solid var(--border);
+    --side-text: var(--text);
+    --side-text-2: var(--text-3);
+    --side-border: var(--border);
+  }
+  .side-name { font-size: 27px; margin-top: 16px; }
+  .side-tagline { font-size: 14px; margin-top: 9px; }
+  .side-badge { margin-top: 12px; }
+  .side-nav { flex-direction: row; flex-wrap: wrap; gap: 2px 18px; margin-top: 16px; }
   .navlink { padding: 4px 0; }
-  .side-foot { margin-top: 24px; }
+  .navlink .navnum { color: var(--text-3); }
+  .side-foot { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .icon-btn { color: var(--text-2); }
   :root { --content-pad: 24px; }
   .filters, .post-list, .pagination { margin-left: 24px; margin-right: 24px; }
 }
@@ -404,6 +419,7 @@ footer.foot-bar a:hover { color: var(--text); }
   .post-row { grid-template-columns: 1fr; gap: 6px; }
   .post-row .when, .post-row .read { padding-top: 0; }
   .filters { position: static; }
+  .side-name { font-size: 25px; }
 }
 
 /* ============================================================

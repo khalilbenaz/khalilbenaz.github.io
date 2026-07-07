@@ -8,6 +8,14 @@
   const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
   root.setAttribute("data-theme", initialTheme);
 
+  // Keep the mobile browser address bar in sync with the theme.
+  function applyThemeColor(theme) {
+    let m = document.querySelector('meta[name="theme-color"]');
+    if (!m) { m = document.createElement("meta"); m.setAttribute("name", "theme-color"); document.head.appendChild(m); }
+    m.setAttribute("content", theme === "dark" ? "#080809" : "#ffffff");
+  }
+  applyThemeColor(initialTheme);
+
   // ----- locale -----
   const savedLocale = localStorage.getItem("kb.locale");
   const browserLocale = (navigator.language || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
@@ -36,6 +44,7 @@
       const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
       root.setAttribute("data-theme", next);
       localStorage.setItem("kb.theme", next);
+      applyThemeColor(next);
       reflectButtons();
     }
     if (localeBtn) {
