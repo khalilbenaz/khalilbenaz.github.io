@@ -136,19 +136,25 @@
   }
 
   // Related posts: same tag, exclude current
+  let relatedItems = [];
   if (tags.length) {
     try {
       const all = await Blog.listPublishedIssues();
-      const related = all
+      relatedItems = all
         .filter((i) => i.number !== number)
         .filter((i) => Blog.tagsOf(i).some((t) => tags.includes(t)))
         .slice(0, 2);
-      if (related.length) renderRelated(related);
+      if (relatedItems.length) renderRelated(relatedItems);
       else $("related").style.display = "none";
     } catch (_) { $("related").style.display = "none"; }
   } else {
     $("related").style.display = "none";
   }
+
+  // Re-localize the "read next" cards when the language is toggled
+  document.addEventListener("kb:locale-change", () => {
+    if (relatedItems.length) renderRelated(relatedItems);
+  });
 
   function renderRelated(items) {
     const target = $("related-grid");
