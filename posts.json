@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "92aab91b",
+    "title": "Cron jobs cloud — Cloudflare, Fly, Trigger",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/286",
+    "excerpt": "## Le besoin cron Tâches périodiques : reports, cleanups, syncs, reminders. Patterns 2026. ## Cloudflare Workers Cron ```toml # wrangler.toml [triggers] crons = [\"0 3 * * *\"] # 3am daily ``` ```ts export default { async scheduled(event, env, ctx) { // run daily at 3am await cleanupOldRecords(); }, }; ``` Pour : edge cron, free tier généreux. Limite : 30s execution time. ## Fly Machines schedule ```bash fly machine ru",
+    "tags": [
+      "BLOG",
+      "ARCHITECTURE"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
