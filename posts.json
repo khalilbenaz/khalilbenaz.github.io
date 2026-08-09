@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "6739457d",
+    "title": "Vector DBs comparaison — pgvector, Qdrant, Milvus, Weaviate",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/261",
+    "excerpt": "## Le marché vector DB - **pgvector** : extension Postgres, simple. - **Qdrant** : OSS, Rust, performant. - **Weaviate** : OSS, hybrid search natif. - **Milvus** : OSS, scale massif. - **Pinecone** : managed, cher. - **Chroma** : dev/prototypes. ## pgvector — démarrer ```sql CREATE EXTENSION vector; CREATE TABLE docs ( id serial primary key, embedding vector(1536), content text ); CREATE INDEX ON docs USING hnsw (emb",
+    "tags": [
+      "BLOG",
+      "AI",
+      "POSTGRES"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
