@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "d6e61707",
+    "title": "Apple Container Framework — Docker sur Mac repensé",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/293",
+    "excerpt": "## Apple Container Framework Apple a lancé en 2025 son **Container Framework** pour macOS : alternative native à Docker Desktop pour faire tourner des containers Linux sur Mac M-series. Bénéfices : - **Pas de Docker Desktop** : éviter la licence payante pour entreprises. - **Native macOS** : intégration M-series native. - **Plus performant** : moins overhead que Docker Desktop. - **OSS** : Apple-developed, open. ## S",
+    "tags": [
+      "BLOG",
+      "DOCKER",
+      "TOOLING"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
