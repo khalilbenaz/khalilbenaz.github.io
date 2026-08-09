@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "9b9b5227",
+    "title": "WebGPU en production : compute shaders dans le navigateur",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/302",
+    "excerpt": "## WebGPU enfin stable Chrome 113+, Safari 18+, Firefox 141+ supportent WebGPU en stable. L'API expose GPU compute et rendering modernes — descendante de Vulkan/Metal/D3D12. ## Différence avec WebGL WebGL = OpenGL ES port web, design 2010, focus rendering. WebGPU = API moderne : - **Compute shaders** natifs (pas de hack via fragment shader). - **Pipeline state objects** (moins overhead par draw). - **Bind groups** ex",
+    "tags": [
+      "BLOG",
+      "FRONTEND",
+      "MISC"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
