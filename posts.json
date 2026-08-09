@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "b48728aa",
+    "title": "Cloudflare Containers — alternative K8s léger",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/288",
+    "excerpt": "## Cloudflare Containers Cloudflare a lancé Containers en 2025, en plus des Workers. Apporte du container compute à leur edge network. Différences vs Workers : - **Workers** : V8 isolates, <1ms cold start, limites runtime. - **Containers** : containers normaux (Docker), pas de limite langage, démarrage <1s. Sweet spot : apps qui ont besoin de Node natif lourd, Python, ML, etc., mais veulent l'edge Cloudflare. ## Setu",
+    "tags": [
+      "BLOG",
+      "ARCHITECTURE",
+      "CLOUDFLARE"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
