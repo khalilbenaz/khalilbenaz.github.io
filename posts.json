@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "33946b0f",
+    "title": "OAuth 2.1 et PAR — auth moderne",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/281",
+    "excerpt": "## OAuth 2.1 OAuth 2.1 (publié RFC 2024) consolide les best practices de OAuth 2.0 : - **PKCE obligatoire** pour tous les clients (publics ET confidentiels). - **Implicit grant deprecated** : flow tokens-in-URL abandonné. - **Refresh tokens** rotation recommandée. - **Redirect URIs** strictes (pas de wildcards). Migration depuis 2.0 : la majorité des libs gèrent déjà OAuth 2.1 patterns par défaut. ## PKCE — la base `",
+    "tags": [
+      "BLOG",
+      "SECURITY"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
