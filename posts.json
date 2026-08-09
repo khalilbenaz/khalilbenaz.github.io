@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "300df50a",
+    "title": "n8n self-hosted — Zapier sans le pricing",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/150",
+    "excerpt": "## La proposition Zapier coûte $30-150/utilisateur/mois pour des features que beaucoup d'équipes utilisent à 10 %. n8n offre 90 % des features, OSS, self-hostable. Démarrer n8n : ```bash docker run -it --rm \\ --name n8n \\ -p 5678:5678 \\ -v ~/.n8n:/home/node/.n8n \\ docker.n8n.io/n8nio/n8n ``` 5 minutes plus tard, vous avez une UI workflow drag-and-drop. ## Ce qu'il fait - **400+ intégrations** : Slack, GitHub, Notion,",
+    "tags": [
+      "BLOG",
+      "AUTOMATION"
+    ],
+    "date": "2026-05-21",
+    "order": 53
   }
 ]
