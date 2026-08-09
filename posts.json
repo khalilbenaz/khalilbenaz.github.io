@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "be7fb480",
+    "title": "Bun runtime — performance et DX",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/255",
+    "excerpt": "## Bun en 2026 Bun (créé par Jarred Sumner, écrit en Zig) est mature en 2026. JavaScriptCore (Safari) underneath, all-in-one toolkit. ```bash # Bun runtime bun run app.ts # Bun bundler bun build src/index.ts --outfile dist/bundle.js # Bun test bun test # Bun install (10× faster than npm) bun install ``` ## Performance vs Node 24 : - **Startup** : Bun 50ms, Node 200ms. - **HTTP server** : Bun.serve() 2-3× plus rapide.",
+    "tags": [
+      "BLOG",
+      "BUN",
+      "JAVASCRIPT"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
