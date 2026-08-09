@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "d2a56e87",
+    "title": "Continue.dev — extension AI OSS pour VS Code",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/270",
+    "excerpt": "## Continue.dev — OSS coding assistant Continue.dev (apache 2.0) est extension VS Code / JetBrains pour AI coding. Alternative à Copilot et Cursor. Différences clés : - **Open source**. - **Modèles au choix** : OpenAI, Anthropic, Gemini, Ollama (local). - **MCP support** natif. - **Pas de SaaS imposé**. ## Setup ```bash # Install Continue extension dans VS Code # Puis configurer config.json : { \"models\": [ { \"title\":",
+    "tags": [
+      "BLOG",
+      "AI",
+      "TOOLING"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
