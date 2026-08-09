@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "01384834",
+    "title": "ESLint flat config — la migration en 2026",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/297",
+    "excerpt": "## ESLint flat config ESLint v9 (2024) a déprécié `.eslintrc.json` au profit de `eslint.config.js` flat config. Differences clés : - **Single file** : tout en un, plus de cascade `.eslintrc` nested. - **ESM-first** : utilise `import`. - **Explicit config** : plugins importés explicitement. ## Setup flat config ```js // eslint.config.js import js from '@eslint/js'; import tseslint from 'typescript-eslint'; import reac",
+    "tags": [
+      "BLOG",
+      "JAVASCRIPT",
+      "TOOLING"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
