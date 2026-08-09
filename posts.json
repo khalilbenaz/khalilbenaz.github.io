@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "7e63e67d",
+    "title": "Server-Sent Events pour streaming LLM",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/269",
+    "excerpt": "## Pourquoi SSE pour LLM Streaming LLM responses (token-by-token) améliore l'UX énormément. User voit la réponse arriver en temps réel plutôt que d'attendre 5s. Options techniques : - **WebSocket** : bidirectionnel, mais overhead inutile pour streaming server→client. - **SSE (Server-Sent Events)** : unidirectionnel server→client, HTTP/2 natif. SSE est le bon outil pour streaming LLM. ## Implémentation côté serveur ``",
+    "tags": [
+      "BLOG",
+      "AI",
+      "ARCHITECTURE"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
