@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "3bb90bcf",
+    "title": "Vault et secrets management",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/268",
+    "excerpt": "## Le besoin secrets management Chaque app a des secrets : DB passwords, API keys, tokens. Stockés où ? ❌ Hardcodés dans le code. ❌ Dans .env commit dans git. ❌ Email/Slack aux devs. ✅ Solution dédiée : Vault, Secrets Manager, Doppler. ## HashiCorp Vault Référence enterprise. OSS + commercial. ```bash vault kv put secret/db password=xyz vault kv get secret/db ``` Features : - Encryption at rest, in transit. - Dynamic",
+    "tags": [
+      "BLOG",
+      "SECURITY"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
