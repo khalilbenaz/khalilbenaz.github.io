@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "7d31190c",
+    "title": "Playwright vs Cypress en 2026",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/276",
+    "excerpt": "## Le combat E2E testing Playwright vs Cypress a divisé. En 2026, verdict clair : **Playwright** gagne. Raisons : - Multi-browser natif (Chromium, Firefox, Safari). - Multi-context (parallel tabs/users). - Auto-wait robuste. - Trace viewer excellent. - API moderne typed. ## Setup Playwright ```bash npm init playwright@latest ``` ```ts import { test, expect } from '@playwright/test'; test('checkout flow', async ({ pag",
+    "tags": [
+      "BLOG",
+      "JAVASCRIPT",
+      "TESTING"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
