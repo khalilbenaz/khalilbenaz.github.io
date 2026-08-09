@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "c594194d",
+    "title": "Tracing OpenTelemetry — instrumentation Rust",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/274",
+    "excerpt": "## Tracing en Rust Le crate **tracing** est le standard observability Rust : ```rust use tracing::{info, error, instrument}; #[instrument] async fn process_order(order_id: u64) -> Result<()> { info!(\"Processing order\"); let order = fetch_order(order_id).await?; if order.amount > 1000 { error!(\"Large order detected\"); } Ok(()) } ``` `#[instrument]` crée automatiquement un span. info!/error! logs avec contexte. ## Subs",
+    "tags": [
+      "BLOG",
+      "RUST",
+      "OBSERVABILITY"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
