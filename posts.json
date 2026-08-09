@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "6551f0c7",
+    "title": "React Native New Architecture — mature en 2026",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/298",
+    "excerpt": "## RN New Arch — défaut 2026 React Native New Architecture (Fabric + TurboModules) est en bêta depuis 2020. En 2026, c'est défaut nouveau projets. Améliorations : - **JSI** : interface JS-native sans bridge async. Performance native. - **Fabric** : renderer concurrent, animations smooth. - **TurboModules** : lazy-loaded native modules. - **Codegen** : type-safe entre JS et native. ## Performance vs Old Architecture :",
+    "tags": [
+      "BLOG",
+      "REACT",
+      "MOBILE"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
