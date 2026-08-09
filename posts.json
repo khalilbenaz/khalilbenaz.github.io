@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "2e39c161",
+    "title": "Hono — le framework HTTP qui tourne partout",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/267",
+    "excerpt": "## Hono — universal runtime Hono (japonais pour \"flamme\") est un framework HTTP léger qui tourne sur quasi tous les runtimes JS : - Cloudflare Workers, Pages. - Vercel Edge, Netlify Edge. - Bun, Deno, Node 18+. - AWS Lambda, Lambda@Edge. Un seul code, tous les runtimes. Pas de framework lock-in cloud. ## Setup ```ts import { Hono } from 'hono'; const app = new Hono(); app.get('/', (c) => c.text('Hello')); app.get('/u",
+    "tags": [
+      "BLOG",
+      "JAVASCRIPT",
+      "HONO"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
