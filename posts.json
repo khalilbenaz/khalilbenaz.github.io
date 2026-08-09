@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "af460a7c",
+    "title": "Effect-TS vs neverthrow — typed errors TypeScript",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/294",
+    "excerpt": "## Le problème TypeScript errors ```ts async function fetchUser(id: string): Promise<User> { // throws what? Pas indiqué dans le type } ``` TypeScript ne type pas les errors. `try/catch` reçoit `unknown`. Code defensive partout. Solutions : - **Effect-TS** : framework FP complet. - **neverthrow** : Result<T, E> léger. ## neverthrow ```ts import { Result, ok, err } from 'neverthrow'; function fetchUser(id: string): Re",
+    "tags": [
+      "BLOG",
+      "TYPESCRIPT"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
