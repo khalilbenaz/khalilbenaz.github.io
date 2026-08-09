@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "bf7ff21f",
+    "title": "Edge databases 2026 — Turso, D1, Vercel Postgres",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/295",
+    "excerpt": "## Edge databases DBs distribuées proches users : - **Turso** : libSQL (fork SQLite distribué). - **Cloudflare D1** : SQLite distribué Cloudflare-native. - **Vercel Postgres** : Neon Postgres serverless. - **PlanetScale** : MySQL serverless. ## Turso ```ts import { createClient } from '@libsql/client'; const db = createClient({ url: 'libsql://your-db.turso.io', authToken: process.env.TURSO_TOKEN, }); const result = a",
+    "tags": [
+      "BLOG",
+      "POSTGRES",
+      "ARCHITECTURE"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
