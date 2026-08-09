@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "71389616",
+    "title": "Drizzle Studio et tooling Postgres moderne",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/272",
+    "excerpt": "## GUI clients Postgres Sur les outils GUI pour Postgres : - **TablePlus** : commercial, multi-DB, polish. - **Postico** (Mac only) : minimaliste, élégant. - **pgAdmin** : OSS, complet, datée UX. - **DataGrip** (JetBrains) : commercial, puissant. - **Drizzle Studio** : si Drizzle ORM, intégré. - **Beekeeper Studio** : OSS, moderne. ## TablePlus — sweet spot mid-pro ``` Pricing : $89 one-time ou $59/an Multi-DB : Post",
+    "tags": [
+      "BLOG",
+      "POSTGRES",
+      "TOOLING"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
