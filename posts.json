@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "1816547b",
+    "title": "Lefthook et Husky — git hooks modernes",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/278",
+    "excerpt": "## Pre-commit hooks Hooks pre-commit empêchent de commit du code cassé : lint, format, tests rapides. Outils principaux : - **Husky** : Node-based, écosystème standard. - **Lefthook** : Go-based, plus rapide. - **pre-commit** : Python, multi-langage. ## Husky setup ```bash npm install -D husky lint-staged npx husky init ``` ```bash # .husky/pre-commit npx lint-staged ``` ```json // package.json \"lint-staged\": { \"*.{t",
+    "tags": [
+      "BLOG",
+      "TOOLING"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
