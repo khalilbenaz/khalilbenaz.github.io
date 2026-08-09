@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "6b9ba2a8",
+    "title": "Continue.dev — l'assistant code OSS dans VS Code",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/151",
+    "excerpt": "## Pourquoi Continue.dev Cursor et GitHub Copilot sont excellents, mais : - **Verrouillage modèle** : vous payez leur abonnement, vous utilisez leur sélection de modèles. - **Pas de contrôle prompt** : impossible de voir/modifier ce qui est envoyé. - **Pas d'accès aux modèles locaux** sérieusement (Ollama, vLLM en self-host). Continue.dev résout ces points : OSS, vos clés API, vos modèles, vos prompts. ## Setup ```ba",
+    "tags": [
+      "BLOG",
+      "AI",
+      "TOOLING"
+    ],
+    "date": "2026-05-21",
+    "order": 53
   }
 ]
