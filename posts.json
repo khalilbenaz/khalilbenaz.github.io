@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "37256b4e",
+    "title": "ESM en Node — la fin du chaos modules",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/253",
+    "excerpt": "## Le chaos historique Node a deux systèmes de modules : - **CommonJS** (`require()`) : historique, depuis 2009. - **ESM** (`import`) : standard JS moderne. Pendant 10 ans, incompatibilité douloureuse : - ESM ne pouvait pas require() de CJS sans hack. - CJS ne pouvait pas import() ESM sans dynamic import. - npm packages mixtes = nightmare. ## Node 24 résout `require(esm)` stable dans Node 24 LTS : ```js // app.js (Co",
+    "tags": [
+      "BLOG",
+      "JAVASCRIPT",
+      "NODEJS"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
