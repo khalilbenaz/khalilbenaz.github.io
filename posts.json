@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "161549b2",
+    "title": "Notebooks 2026 — Jupyter, Marimo, Observable",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/258",
+    "excerpt": "## Le paysage notebooks 2026 - **Jupyter** : leader historique, écosystème massif. - **Marimo** : OSS, reactive (à la Excel), Python. - **Observable** : JS, reactive, sweet spot dataviz. - **Quarto** : reproducible research, multi-langue. ## Jupyter — la référence Jupyter Notebooks restent le défaut data science. Écosystème : - JupyterLab interface. - ipywidgets pour UI. - Voilà pour publier comme app. - nbconvert po",
+    "tags": [
+      "BLOG",
+      "PYTHON",
+      "DATA"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
