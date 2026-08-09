@@ -571,5 +571,18 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "fe295a3c",
+    "title": "Stripe sans Stripe — alternatives en 2026",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/259",
+    "excerpt": "## Stripe en 2026 Stripe reste leader paiements mais : - 2.9 % + $0.30 par transaction US (un peu plus pour international). - Compliance VAT/sales tax à gérer (sauf Stripe Tax payant). - Pas idéal pour subscriptions complexes hors box. Plusieurs alternatives mûres ont émergé. ## Lemon Squeezy **Merchant of Record** : Lemon gère VAT/sales tax, vous recevez net. ```ts // Pas de Stripe API, Lemon-specific const checkout",
+    "tags": [
+      "BLOG",
+      "FINTECH",
+      "PAYMENTS"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
