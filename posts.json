@@ -571,5 +571,17 @@
     "tags": [],
     "date": "2026-04-04",
     "order": 52
+  },
+  {
+    "id": "e125957f",
+    "title": "WASM 2026 — Component Model et au-delà",
+    "url": "https://github.com/khalilbenaz/khalilbenaz.github.io/issues/260",
+    "excerpt": "## WASM en 2026 WebAssembly va au-delà du browser. Sweet spots : - **Serverless ultra-rapide** : <1 ms cold start. - **Plugins user-uploaded** sandboxés. - **Polyglot interop** via Component Model. - **Embedded computing** : Cloudflare Workers, Fastly Compute@Edge. ## Component Model WIT (WebAssembly Interface Types) définit interfaces typées entre composants : ```wit package my:greet@1.0.0; interface greeter { greet",
+    "tags": [
+      "BLOG",
+      "WEBASSEMBLY"
+    ],
+    "date": "2026-05-23",
+    "order": 53
   }
 ]
