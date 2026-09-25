@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="suiteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97757"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#00d2b4"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#11141a"/>
+  <!-- Claude window on left -->
+  <rect x="8" y="14" width="26" height="22" rx="4" fill="#1b1c22" stroke="#d97757" stroke-width="2.5"/>
+  <path d="M14 25l4 2.5-4 2.5" fill="none" stroke="#e8c3a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- AGY window on right -->
+  <rect x="28" y="26" width="28" height="24" rx="4" fill="#141924" stroke="#00d2b4" stroke-width="2.5"/>
+  <path d="M35 38l4.5-3.5-4.5-3.5" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="48" cy="38" r="1.8" fill="#00d2b4"/>
+</svg>
